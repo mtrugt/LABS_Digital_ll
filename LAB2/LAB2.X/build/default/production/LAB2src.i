@@ -2649,8 +2649,8 @@ typedef uint16_t uintptr_t;
 
 
 
-char check0;
-char check1;
+uint8_t check0;
+uint8_t check1;
 
 
 

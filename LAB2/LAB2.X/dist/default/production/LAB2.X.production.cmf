@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\maqui\AppData\Local\Temp\s9ck.o
+$C:\Users\maqui\AppData\Local\Temp\s5c0.o
 end_init CODE 0 0 0 3 2
 config CONFIG 4 2007 2007 2 2
 $dist/default/production\LAB2.X.production.o
@@ -66,13 +66,13 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LAB2.X.production.o
-7FA cinit CODE >436:C:\Users\maqui\AppData\Local\Temp\s9ck.s
-7FA cinit CODE >439:C:\Users\maqui\AppData\Local\Temp\s9ck.s
-7FA cinit CODE >453:C:\Users\maqui\AppData\Local\Temp\s9ck.s
-7FB cinit CODE >454:C:\Users\maqui\AppData\Local\Temp\s9ck.s
-7FC cinit CODE >460:C:\Users\maqui\AppData\Local\Temp\s9ck.s
-7FC cinit CODE >462:C:\Users\maqui\AppData\Local\Temp\s9ck.s
-7FD cinit CODE >463:C:\Users\maqui\AppData\Local\Temp\s9ck.s
+7FA cinit CODE >436:C:\Users\maqui\AppData\Local\Temp\s5c0.s
+7FA cinit CODE >439:C:\Users\maqui\AppData\Local\Temp\s5c0.s
+7FA cinit CODE >453:C:\Users\maqui\AppData\Local\Temp\s5c0.s
+7FB cinit CODE >454:C:\Users\maqui\AppData\Local\Temp\s5c0.s
+7FC cinit CODE >460:C:\Users\maqui\AppData\Local\Temp\s5c0.s
+7FC cinit CODE >462:C:\Users\maqui\AppData\Local\Temp\s5c0.s
+7FD cinit CODE >463:C:\Users\maqui\AppData\Local\Temp\s5c0.s
 7AB text1 CODE >87:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 7AB text1 CODE >89:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 7AE text1 CODE >90:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
@@ -113,29 +113,29 @@ __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\s9ck.o
+___sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\s5c0.o
 _main F76 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
-start 0 0 CODE 0 init C:\Users\maqui\AppData\Local\Temp\s9ck.o
+start 0 0 CODE 0 init C:\Users\maqui\AppData\Local\Temp\s5c0.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s9ck.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s9ck.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s9ck.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s9ck.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s9ck.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s9ck.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s5c0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s5c0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s5c0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s5c0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s5c0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s5c0.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\s9ck.o
-___stacklo 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\s9ck.o
+___stackhi 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\s5c0.o
+___stacklo 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\s5c0.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 start_initialization FF4 0 CODE 0 cinit dist/default/production\LAB2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\s9ck.o
+___int_sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\s5c0.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -176,7 +176,7 @@ __S3 0 0 ABS 0 - -
 _check0 71 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
 _check1 70 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\maqui\AppData\Local\Temp\s9ck.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\maqui\AppData\Local\Temp\s5c0.o
 __pmaintext F76 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
