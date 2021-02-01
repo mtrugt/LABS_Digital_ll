@@ -1,4 +1,4 @@
-# 1 "LAB2src.c"
+# 1 "LAB2lib.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LAB2src.c" 2
-# 14 "LAB2src.c"
+# 1 "LAB2lib.c" 2
+# 1 "./LAB2lib.h" 1
+# 14 "./LAB2lib.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 14 "LAB2src.c" 2
+# 14 "./LAB2lib.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2623,141 +2624,17 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 15 "LAB2src.c" 2
-
-# 1 "./LAB2lib.h" 1
-# 15 "./LAB2lib.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 15 "./LAB2lib.h" 2
 
 
 uint8_t getADC(void);
-# 16 "LAB2src.c" 2
+# 1 "LAB2lib.c" 2
 
 
+uint8_t ADCvalue;
 
+uint8_t getADC(void){
 
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
-uint8_t check0;
-uint8_t check1;
-uint8_t ADC;
-uint8_t ADCresult;
-
-
-
-
-
-
-
-void setup(void);
-void delay(unsigned char n);
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void){
-    if (PIR1bits.ADIF == 1){
-        PIR1bits.ADIF = 0;
-        ADC = 1;
-    }
-}
-
-
-
-
-
-
-void main(void) {
-    setup();
-    _delay((unsigned long)((1)*(4000000/4000.0)));
-    ADCON0bits.GO_DONE = 1;
-
-    while (1) {
-
-
-        if (check0 == 1 && PORTAbits.RA0 == 0){
-            check0 = 0;
-        }
-        if (check1 == 1 && PORTAbits.RA1 == 0){
-            check1 = 0;
-        }
-
-        if (PORTAbits.RA0 == 1 && check0 == 0){
-            check0 = 1;
-            PORTD = PORTD + 1;
-        }
-
-        if (PORTAbits.RA1 == 1 && check1 == 0){
-            check1 = 1;
-            PORTD = PORTD - 1;
-        }
-
-        if (ADC == 1){
-            ADCresult = getADC();
-            ADC = 0;
-            _delay((unsigned long)((1)*(4000000/4000.0)));
-            ADCON0bits.GO_DONE = 1;
-
-            PORTD = ADCresult;
-        }
-
-    }
-
-
-}
-
-
-
-
-
-
-void setup(void) {
-
-    TRISD = 0;
-    PORTD = 0;
-
-    TRISA = 1;
-    ANSEL = 0;
-
-    check0 = 0;
-    check1 = 0;
-    ADC = 0;
-
-
-
-    ANSELbits.ANS2 = 1;
-    PORTAbits.RA2 = 0;
-    ADCON0bits.ADCS = 0b01;
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
-    ADCON0bits.CHS = 0b0010;
-    ADCON1bits.ADFM = 0;
-    ADCON0bits.ADON = 1;
-
-    PIR1bits.ADIF = 0;
-    PIE1bits.ADIE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
-
+    ADCvalue = ADRESH;
+    return ADCvalue;
 }

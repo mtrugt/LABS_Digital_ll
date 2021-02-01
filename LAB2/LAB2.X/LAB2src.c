@@ -13,6 +13,7 @@
 //*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include "LAB2lib.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -32,7 +33,7 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
-
+#define _XTAL_FREQ 4000000
 
 //*****************************************************************************
 //Variables
@@ -41,6 +42,8 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
+
+
 
 
 //*****************************************************************************
@@ -67,7 +70,9 @@ void __interrupt() ISR(void){
 
 void main(void) {
     setup(); //realizar la configuracion
-
+    __delay_ms(1);
+    ADCON0bits.GO_DONE = 1; //Empezar una conversion
+    
     while (1) {
         
         //Anti-rebotes
@@ -89,7 +94,12 @@ void main(void) {
         }
         
         if (ADC == 1){
+            ADCresult = getADC();
+            ADC = 0;
+            __delay_ms(1);
+            ADCON0bits.GO_DONE = 1;
             
+            PORTD = ADCresult;
         }
 
     }
@@ -117,6 +127,7 @@ void setup(void) {
     
     //Configurar ADC
     ANSELbits.ANS2 = 1; //RA2 as analog
+    PORTAbits.RA2 = 0; 
     ADCON0bits.ADCS = 0b01; //Convertion clock = Fosc/8
     ADCON1bits.VCFG0 = 0; //VDD as conversion reference
     ADCON1bits.VCFG1 = 0; //VSS as conversion reference
@@ -128,6 +139,5 @@ void setup(void) {
     PIE1bits.ADIE = 1; //Habilitar interrupcion del ADC
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
     INTCONbits.GIE = 1; //Global interrups enable
-    
 
 }
