@@ -129,13 +129,5 @@ void setup(void) {
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
     INTCONbits.GIE = 1; //Global interrups enable
     
-    
-    
-    
-    
-    
-    
-
-
 
 }
