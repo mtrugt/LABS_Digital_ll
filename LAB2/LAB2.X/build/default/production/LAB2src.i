@@ -2663,6 +2663,16 @@ void delay(unsigned char n);
 
 
 
+void __attribute__((picinterrupt(("")))) ISR(void){
+
+
+}
+
+
+
+
+
+
 void main(void) {
     setup();
 
@@ -2706,6 +2716,13 @@ void setup(void) {
 
     check0 = 0;
     check1 = 0;
+
+
+
+    ANSELbits.ANS2 = 1;
+    ADCON0bits.ADCS = 0b01;
+
+
 
 
 
