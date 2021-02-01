@@ -13,6 +13,7 @@
 //*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include "LAB2lib.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -32,13 +33,17 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
-
+#define _XTAL_FREQ 4000000
 
 //*****************************************************************************
 //Variables
 //*****************************************************************************
 uint8_t check0;
 uint8_t check1;
+uint8_t ADC;
+uint8_t ADCresult;
+
+
 
 
 //*****************************************************************************
@@ -47,13 +52,27 @@ uint8_t check1;
 void setup(void);
 void delay(unsigned char n);
 
+
+//*****************************************************************************
+//Interrupciones
+//*****************************************************************************
+void __interrupt() ISR(void){
+    if (PIR1bits.ADIF == 1){
+        PIR1bits.ADIF = 0; //clear interrupt ADC flag
+        ADC = 1;
+    }
+}
+
+
 //*****************************************************************************
 //Ciclo principal
 //*****************************************************************************
 
 void main(void) {
     setup(); //realizar la configuracion
-
+    __delay_ms(1);
+    ADCON0bits.GO_DONE = 1; //Empezar una conversion
+    
     while (1) {
         
         //Anti-rebotes
@@ -72,6 +91,15 @@ void main(void) {
         if (PORTAbits.RA1 == 1 && check1 == 0){
             check1 = 1;
             PORTD = PORTD - 1;
+        }
+        
+        if (ADC == 1){
+            ADCresult = getADC();
+            ADC = 0;
+            __delay_ms(1);
+            ADCON0bits.GO_DONE = 1;
+            
+            PORTD = ADCresult;
         }
 
     }
@@ -94,7 +122,22 @@ void setup(void) {
     
     check0 = 0;
     check1 = 0;
-
-
+    ADC = 0;
+    
+    
+    //Configurar ADC
+    ANSELbits.ANS2 = 1; //RA2 as analog
+    PORTAbits.RA2 = 0; 
+    ADCON0bits.ADCS = 0b01; //Convertion clock = Fosc/8
+    ADCON1bits.VCFG0 = 0; //VDD as conversion reference
+    ADCON1bits.VCFG1 = 0; //VSS as conversion reference
+    ADCON0bits.CHS = 0b0010; //Convertir el pin AN2
+    ADCON1bits.ADFM = 0; //Justificado a la izquierda
+    ADCON0bits.ADON = 1; //Enable ADC
+        //interrupcion
+    PIR1bits.ADIF = 0; //Limpiar bandera interrupcion
+    PIE1bits.ADIE = 1; //Habilitar interrupcion del ADC
+    INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
+    INTCONbits.GIE = 1; //Global interrups enable
 
 }
