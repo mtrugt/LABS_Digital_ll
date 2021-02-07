@@ -129,6 +129,14 @@ void main(void) {
             PORTBbits.RB7 = 1;
             PORTCbits.RC0 = 0;
         }
+        
+        if (ADCresult >= PORTD ){
+            PORTCbits.RC1 = 1;
+        }
+        
+        else{
+            PORTCbits.RC1 = 0;
+        }
 
     }
 

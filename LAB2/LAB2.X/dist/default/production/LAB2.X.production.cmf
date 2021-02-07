@@ -11,17 +11,17 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\maqui\AppData\Local\Temp\s96c.o
+$C:\Users\maqui\AppData\Local\Temp\sa1k.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
 $dist/default/production\LAB2.X.production.o
 cinit CODE 0 F F E 2
 text1 CODE 0 1D 1D B0 2
-text2 CODE 0 162 162 49 2
-text3 CODE 0 1CE 1CE 8 2
-text4 CODE 0 1AB 1AB 23 2
-maintext CODE 0 CD CD 95 2
+text2 CODE 0 16B 16B 49 2
+text3 CODE 0 1D7 1D7 8 2
+text4 CODE 0 1B4 1B4 23 2
+maintext CODE 0 CD CD 9E 2
 cstackCOMMON COMMON 1 77 77 5 1
 cstackBANK0 BANK0 1 20 20 2 1
 intentry CODE 0 4 4 8 2
@@ -43,13 +43,13 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 1D6-1FFF 2
+CONST 1DF-1FFF 2
 ENTRY 3-3 2
-ENTRY 1D6-1FFF 2
+ENTRY 1DF-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 1D6-1FFF 2
+CODE 1DF-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -57,9 +57,9 @@ SFR3 180-18F 1
 COMMON 7C-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 1D6-1FFF 2
+STRCODE 1DF-1FFF 2
 STRING 3-3 2
-STRING 1D6-1FFF 2
+STRING 1DF-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -74,71 +74,71 @@ STRING 1D6-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LAB2.X.production.o
-F cinit CODE >635:C:\Users\maqui\AppData\Local\Temp\s96c.s
-F cinit CODE >638:C:\Users\maqui\AppData\Local\Temp\s96c.s
-F cinit CODE >673:C:\Users\maqui\AppData\Local\Temp\s96c.s
-10 cinit CODE >674:C:\Users\maqui\AppData\Local\Temp\s96c.s
-11 cinit CODE >675:C:\Users\maqui\AppData\Local\Temp\s96c.s
-12 cinit CODE >676:C:\Users\maqui\AppData\Local\Temp\s96c.s
-13 cinit CODE >677:C:\Users\maqui\AppData\Local\Temp\s96c.s
-14 cinit CODE >678:C:\Users\maqui\AppData\Local\Temp\s96c.s
-15 cinit CODE >679:C:\Users\maqui\AppData\Local\Temp\s96c.s
-16 cinit CODE >682:C:\Users\maqui\AppData\Local\Temp\s96c.s
-17 cinit CODE >683:C:\Users\maqui\AppData\Local\Temp\s96c.s
-18 cinit CODE >684:C:\Users\maqui\AppData\Local\Temp\s96c.s
-19 cinit CODE >690:C:\Users\maqui\AppData\Local\Temp\s96c.s
-19 cinit CODE >692:C:\Users\maqui\AppData\Local\Temp\s96c.s
-1A cinit CODE >693:C:\Users\maqui\AppData\Local\Temp\s96c.s
+F cinit CODE >635:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+F cinit CODE >638:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+F cinit CODE >673:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+10 cinit CODE >674:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+11 cinit CODE >675:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+12 cinit CODE >676:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+13 cinit CODE >677:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+14 cinit CODE >678:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+15 cinit CODE >679:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+16 cinit CODE >682:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+17 cinit CODE >683:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+18 cinit CODE >684:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+19 cinit CODE >690:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+19 cinit CODE >692:C:\Users\maqui\AppData\Local\Temp\sa1k.s
+1A cinit CODE >693:C:\Users\maqui\AppData\Local\Temp\sa1k.s
 4 intentry CODE >62:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1AB text4 CODE >62:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1AB text4 CODE >63:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1B1 text4 CODE >64:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1B2 text4 CODE >65:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1B4 text4 CODE >66:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1B4 text4 CODE >68:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1B8 text4 CODE >69:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1B9 text4 CODE >70:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1BE text4 CODE >71:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1C0 text4 CODE >72:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1C1 text4 CODE >74:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1C6 text4 CODE >75:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1C7 text4 CODE >79:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1CE text3 CODE >7:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
-1CE text3 CODE >9:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
-1D4 text3 CODE >10:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
-1D5 text3 CODE >11:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
-162 text2 CODE >143:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-162 text2 CODE >145:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-165 text2 CODE >146:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-168 text2 CODE >148:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-16C text2 CODE >149:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-16F text2 CODE >151:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-172 text2 CODE >152:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-175 text2 CODE >154:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-178 text2 CODE >157:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-179 text2 CODE >158:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-17A text2 CODE >159:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1B4 text4 CODE >62:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1B4 text4 CODE >63:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1BA text4 CODE >64:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1BB text4 CODE >65:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1BD text4 CODE >66:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1BD text4 CODE >68:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1C1 text4 CODE >69:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1C2 text4 CODE >70:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1C7 text4 CODE >71:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1C9 text4 CODE >72:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1CA text4 CODE >74:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1CF text4 CODE >75:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1D0 text4 CODE >79:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1D7 text3 CODE >7:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
+1D7 text3 CODE >9:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
+1DD text3 CODE >10:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
+1DE text3 CODE >11:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
+16B text2 CODE >151:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+16B text2 CODE >153:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+16E text2 CODE >154:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+171 text2 CODE >156:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+175 text2 CODE >157:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+178 text2 CODE >159:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 17B text2 CODE >160:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-17C text2 CODE >161:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-17F text2 CODE >165:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+17E text2 CODE >162:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+181 text2 CODE >165:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 182 text2 CODE >166:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-185 text2 CODE >167:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-189 text2 CODE >168:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-18C text2 CODE >169:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-18D text2 CODE >170:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-193 text2 CODE >171:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-196 text2 CODE >172:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-199 text2 CODE >174:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-19A text2 CODE >175:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-19D text2 CODE >176:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-19E text2 CODE >177:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+183 text2 CODE >167:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+184 text2 CODE >168:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+185 text2 CODE >169:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+188 text2 CODE >173:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+18B text2 CODE >174:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+18E text2 CODE >175:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+192 text2 CODE >176:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+195 text2 CODE >177:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+196 text2 CODE >178:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+19C text2 CODE >179:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 19F text2 CODE >180:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1A0 text2 CODE >181:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1A1 text2 CODE >182:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1A5 text2 CODE >183:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1A2 text2 CODE >182:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1A3 text2 CODE >183:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 1A6 text2 CODE >184:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 1A7 text2 CODE >185:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
-1AA text2 CODE >187:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1A8 text2 CODE >188:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1A9 text2 CODE >189:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1AA text2 CODE >190:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1AE text2 CODE >191:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1AF text2 CODE >192:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1B0 text2 CODE >193:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+1B3 text2 CODE >195:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 1D text1 CODE >13:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
 1E text1 CODE >15:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
 1F text1 CODE >17:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2lib.c
@@ -207,6 +207,11 @@ FF maintext CODE >106:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LA
 153 maintext CODE >128:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 15C maintext CODE >129:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 15D maintext CODE >130:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+15E maintext CODE >133:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+164 maintext CODE >134:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+165 maintext CODE >135:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+166 maintext CODE >137:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
+166 maintext CODE >138:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LAB2src.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -220,7 +225,7 @@ FF maintext CODE >106:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\LAB2\LAB2.X\LA
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\LAB2.X.production.o
-__Hspace_0 1D6 0 ABS 0 - -
+__Hspace_0 1DF 0 ABS 0 - -
 __Hspace_1 7C 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
@@ -228,20 +233,20 @@ __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _TMR0 1 0 ABS 0 - dist/default/production\LAB2.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\s96c.o
+___sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\sa1k.o
 _main 19A 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
-start 18 0 CODE 0 init C:\Users\maqui\AppData\Local\Temp\s96c.o
+start 18 0 CODE 0 init C:\Users\maqui\AppData\Local\Temp\sa1k.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s96c.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s96c.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s96c.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s96c.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s96c.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\s96c.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sa1k.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sa1k.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sa1k.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sa1k.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sa1k.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sa1k.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -252,13 +257,13 @@ _ANSELH 189 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 _ADCvalue 70 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
 _ADCresult 73 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\s96c.o
-___stacklo 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\s96c.o
-__end_of_getADC 3AC 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
+___stackhi 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\sa1k.o
+___stacklo 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\sa1k.o
+__end_of_getADC 3BE 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\LAB2.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\LAB2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\s96c.o
+___int_sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\sa1k.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -297,18 +302,18 @@ __Ltext 0 0 ABS 0 text -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 _ADC 74 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
-_ISR 356 0 CODE 0 text4 dist/default/production\LAB2.X.production.o
-__S0 1D6 0 ABS 0 - -
+_ISR 368 0 CODE 0 text4 dist/default/production\LAB2.X.production.o
+__S0 1DF 0 ABS 0 - -
 __S1 7C 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 saved_w 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _check0 76 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
 _check1 75 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
-__end_of_ISR 39C 0 CODE 0 text4 dist/default/production\LAB2.X.production.o
-_getADC 39C 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
+__end_of_ISR 3AE 0 CODE 0 text4 dist/default/production\LAB2.X.production.o
+_getADC 3AE 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\maqui\AppData\Local\Temp\s96c.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\maqui\AppData\Local\Temp\sa1k.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 _PIE1bits 8C 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __pmaintext 19A 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
@@ -336,9 +341,9 @@ __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 6 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __ptext1 3A 0 CODE 0 text1 dist/default/production\LAB2.X.production.o
-__ptext2 2C4 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
-__ptext3 39C 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
-__ptext4 356 0 CODE 0 text4 dist/default/production\LAB2.X.production.o
+__ptext2 2D6 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
+__ptext3 3AE 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
+__ptext4 368 0 CODE 0 text4 dist/default/production\LAB2.X.production.o
 _sevenhex 22 0 BANK0 1 bssBANK0 dist/default/production\LAB2.X.production.o
 _sevenval 72 0 COMMON 1 bssCOMMON dist/default/production\LAB2.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
@@ -351,7 +356,7 @@ __Lclrtext 0 0 ABS 0 clrtext -
 _ANSELbits 188 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __pcstackCOMMON 77 0 COMMON 1 cstackCOMMON dist/default/production\LAB2.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 2C4 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
+__end_of_main 2D6 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _PORTC 7 0 ABS 0 - dist/default/production\LAB2.X.production.o
@@ -360,11 +365,11 @@ _TRISA 85 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _TRISB 86 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _TRISC 87 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\LAB2.X.production.o
-__end_of_setup 356 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
+__end_of_setup 368 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\LAB2.X.production.o
-_setup 2C4 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
+_setup 2D6 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\LAB2.X.production.o
 __size_of_ISR 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\LAB2.X.production.o
@@ -395,7 +400,7 @@ __pbssBANK0 22 0 BANK0 1 bssBANK0 dist/default/production\LAB2.X.production.o
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackBANK0 1 20 20 3 1
-intentry 0 4 8 1D2 2
+intentry 0 4 8 1DB 2
 reset_vec 0 0 0 3 2
 bssCOMMON 1 70 70 C 1
 # %NOTES Section
