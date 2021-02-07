@@ -154,8 +154,8 @@ intentry 8 3AB CODE 8 0
 bssCOMMON 70 7B COMMON 70 1
 cstackBANK0 20 22 BANK0 20 1
 %locals
-dist/default/production\LAB2.X.production.o
-C:\Users\maqui\AppData\Local\Temp\s96c.s
+dist/default/debug\LAB2.X.debug.o
+C:\Users\maqui\AppData\Local\Temp\sgjg.s
 635 F 0 CODE 0
 638 F 0 CODE 0
 673 F 0 CODE 0

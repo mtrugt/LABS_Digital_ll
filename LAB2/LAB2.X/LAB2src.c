@@ -71,7 +71,7 @@ void __interrupt() ISR(void){
             multiplex = 1;
         }
         
-        if (multiplex == 1){
+        else if (multiplex == 1){
             multiplex = 0;
         }
     }
@@ -117,13 +117,17 @@ void main(void) {
         
         if (multiplex == 0){
             sevenval = ADCresult & 0b00001111;
-            PORTB = seven_seg(sevenval);         
+            PORTB = seven_seg(sevenval);   
+            PORTCbits.RC0 = 1;
+            PORTBbits.RB7 = 0;
         }
         
         if (multiplex == 1){
-            sevenval = ADCresult & 0b00001111;
+            sevenval = ADCresult & 0b11110000;
+            sevenval = sevenval>>4;
             PORTB = seven_seg(sevenval);
             PORTBbits.RB7 = 1;
+            PORTCbits.RC0 = 0;
         }
 
     }
@@ -147,10 +151,14 @@ void setup(void) {
     TRISB = 0; //portB as output
     ANSELH = 0; //portB digital
     
+    TRISC = 0; //portC as output
+    
+    
     check0 = 0;
     check1 = 0;
     ADC = 0;
     multiplex = 0;
+    PORTC = 0;
     
     
     //Configurar ADC
@@ -170,8 +178,8 @@ void setup(void) {
     
     //Configurar timer0
     OPTION_REGbits.PSA = 0; //Precaler to tmr0
-    OPTION_REGbits.PS = 0b001; //Precaler 1:4
-    OPTION_REGbits.T0CS = 0; //internal osc
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PS = 0b100; //Precaler 1:32
     INTCONbits.T0IF = 0; //Limpiar bandera
     INTCONbits.T0IE = 1; //tmr0 interrup enable
     TMR0 = 0; //Limpiar tmr0 
