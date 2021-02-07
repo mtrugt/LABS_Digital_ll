@@ -42,6 +42,9 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
+uint8_t sevenval;
+uint8_t multiplex;
+uint8_t sevenval;
 
 
 
@@ -61,6 +64,18 @@ void __interrupt() ISR(void){
         PIR1bits.ADIF = 0; //clear interrupt ADC flag
         ADC = 1;
     }
+    
+    if (INTCONbits.T0IF == 1){
+        INTCONbits.T0IF = 0;
+        if (multiplex == 0){
+            multiplex = 1;
+        }
+        
+        if (multiplex == 1){
+            multiplex = 0;
+        }
+    }
+    
 }
 
 
@@ -97,9 +112,18 @@ void main(void) {
             ADCresult = getADC();
             ADC = 0;
             __delay_ms(1);
-            ADCON0bits.GO_DONE = 1;
-            
-            PORTD = ADCresult;
+            ADCON0bits.GO_DONE = 1;   
+        }
+        
+        if (multiplex == 0){
+            sevenval = ADCresult & 0b00001111;
+            PORTB = seven_seg(sevenval);         
+        }
+        
+        if (multiplex == 1){
+            sevenval = ADCresult & 0b00001111;
+            PORTB = seven_seg(sevenval);
+            PORTBbits.RB7 = 1;
         }
 
     }
@@ -120,9 +144,13 @@ void setup(void) {
     TRISA = 1; //portaA as input (counter btns)
     ANSEL = 0; //portA digital
     
+    TRISB = 0; //portB as output
+    ANSELH = 0; //portB digital
+    
     check0 = 0;
     check1 = 0;
     ADC = 0;
+    multiplex = 0;
     
     
     //Configurar ADC
@@ -139,5 +167,13 @@ void setup(void) {
     PIE1bits.ADIE = 1; //Habilitar interrupcion del ADC
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
     INTCONbits.GIE = 1; //Global interrups enable
+    
+    //Configurar timer0
+    OPTION_REGbits.PSA = 0; //Precaler to tmr0
+    OPTION_REGbits.PS = 0b001; //Precaler 1:4
+    OPTION_REGbits.T0CS = 0; //internal osc
+    INTCONbits.T0IF = 0; //Limpiar bandera
+    INTCONbits.T0IE = 1; //tmr0 interrup enable
+    TMR0 = 0; //Limpiar tmr0 
 
 }

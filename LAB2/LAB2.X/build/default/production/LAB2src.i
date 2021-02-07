@@ -2632,6 +2632,7 @@ typedef uint16_t uintptr_t;
 
 
 uint8_t getADC(void);
+uint8_t seven_seg(uint8_t sevenval);
 # 16 "LAB2src.c" 2
 
 
@@ -2662,6 +2663,9 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
+uint8_t sevenval;
+uint8_t multiplex;
+uint8_t sevenval;
 
 
 
@@ -2681,6 +2685,18 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         PIR1bits.ADIF = 0;
         ADC = 1;
     }
+
+    if (INTCONbits.T0IF == 1){
+        INTCONbits.T0IF = 0;
+        if (multiplex == 0){
+            multiplex = 1;
+        }
+
+        if (multiplex == 1){
+            multiplex = 0;
+        }
+    }
+
 }
 
 
@@ -2718,8 +2734,17 @@ void main(void) {
             ADC = 0;
             _delay((unsigned long)((1)*(4000000/4000.0)));
             ADCON0bits.GO_DONE = 1;
+        }
 
-            PORTD = ADCresult;
+        if (multiplex == 0){
+            sevenval = ADCresult & 0b00001111;
+            PORTB = seven_seg(sevenval);
+        }
+
+        if (multiplex == 1){
+            sevenval = ADCresult & 0b00001111;
+            PORTB = seven_seg(sevenval);
+            PORTBbits.RB7 = 1;
         }
 
     }
@@ -2740,9 +2765,13 @@ void setup(void) {
     TRISA = 1;
     ANSEL = 0;
 
+    TRISB = 0;
+    ANSELH = 0;
+
     check0 = 0;
     check1 = 0;
     ADC = 0;
+    multiplex = 0;
 
 
 
@@ -2759,5 +2788,13 @@ void setup(void) {
     PIE1bits.ADIE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
+
+
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0b001;
+    OPTION_REGbits.T0CS = 0;
+    INTCONbits.T0IF = 0;
+    INTCONbits.T0IE = 1;
+    TMR0 = 0;
 
 }

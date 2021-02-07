@@ -15,6 +15,7 @@
 #include <stdint.h>
 
 uint8_t getADC(void);
+uint8_t seven_seg(uint8_t sevenval);
 
 
 #endif	/* XC_HEADER_TEMPLATE_H */
