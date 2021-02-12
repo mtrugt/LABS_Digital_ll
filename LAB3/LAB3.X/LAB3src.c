@@ -13,6 +13,9 @@
 //*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic16f887.h>
 #include "LAB3lib.h"
 
 //*****************************************************************************
@@ -33,6 +36,8 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
+#define _XTAL_FREQ 4000000
+
 
 
 //*****************************************************************************
@@ -40,6 +45,7 @@
 //*****************************************************************************
 char check1;
 char check2;
+char LCDstring[16];
 
 
 //*****************************************************************************
@@ -54,10 +60,16 @@ void setup(void);
 
 void main(void) {
     setup(); //realizar la configuracion
-    
+    LCD_clear();
+    LCD_cursor(1,1); //posicionarse en (1,1)
+    LCD_Wstring("a"); //escribir un caracter
+    __delay_ms(1500);
+    LCD_clear();    //limpiar LCD
+    LCD_cursor(1,2);
+    LCD_Wstring("HOLA baby"); //escribir una cadena de texto
+    __delay_ms(1500);
+    //LCD_clear(); 
     while(1){
-        
-        
         
     }
 
@@ -68,7 +80,7 @@ void main(void) {
 //FUNCIONES
 //*****************************************************************************
 void setup(void) {
-    
-    LCD_ini();
+    TRISD = 0;
+    LCD_ini(); //inicializar LCD
 
 }

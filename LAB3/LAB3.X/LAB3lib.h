@@ -11,10 +11,19 @@
 #ifndef LAB3lib_H
 #define	LAB3lib_H
 
-#include <xc.h> // include processor files - each processor file is guarded.  
+#include <xc.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic16f887.h>
 
 void LCD_ini(void);
+void LCD_cmd(uint8_t cmd);
+void LCD_clear(void);
+void LCD_cursor(uint8_t x, uint8_t y);
+void LCD_Wchar(char c);
+void LCD_Wstring(char *v);
+
 
 
 #endif	/* XC_HEADER_TEMPLATE_H */

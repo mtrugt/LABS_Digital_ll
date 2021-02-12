@@ -1,9 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"47 LAB3src.c
+"54 LAB3src.c
 [v _setup `(v ~T0 @X0 0 ef ]
-"17 ./LAB3lib.h
-[; ;./LAB3lib.h: 17: void LCD_ini(void);
+"22 ./LAB3lib.h
+[; ;./LAB3lib.h: 22: void LCD_clear(void);
+[v _LCD_clear `(v ~T0 @X0 0 ef ]
+"23
+[; ;./LAB3lib.h: 23: void LCD_cursor(uint8_t x, uint8_t y);
+[v _LCD_cursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"25
+[; ;./LAB3lib.h: 25: void LCD_Wstring(char *v);
+[v _LCD_Wstring `(v ~T0 @X0 0 ef1`*uc ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
+"1602 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
+[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"20 ./LAB3lib.h
+[; ;./LAB3lib.h: 20: void LCD_ini(void);
 [v _LCD_ini `(v ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
@@ -239,72 +255,96 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"20 LAB3src.c
-[; ;LAB3src.c: 20:     setup();
+"24 LAB3src.c
+[; ;LAB3src.c: 24:     LCD_clear();
 [p x FOSC  =  INTRC_NOCLKOUT ]
-"21
-[; ;LAB3src.c: 21: 
-[p x WDTE  =  OFF        ]
-"22
-[; ;LAB3src.c: 22:     while(1){
-[p x PWRTE  =  OFF       ]
-"23
-[; ;LAB3src.c: 23: 
-[p x MCLRE  =  ON        ]
-"24
-[; ;LAB3src.c: 24: 
-[p x CP  =  OFF          ]
 "25
-[; ;LAB3src.c: 25: 
-[p x CPD  =  OFF         ]
+[; ;LAB3src.c: 25:     LCD_cursor(1,1);
+[p x WDTE  =  OFF        ]
 "26
-[; ;LAB3src.c: 26:     }
-[p x BOREN  =  OFF       ]
+[; ;LAB3src.c: 26:     LCD_Wstring("a");
+[p x PWRTE  =  OFF       ]
 "27
-[; ;LAB3src.c: 27: 
-[p x IESO  =  OFF        ]
+[; ;LAB3src.c: 27:     _delay((unsigned long)((1500)*(4000000/4000.0)));
+[p x MCLRE  =  ON        ]
 "28
-[; ;LAB3src.c: 28: }
-[p x FCMEN  =  OFF       ]
+[; ;LAB3src.c: 28:     LCD_clear();
+[p x CP  =  OFF          ]
 "29
-[; ;LAB3src.c: 29: 
-[p x LVP  =  OFF         ]
+[; ;LAB3src.c: 29:     LCD_cursor(1,2);
+[p x CPD  =  OFF         ]
+"30
+[; ;LAB3src.c: 30:     LCD_Wstring("HOLA baby");
+[p x BOREN  =  OFF       ]
+"31
+[; ;LAB3src.c: 31:     _delay((unsigned long)((1500)*(4000000/4000.0)));
+[p x IESO  =  OFF        ]
 "32
 [; ;LAB3src.c: 32: 
-[p x BOR4V  =  BOR40V    ]
+[p x FCMEN  =  OFF       ]
 "33
-[; ;LAB3src.c: 33: 
+[; ;LAB3src.c: 33:     while(1){
+[p x LVP  =  OFF         ]
+"36
+[; ;LAB3src.c: 36: 
+[p x BOR4V  =  BOR40V    ]
+"37
+[; ;LAB3src.c: 37: }
 [p x WRT  =  OFF         ]
-"40
+"46
+[; ;LAB3src.c: 46: 
 [v _check1 `uc ~T0 @X0 1 e ]
-"41
+"47
+[; ;LAB3src.c: 47: }
 [v _check2 `uc ~T0 @X0 1 e ]
+"48
+[v _LCDstring `uc ~T0 @X0 -> 16 `i e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"54
+"61
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"55
+"62
 [e ( _setup ..  ]
-"57
-[e :U 140 ]
-{
-"61
-}
-[e :U 139 ]
-[e $U 140  ]
-[e :U 141 ]
 "63
-[e :UE 138 ]
-}
+[e ( _LCD_clear ..  ]
+"64
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"65
+[e ( _LCD_Wstring (1 :s 1C ]
+"66
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"67
+[e ( _LCD_clear ..  ]
+"68
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "69
+[e ( _LCD_Wstring (1 :s 2C ]
+"70
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"72
+[e :U 145 ]
+{
+"74
+}
+[e :U 144 ]
+[e $U 145  ]
+[e :U 146 ]
+"76
+[e :UE 143 ]
+}
+"82
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"71
+"83
+[e = _TRISD -> -> 0 `i `uc ]
+"84
 [e ( _LCD_ini ..  ]
-"73
-[e :UE 142 ]
+"86
+[e :UE 147 ]
 }
+[a 2C 72 79 76 65 32 98 97 98 121 0 ]
+[a 1C 97 0 ]
