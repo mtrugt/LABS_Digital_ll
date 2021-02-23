@@ -2625,6 +2625,43 @@ typedef int16_t intptr_t;
 typedef uint16_t uintptr_t;
 # 15 "ADCsrc.c" 2
 
+# 1 "./SPI.h" 1
+# 20 "./SPI.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 16 "ADCsrc.c" 2
+
 
 
 
@@ -2664,7 +2701,7 @@ uint8_t sevenval;
 
 
 void setup(void);
-void delay(unsigned char n);
+
 
 
 
@@ -2675,18 +2712,7 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         PIR1bits.ADIF = 0;
         ADC = 1;
     }
-
-    if (INTCONbits.T0IF == 1){
-        INTCONbits.T0IF = 0;
-        if (multiplex == 0){
-            multiplex = 1;
-        }
-
-        else if (multiplex == 1){
-            multiplex = 0;
-        }
-    }
-
+# 79 "ADCsrc.c"
 }
 
 
@@ -2700,14 +2726,16 @@ void main(void) {
     ADCON0bits.GO_DONE = 1;
 
     while (1) {
-# 110 "ADCsrc.c"
+
+
         if (ADC == 1){
             PORTD = ADRESH;
             ADC = 0;
             _delay((unsigned long)((1)*(4000000/4000.0)));
             ADCON0bits.GO_DONE = 1;
         }
-# 140 "ADCsrc.c"
+
+
     }
 
 
@@ -2725,10 +2753,6 @@ void setup(void) {
 
     TRISA = 1;
     ANSEL = 0;
-
-
-
-
 
 
 
@@ -2753,5 +2777,7 @@ void setup(void) {
     PIE1bits.ADIE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
-# 194 "ADCsrc.c"
+
+
+
 }

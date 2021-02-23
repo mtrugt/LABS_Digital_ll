@@ -13,6 +13,7 @@
 //*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include "SPI.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -52,7 +53,7 @@ uint8_t sevenval;
 //Creacion de funciones
 //*****************************************************************************
 void setup(void);
-void delay(unsigned char n);
+
 
 
 //*****************************************************************************
@@ -64,16 +65,16 @@ void __interrupt() ISR(void){
         ADC = 1;
     }
     
-    if (INTCONbits.T0IF == 1){
-        INTCONbits.T0IF = 0;
-        if (multiplex == 0){
-            multiplex = 1;
-        }
-        
-        else if (multiplex == 1){
-            multiplex = 0;
-        }
-    }
+//    if (INTCONbits.T0IF == 1){
+//        INTCONbits.T0IF = 0;
+//        if (multiplex == 0){
+//            multiplex = 1;
+//        }
+//        
+//        else if (multiplex == 1){
+//            multiplex = 0;
+//        }
+//    }
     
 }
 
@@ -89,23 +90,6 @@ void main(void) {
     
     while (1) {
         
-        //Anti-rebotes
-        //if (check0 == 1 && PORTAbits.RA0 == 0){
-        //    check0 = 0;
-        //}
-        //if (check1 == 1 && PORTAbits.RA1 == 0){
-        //    check1 = 0;
-        //}
-        
-        //if (PORTAbits.RA0 == 1 && check0 == 0){
-        //    check0 = 1;
-       //     PORTD = PORTD + 1;
-        //}
-        
-        //if (PORTAbits.RA1 == 1 && check1 == 0){
-        //    check1 = 1;
-        //    PORTD = PORTD - 1;
-        //}
         
         if (ADC == 1){
             PORTD = ADRESH;
@@ -114,28 +98,6 @@ void main(void) {
             ADCON0bits.GO_DONE = 1;   
         }
         
-        //if (multiplex == 0){
-        //    sevenval = ADCresult & 0b00001111;
-        //    PORTB = seven_seg(sevenval);   
-        //    PORTCbits.RC0 = 1;
-        //    PORTBbits.RB7 = 0;
-        //}
-        
-        //if (multiplex == 1){
-        //    sevenval = ADCresult & 0b11110000;
-        //    sevenval = sevenval>>4;
-        //    PORTB = seven_seg(sevenval);
-        //    PORTBbits.RB7 = 1;
-        //    PORTCbits.RC0 = 0;
-        //}
-        
-        //if (ADCresult >= PORTD ){
-        //    PORTCbits.RC1 = 1;
-        //}
-        
-        //else{
-        //    PORTCbits.RC1 = 0;
-        //}
 
     }
 
@@ -154,11 +116,7 @@ void setup(void) {
     
     TRISA = 1; //portaA as input (counter btns)
     ANSEL = 0; //portA digital
-    
-    //TRISB = 0; //portB as output
-   // ANSELH = 0; //portB digital
-    
-    //TRISC = 0; //portC as output
+
     
     
     check0 = 0;
@@ -183,12 +141,6 @@ void setup(void) {
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
     INTCONbits.GIE = 1; //Global interrups enable
     
-    //Configurar timer0
-    //OPTION_REGbits.PSA = 0; //Precaler to tmr0
-    //OPTION_REGbits.T0CS = 0;
-    //OPTION_REGbits.PS = 0b100; //Precaler 1:32
-    //INTCONbits.T0IF = 0; //Limpiar bandera
-    //INTCONbits.T0IE = 1; //tmr0 interrup enable
-    //TMR0 = 0; //Limpiar tmr0 
+
 
 }

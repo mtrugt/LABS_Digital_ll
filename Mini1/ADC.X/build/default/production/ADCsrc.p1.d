@@ -1,2 +1,3 @@
 build/default/production/ADCsrc.p1:  \
-ADCsrc.c 
+ADCsrc.c  \
+SPI.h 
