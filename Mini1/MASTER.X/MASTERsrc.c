@@ -14,6 +14,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "SPI.h"
+#include "LCD.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -60,18 +61,7 @@ void setup(void);
 //Interrupciones
 //*****************************************************************************
 void __interrupt() ISR(void){
-    if (PIR1bits.ADIF == 1){
-        PIR1bits.ADIF = 0; //clear interrupt ADC flag
-        ADC = 1;
-    }
-    
-    if(SSPIF == 1){
-        PORTD = spiRead();
-        spiWrite(contador);
-        SSPIF = 0;
-    }
-    
-    
+ 
 }
 
 
@@ -80,21 +70,21 @@ void __interrupt() ISR(void){
 //*****************************************************************************
 
 void main(void) {
-    setup(); //realizar la configuracion
-    __delay_ms(1);
-    ADCON0bits.GO_DONE = 1; //Empezar una conversion
     
-    while (1) {
+    setup(); //realizar la configuracion
+    LCD_clear();
+    LCD_cursor(1,1); //posicionarse en (1,1)
+    LCD_Wstring("a"); //escribir un caracter
+    __delay_ms(1500);
+    LCD_clear();    //limpiar LCD
+    LCD_cursor(1,2);
+    LCD_Wstring("HOLA baby"); //escribir una cadena de texto
+    __delay_ms(1500);
+    //LCD_clear(); 
+    while(1){
         
-        if (ADC == 1){
-            PORTD = ADRESH;
-            ADC = 0;
-            __delay_ms(1);
-            ADCON0bits.GO_DONE = 1;   
-        }
-        
-
     }
+
 
 
 }
@@ -105,44 +95,27 @@ void main(void) {
 //*****************************************************************************
 
 void setup(void) {
-    
-    TRISD = 0; //portD as output
-    PORTD = 0; //portD = 0
-    
-    TRISA = 1; //portaA as input (counter btns)
-    ANSEL = 0; //portA digital
+    ANSEL = 0;
+    ANSELH = 0;
+    TRISC1 = 0;
+    TRISC2 = 0;
+    TRISB = 0;
+    TRISD = 0;
+    PORTB = 0;
+    PORTD = 0;
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC1 = 1;
 
+//    //configurar MSSP
+//    INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
+//    INTCONbits.GIE = 1; //Global interrups enable
+//    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
+//    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
+//    TRISAbits.TRISA5 = 1;       // Slave Select
+//   
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
-    
-    check0 = 0;
-    check1 = 0;
-    ADC = 0;
-    multiplex = 0;
-    PORTC = 0;
-    
-    
-    //Configurar ADC
-    ANSELbits.ANS2 = 1; //RA2 as analog
-    PORTAbits.RA2 = 0; 
-    ADCON0bits.ADCS = 0b01; //Convertion clock = Fosc/8
-    ADCON1bits.VCFG0 = 0; //VDD as conversion reference
-    ADCON1bits.VCFG1 = 0; //VSS as conversion reference
-    ADCON0bits.CHS = 0b0010; //Convertir el pin AN2
-    ADCON1bits.ADFM = 0; //Justificado a la izquierda
-    ADCON0bits.ADON = 1; //Enable ADC
-        //interrupcion
-    PIR1bits.ADIF = 0; //Limpiar bandera interrupcion
-    PIE1bits.ADIE = 1; //Habilitar interrupcion del ADC
-    INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
-    INTCONbits.GIE = 1; //Global interrups enable
-    
-    //configurar MSSP
-    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
-    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
-    TRISAbits.TRISA5 = 1;       // Slave Select
-   
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-    
+    LCD_ini(); //inicializar LCD
 
 
 }
