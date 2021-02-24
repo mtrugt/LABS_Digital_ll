@@ -1,2 +1,3 @@
 build/default/production/COUNTERsrc.p1:  \
-COUNTERsrc.c 
+COUNTERsrc.c  \
+SPI.h 

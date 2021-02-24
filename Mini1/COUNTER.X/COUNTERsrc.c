@@ -13,6 +13,7 @@
 //*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include "SPI.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -39,6 +40,7 @@
 //*****************************************************************************
 uint8_t check0;
 uint8_t check1;
+uint8_t data;
 
 
 
@@ -52,7 +54,11 @@ void setup(void);
 //Interrupciones
 //*****************************************************************************
 void __interrupt() ISR(void){
-    
+    if(SSPIF == 1){
+        data = spiRead();
+        spiWrite(PORTD);
+        SSPIF = 0;
+    }
 }
 
 
@@ -103,6 +109,15 @@ void setup(void) {
     
     check0 = 0;
     check1 = 0;
+    
+    //configurar MSSP
+    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
+    TRISAbits.TRISA5 = 1;       // Slave Select
+    INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
+    INTCONbits.GIE = 1; //Global interrups enable
+   
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
 
 }
