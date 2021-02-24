@@ -35,7 +35,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "52
 [; ;./SPI.h: 52: char spiRead();
 [v _spiRead `(uc ~T0 @X0 0 e? ]
-"60 MASTERsrc.c
+"61 MASTERsrc.c
+[; ;MASTERsrc.c: 61: void transformtemp(char j);
+[v _transformtemp `(v ~T0 @X0 0 ef1`uc ]
+"60
 [; ;MASTERsrc.c: 60: void transformADC(char k);
 [v _transformADC `(v ~T0 @X0 0 ef1`uc ]
 "3387 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
@@ -79,8 +82,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "414
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
 [v _PORTE `Vuc ~T0 @X0 0 e@9 ]
-"164 MASTERsrc.c
-[; ;MASTERsrc.c: 164:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"166 MASTERsrc.c
+[; ;MASTERsrc.c: 166:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [c E1292 32 33 34 35 36 37 .. ]
 [n E1292 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E1300 0 128 .. ]
@@ -454,276 +457,279 @@ Version 4.0 HI-TECH Software Intermediate Code
 "99
 [; ;MASTERsrc.c: 99:             check0 = 2;
 [e = _check0 -> -> 2 `i `uc ]
-"100
-[; ;MASTERsrc.c: 100:         }
+"101
+[; ;MASTERsrc.c: 101:             transformtemp(data1);
+[e ( _transformtemp (1 -> _data1 `uc ]
+"103
+[; ;MASTERsrc.c: 103:         }
 }
 [e :U 148 ]
-"102
-[; ;MASTERsrc.c: 102:         if (check0 == 2){
+"105
+[; ;MASTERsrc.c: 105:         if (check0 == 2){
 [e $ ! == -> _check0 `i -> 2 `i 149  ]
 {
-"103
-[; ;MASTERsrc.c: 103:             PORTEbits.RE1 = 0;
-[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
-"104
-[; ;MASTERsrc.c: 104:             _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"105
-[; ;MASTERsrc.c: 105:             spiWrite(1);
-[e ( _spiWrite (1 -> -> 1 `i `uc ]
 "106
-[; ;MASTERsrc.c: 106:             _delay((unsigned long)((2)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 106:             PORTEbits.RE1 = 0;
+[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
 "107
-[; ;MASTERsrc.c: 107:             data2 = spiRead();
-[e = _data2 -> ( _spiRead ..  `uc ]
-"108
-[; ;MASTERsrc.c: 108:             _delay((unsigned long)((2)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"109
-[; ;MASTERsrc.c: 109:             PORTEbits.RE1 = 1;
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-"111
-[; ;MASTERsrc.c: 111:             check0 = 3;
-[e = _check0 -> -> 3 `i `uc ]
-"114
-[; ;MASTERsrc.c: 114:             transformADC(data2);
-[e ( _transformADC (1 -> _data2 `uc ]
-"115
-[; ;MASTERsrc.c: 115:             _delay((unsigned long)((1)*(4000000/4000.0)));
+[; ;MASTERsrc.c: 107:             _delay((unsigned long)((1)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"108
+[; ;MASTERsrc.c: 108:             spiWrite(1);
+[e ( _spiWrite (1 -> -> 1 `i `uc ]
+"109
+[; ;MASTERsrc.c: 109:             _delay((unsigned long)((2)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"110
+[; ;MASTERsrc.c: 110:             data2 = spiRead();
+[e = _data2 -> ( _spiRead ..  `uc ]
+"111
+[; ;MASTERsrc.c: 111:             _delay((unsigned long)((2)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"112
+[; ;MASTERsrc.c: 112:             PORTEbits.RE1 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+"114
+[; ;MASTERsrc.c: 114:             check0 = 3;
+[e = _check0 -> -> 3 `i `uc ]
 "116
-[; ;MASTERsrc.c: 116:         }
+[; ;MASTERsrc.c: 116:             transformADC(data2);
+[e ( _transformADC (1 -> _data2 `uc ]
+"117
+[; ;MASTERsrc.c: 117:             _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"118
+[; ;MASTERsrc.c: 118:         }
 }
 [e :U 149 ]
-"118
-[; ;MASTERsrc.c: 118:         if (check0 == 3){
+"120
+[; ;MASTERsrc.c: 120:         if (check0 == 3){
 [e $ ! == -> _check0 `i -> 3 `i 150  ]
 {
-"119
-[; ;MASTERsrc.c: 119:             PORTEbits.RE2 = 0;
-[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
-"120
-[; ;MASTERsrc.c: 120:             _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "121
-[; ;MASTERsrc.c: 121:             spiWrite(1);
-[e ( _spiWrite (1 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 121:             PORTEbits.RE2 = 0;
+[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
 "122
-[; ;MASTERsrc.c: 122:             _delay((unsigned long)((2)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 122:             _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "123
-[; ;MASTERsrc.c: 123:             data3 = spiRead();
-[e = _data3 -> ( _spiRead ..  `uc ]
+[; ;MASTERsrc.c: 123:             spiWrite(1);
+[e ( _spiWrite (1 -> -> 1 `i `uc ]
 "124
 [; ;MASTERsrc.c: 124:             _delay((unsigned long)((2)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "125
-[; ;MASTERsrc.c: 125:             PORTEbits.RE2 = 1;
-[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 125:             data3 = spiRead();
+[e = _data3 -> ( _spiRead ..  `uc ]
+"126
+[; ;MASTERsrc.c: 126:             _delay((unsigned long)((2)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "127
-[; ;MASTERsrc.c: 127:             check0 = 1;
+[; ;MASTERsrc.c: 127:             PORTEbits.RE2 = 1;
+[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
+"129
+[; ;MASTERsrc.c: 129:             check0 = 1;
 [e = _check0 -> -> 1 `i `uc ]
-"128
-[; ;MASTERsrc.c: 128:         }
+"130
+[; ;MASTERsrc.c: 130:         }
 }
 [e :U 150 ]
-"135
-[; ;MASTERsrc.c: 135:     }
+"137
+[; ;MASTERsrc.c: 137:     }
 }
 [e :U 145 ]
 [e $U 146  ]
 [e :U 147 ]
-"137
-[; ;MASTERsrc.c: 137: }
+"139
+[; ;MASTERsrc.c: 139: }
 [e :UE 144 ]
 }
-"144
-[; ;MASTERsrc.c: 144: void setup(void) {
+"146
+[; ;MASTERsrc.c: 146: void setup(void) {
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"145
-[; ;MASTERsrc.c: 145:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
-"146
-[; ;MASTERsrc.c: 146:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
 "147
-[; ;MASTERsrc.c: 147:     TRISC1 = 0;
-[e = _TRISC1 -> -> 0 `i `b ]
+[; ;MASTERsrc.c: 147:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
 "148
-[; ;MASTERsrc.c: 148:     TRISC2 = 0;
-[e = _TRISC2 -> -> 0 `i `b ]
+[; ;MASTERsrc.c: 148:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
 "149
-[; ;MASTERsrc.c: 149:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;MASTERsrc.c: 149:     TRISC1 = 0;
+[e = _TRISC1 -> -> 0 `i `b ]
 "150
-[; ;MASTERsrc.c: 150:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;MASTERsrc.c: 150:     TRISC2 = 0;
+[e = _TRISC2 -> -> 0 `i `b ]
 "151
-[; ;MASTERsrc.c: 151:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;MASTERsrc.c: 151:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
 "152
-[; ;MASTERsrc.c: 152:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;MASTERsrc.c: 152:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "153
-[; ;MASTERsrc.c: 153:     PORTCbits.RC2 = 1;
-[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 153:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
 "154
-[; ;MASTERsrc.c: 154:     PORTCbits.RC1 = 1;
-[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 154:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
+"155
+[; ;MASTERsrc.c: 155:     PORTCbits.RC2 = 1;
+[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
 "156
-[; ;MASTERsrc.c: 156:     TRISE = 0;
-[e = _TRISE -> -> 0 `i `uc ]
-"157
-[; ;MASTERsrc.c: 157:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;MASTERsrc.c: 156:     PORTCbits.RC1 = 1;
+[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
 "158
-[; ;MASTERsrc.c: 158:     check0 = 1;
-[e = _check0 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 158:     TRISE = 0;
+[e = _TRISE -> -> 0 `i `uc ]
+"159
+[; ;MASTERsrc.c: 159:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
 "160
-[; ;MASTERsrc.c: 160:     PORTEbits.RE0 = 1;
-[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-"161
-[; ;MASTERsrc.c: 161:     PORTEbits.RE1 = 1;
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 160:     check0 = 1;
+[e = _check0 -> -> 1 `i `uc ]
 "162
-[; ;MASTERsrc.c: 162:     PORTEbits.RE2 = 1;
-[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
+[; ;MASTERsrc.c: 162:     PORTEbits.RE0 = 1;
+[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
+"163
+[; ;MASTERsrc.c: 163:     PORTEbits.RE1 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
 "164
-[; ;MASTERsrc.c: 164:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E1292 0 . `E1300 0 . `E1304 1 . `E1308 0 ]
+[; ;MASTERsrc.c: 164:     PORTEbits.RE2 = 1;
+[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
 "166
-[; ;MASTERsrc.c: 166:     LCD_ini();
+[; ;MASTERsrc.c: 166:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E1292 0 . `E1300 0 . `E1304 1 . `E1308 0 ]
+"168
+[; ;MASTERsrc.c: 168:     LCD_ini();
 [e ( _LCD_ini ..  ]
-"169
-[; ;MASTERsrc.c: 169: }
+"171
+[; ;MASTERsrc.c: 171: }
 [e :UE 151 ]
 }
-"171
-[; ;MASTERsrc.c: 171: void transformADC(char k){
+"173
+[; ;MASTERsrc.c: 173: void transformADC(char k){
 [v _transformADC `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _transformADC ]
 [v _k `uc ~T0 @X0 1 r1 ]
 [f ]
-"173
-[; ;MASTERsrc.c: 173:     if (k<51){
+"175
+[; ;MASTERsrc.c: 175:     if (k<51){
 [e $ ! < -> _k `i -> 51 `i 153  ]
 {
-"174
-[; ;MASTERsrc.c: 174:         LCD_cursor(1,2);
-[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-"175
-[; ;MASTERsrc.c: 175:         LCD_Wstring("0.");
-[e ( _LCD_Wstring (1 :s 4C ]
 "176
-[; ;MASTERsrc.c: 176:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 176:         LCD_cursor(1,2);
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "177
-[; ;MASTERsrc.c: 177:     }
+[; ;MASTERsrc.c: 177:         LCD_Wstring("0.");
+[e ( _LCD_Wstring (1 :s 4C ]
+"178
+[; ;MASTERsrc.c: 178:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"179
+[; ;MASTERsrc.c: 179:     }
 }
 [e $U 154  ]
-"179
-[; ;MASTERsrc.c: 179:     else if (51<=k && k<=102){
+"181
+[; ;MASTERsrc.c: 181:     else if (51<=k && k<=102){
 [e :U 153 ]
 [e $ ! && <= -> 51 `i -> _k `i <= -> _k `i -> 102 `i 155  ]
 {
-"180
-[; ;MASTERsrc.c: 180:         LCD_cursor(1,2);
-[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-"181
-[; ;MASTERsrc.c: 181:         LCD_Wstring("1.");
-[e ( _LCD_Wstring (1 :s 5C ]
 "182
-[; ;MASTERsrc.c: 182:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 182:         LCD_cursor(1,2);
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "183
-[; ;MASTERsrc.c: 183:         k = k - 51;
-[e = _k -> - -> _k `i -> 51 `i `uc ]
+[; ;MASTERsrc.c: 183:         LCD_Wstring("1.");
+[e ( _LCD_Wstring (1 :s 5C ]
 "184
-[; ;MASTERsrc.c: 184:     }
+[; ;MASTERsrc.c: 184:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"185
+[; ;MASTERsrc.c: 185:         k = k - 51;
+[e = _k -> - -> _k `i -> 51 `i `uc ]
+"186
+[; ;MASTERsrc.c: 186:     }
 }
 [e $U 156  ]
-"186
-[; ;MASTERsrc.c: 186:     else if (102<k && k<=153){
+"188
+[; ;MASTERsrc.c: 188:     else if (102<k && k<=153){
 [e :U 155 ]
 [e $ ! && < -> 102 `i -> _k `i <= -> _k `i -> 153 `i 157  ]
 {
-"187
-[; ;MASTERsrc.c: 187:         LCD_cursor(1,2);
-[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-"188
-[; ;MASTERsrc.c: 188:         LCD_Wstring("2.");
-[e ( _LCD_Wstring (1 :s 6C ]
 "189
-[; ;MASTERsrc.c: 189:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 189:         LCD_cursor(1,2);
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "190
-[; ;MASTERsrc.c: 190:         k = k - 102;
-[e = _k -> - -> _k `i -> 102 `i `uc ]
+[; ;MASTERsrc.c: 190:         LCD_Wstring("2.");
+[e ( _LCD_Wstring (1 :s 6C ]
+"191
+[; ;MASTERsrc.c: 191:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "192
-[; ;MASTERsrc.c: 192:     }
+[; ;MASTERsrc.c: 192:         k = k - 102;
+[e = _k -> - -> _k `i -> 102 `i `uc ]
+"194
+[; ;MASTERsrc.c: 194:     }
 }
 [e $U 158  ]
-"194
-[; ;MASTERsrc.c: 194:     else if (153<k && k<=204){
+"196
+[; ;MASTERsrc.c: 196:     else if (153<k && k<=204){
 [e :U 157 ]
 [e $ ! && < -> 153 `i -> _k `i <= -> _k `i -> 204 `i 159  ]
 {
-"195
-[; ;MASTERsrc.c: 195:         LCD_cursor(1,2);
-[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-"196
-[; ;MASTERsrc.c: 196:         LCD_Wstring("3.");
-[e ( _LCD_Wstring (1 :s 7C ]
 "197
-[; ;MASTERsrc.c: 197:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 197:         LCD_cursor(1,2);
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "198
-[; ;MASTERsrc.c: 198:         k = k - 153;
-[e = _k -> - -> _k `i -> 153 `i `uc ]
+[; ;MASTERsrc.c: 198:         LCD_Wstring("3.");
+[e ( _LCD_Wstring (1 :s 7C ]
+"199
+[; ;MASTERsrc.c: 199:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "200
-[; ;MASTERsrc.c: 200:     }
+[; ;MASTERsrc.c: 200:         k = k - 153;
+[e = _k -> - -> _k `i -> 153 `i `uc ]
+"202
+[; ;MASTERsrc.c: 202:     }
 }
 [e $U 160  ]
-"202
-[; ;MASTERsrc.c: 202:     else if (204<k && k<=255){
+"204
+[; ;MASTERsrc.c: 204:     else if (204<k && k<=255){
 [e :U 159 ]
 [e $ ! && < -> 204 `i -> _k `i <= -> _k `i -> 255 `i 161  ]
 {
-"203
-[; ;MASTERsrc.c: 203:         LCD_cursor(1,2);
-[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-"204
-[; ;MASTERsrc.c: 204:         LCD_Wstring("4.");
-[e ( _LCD_Wstring (1 :s 8C ]
 "205
-[; ;MASTERsrc.c: 205:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;MASTERsrc.c: 205:         LCD_cursor(1,2);
+[e ( _LCD_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "206
-[; ;MASTERsrc.c: 206:         k = k - 204;
-[e = _k -> - -> _k `i -> 204 `i `uc ]
+[; ;MASTERsrc.c: 206:         LCD_Wstring("4.");
+[e ( _LCD_Wstring (1 :s 8C ]
+"207
+[; ;MASTERsrc.c: 207:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "208
-[; ;MASTERsrc.c: 208:     }
+[; ;MASTERsrc.c: 208:         k = k - 204;
+[e = _k -> - -> _k `i -> 204 `i `uc ]
+"210
+[; ;MASTERsrc.c: 210:     }
 }
 [e :U 161 ]
 [e :U 160 ]
 [e :U 158 ]
 [e :U 156 ]
 [e :U 154 ]
-"211
-[; ;MASTERsrc.c: 211:     if(k == 1 ){LCD_cursor(3,2); LCD_Wstring("	2	");}
+"213
+[; ;MASTERsrc.c: 213:     if(k == 1 ){LCD_cursor(3,2); LCD_Wstring("	2	");}
 [e $ ! == -> _k `i -> 1 `i 162  ]
 {
 [e ( _LCD_cursor (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
 [e ( _LCD_Wstring (1 :s 9C ]
 }
 [e $U 163  ]
-"212
-[; ;MASTERsrc.c: 212:     else if(k == 2 ){LCD_cursor(3,2); LCD_Wstring("	4	");}
+"214
+[; ;MASTERsrc.c: 214:     else if(k == 2 ){LCD_cursor(3,2); LCD_Wstring("	4	");}
 [e :U 162 ]
 [e $ ! == -> _k `i -> 2 `i 164  ]
 {
@@ -731,8 +737,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 10C ]
 }
 [e $U 165  ]
-"213
-[; ;MASTERsrc.c: 213:     else if(k == 3 ){LCD_cursor(3,2); LCD_Wstring("	6	");}
+"215
+[; ;MASTERsrc.c: 215:     else if(k == 3 ){LCD_cursor(3,2); LCD_Wstring("	6	");}
 [e :U 164 ]
 [e $ ! == -> _k `i -> 3 `i 166  ]
 {
@@ -740,8 +746,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 11C ]
 }
 [e $U 167  ]
-"214
-[; ;MASTERsrc.c: 214:     else if(k == 4 ){LCD_cursor(3,2); LCD_Wstring("	8	");}
+"216
+[; ;MASTERsrc.c: 216:     else if(k == 4 ){LCD_cursor(3,2); LCD_Wstring("	8	");}
 [e :U 166 ]
 [e $ ! == -> _k `i -> 4 `i 168  ]
 {
@@ -749,8 +755,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 12C ]
 }
 [e $U 169  ]
-"215
-[; ;MASTERsrc.c: 215:     else if(k == 5 ){LCD_cursor(3,2); LCD_Wstring("	10	");}
+"217
+[; ;MASTERsrc.c: 217:     else if(k == 5 ){LCD_cursor(3,2); LCD_Wstring("	10	");}
 [e :U 168 ]
 [e $ ! == -> _k `i -> 5 `i 170  ]
 {
@@ -758,8 +764,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 13C ]
 }
 [e $U 171  ]
-"216
-[; ;MASTERsrc.c: 216:     else if(k == 6 ){LCD_cursor(3,2); LCD_Wstring("	12	");}
+"218
+[; ;MASTERsrc.c: 218:     else if(k == 6 ){LCD_cursor(3,2); LCD_Wstring("	12	");}
 [e :U 170 ]
 [e $ ! == -> _k `i -> 6 `i 172  ]
 {
@@ -767,8 +773,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 14C ]
 }
 [e $U 173  ]
-"217
-[; ;MASTERsrc.c: 217:     else if(k == 7 ){LCD_cursor(3,2); LCD_Wstring("	14	");}
+"219
+[; ;MASTERsrc.c: 219:     else if(k == 7 ){LCD_cursor(3,2); LCD_Wstring("	14	");}
 [e :U 172 ]
 [e $ ! == -> _k `i -> 7 `i 174  ]
 {
@@ -776,8 +782,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 15C ]
 }
 [e $U 175  ]
-"218
-[; ;MASTERsrc.c: 218:     else if(k == 8 ){LCD_cursor(3,2); LCD_Wstring("	16	");}
+"220
+[; ;MASTERsrc.c: 220:     else if(k == 8 ){LCD_cursor(3,2); LCD_Wstring("	16	");}
 [e :U 174 ]
 [e $ ! == -> _k `i -> 8 `i 176  ]
 {
@@ -785,8 +791,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 16C ]
 }
 [e $U 177  ]
-"219
-[; ;MASTERsrc.c: 219:     else if(k == 9 ){LCD_cursor(3,2); LCD_Wstring("	18	");}
+"221
+[; ;MASTERsrc.c: 221:     else if(k == 9 ){LCD_cursor(3,2); LCD_Wstring("	18	");}
 [e :U 176 ]
 [e $ ! == -> _k `i -> 9 `i 178  ]
 {
@@ -794,8 +800,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 17C ]
 }
 [e $U 179  ]
-"220
-[; ;MASTERsrc.c: 220:     else if(k == 10 ){LCD_cursor(3,2); LCD_Wstring("	20	");}
+"222
+[; ;MASTERsrc.c: 222:     else if(k == 10 ){LCD_cursor(3,2); LCD_Wstring("	20	");}
 [e :U 178 ]
 [e $ ! == -> _k `i -> 10 `i 180  ]
 {
@@ -803,8 +809,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 18C ]
 }
 [e $U 181  ]
-"221
-[; ;MASTERsrc.c: 221:     else if(k == 11 ){LCD_cursor(3,2); LCD_Wstring("	22	");}
+"223
+[; ;MASTERsrc.c: 223:     else if(k == 11 ){LCD_cursor(3,2); LCD_Wstring("	22	");}
 [e :U 180 ]
 [e $ ! == -> _k `i -> 11 `i 182  ]
 {
@@ -812,8 +818,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 19C ]
 }
 [e $U 183  ]
-"222
-[; ;MASTERsrc.c: 222:     else if(k == 12 ){LCD_cursor(3,2); LCD_Wstring("	24	");}
+"224
+[; ;MASTERsrc.c: 224:     else if(k == 12 ){LCD_cursor(3,2); LCD_Wstring("	24	");}
 [e :U 182 ]
 [e $ ! == -> _k `i -> 12 `i 184  ]
 {
@@ -821,8 +827,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 20C ]
 }
 [e $U 185  ]
-"223
-[; ;MASTERsrc.c: 223:     else if(k == 13 ){LCD_cursor(3,2); LCD_Wstring("	26	");}
+"225
+[; ;MASTERsrc.c: 225:     else if(k == 13 ){LCD_cursor(3,2); LCD_Wstring("	26	");}
 [e :U 184 ]
 [e $ ! == -> _k `i -> 13 `i 186  ]
 {
@@ -830,8 +836,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 21C ]
 }
 [e $U 187  ]
-"224
-[; ;MASTERsrc.c: 224:     else if(k == 14 ){LCD_cursor(3,2); LCD_Wstring("	28	");}
+"226
+[; ;MASTERsrc.c: 226:     else if(k == 14 ){LCD_cursor(3,2); LCD_Wstring("	28	");}
 [e :U 186 ]
 [e $ ! == -> _k `i -> 14 `i 188  ]
 {
@@ -839,8 +845,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 22C ]
 }
 [e $U 189  ]
-"225
-[; ;MASTERsrc.c: 225:     else if(k == 15 ){LCD_cursor(3,2); LCD_Wstring("	30	");}
+"227
+[; ;MASTERsrc.c: 227:     else if(k == 15 ){LCD_cursor(3,2); LCD_Wstring("	30	");}
 [e :U 188 ]
 [e $ ! == -> _k `i -> 15 `i 190  ]
 {
@@ -848,8 +854,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 23C ]
 }
 [e $U 191  ]
-"226
-[; ;MASTERsrc.c: 226:     else if(k == 16 ){LCD_cursor(3,2); LCD_Wstring("	32	");}
+"228
+[; ;MASTERsrc.c: 228:     else if(k == 16 ){LCD_cursor(3,2); LCD_Wstring("	32	");}
 [e :U 190 ]
 [e $ ! == -> _k `i -> 16 `i 192  ]
 {
@@ -857,8 +863,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 24C ]
 }
 [e $U 193  ]
-"227
-[; ;MASTERsrc.c: 227:     else if(k == 17 ){LCD_cursor(3,2); LCD_Wstring("	34	");}
+"229
+[; ;MASTERsrc.c: 229:     else if(k == 17 ){LCD_cursor(3,2); LCD_Wstring("	34	");}
 [e :U 192 ]
 [e $ ! == -> _k `i -> 17 `i 194  ]
 {
@@ -866,8 +872,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 25C ]
 }
 [e $U 195  ]
-"228
-[; ;MASTERsrc.c: 228:     else if(k == 18 ){LCD_cursor(3,2); LCD_Wstring("	36	");}
+"230
+[; ;MASTERsrc.c: 230:     else if(k == 18 ){LCD_cursor(3,2); LCD_Wstring("	36	");}
 [e :U 194 ]
 [e $ ! == -> _k `i -> 18 `i 196  ]
 {
@@ -875,8 +881,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 26C ]
 }
 [e $U 197  ]
-"229
-[; ;MASTERsrc.c: 229:     else if(k == 19 ){LCD_cursor(3,2); LCD_Wstring("	38	");}
+"231
+[; ;MASTERsrc.c: 231:     else if(k == 19 ){LCD_cursor(3,2); LCD_Wstring("	38	");}
 [e :U 196 ]
 [e $ ! == -> _k `i -> 19 `i 198  ]
 {
@@ -884,8 +890,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 27C ]
 }
 [e $U 199  ]
-"230
-[; ;MASTERsrc.c: 230:     else if(k == 20 ){LCD_cursor(3,2); LCD_Wstring("	40	");}
+"232
+[; ;MASTERsrc.c: 232:     else if(k == 20 ){LCD_cursor(3,2); LCD_Wstring("	40	");}
 [e :U 198 ]
 [e $ ! == -> _k `i -> 20 `i 200  ]
 {
@@ -893,8 +899,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 28C ]
 }
 [e $U 201  ]
-"231
-[; ;MASTERsrc.c: 231:     else if(k == 21 ){LCD_cursor(3,2); LCD_Wstring("	42	");}
+"233
+[; ;MASTERsrc.c: 233:     else if(k == 21 ){LCD_cursor(3,2); LCD_Wstring("	42	");}
 [e :U 200 ]
 [e $ ! == -> _k `i -> 21 `i 202  ]
 {
@@ -902,8 +908,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 29C ]
 }
 [e $U 203  ]
-"232
-[; ;MASTERsrc.c: 232:     else if(k == 22 ){LCD_cursor(3,2); LCD_Wstring("	44	");}
+"234
+[; ;MASTERsrc.c: 234:     else if(k == 22 ){LCD_cursor(3,2); LCD_Wstring("	44	");}
 [e :U 202 ]
 [e $ ! == -> _k `i -> 22 `i 204  ]
 {
@@ -911,8 +917,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 30C ]
 }
 [e $U 205  ]
-"233
-[; ;MASTERsrc.c: 233:     else if(k == 23 ){LCD_cursor(3,2); LCD_Wstring("	46	");}
+"235
+[; ;MASTERsrc.c: 235:     else if(k == 23 ){LCD_cursor(3,2); LCD_Wstring("	46	");}
 [e :U 204 ]
 [e $ ! == -> _k `i -> 23 `i 206  ]
 {
@@ -920,8 +926,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 31C ]
 }
 [e $U 207  ]
-"234
-[; ;MASTERsrc.c: 234:     else if(k == 24 ){LCD_cursor(3,2); LCD_Wstring("	48	");}
+"236
+[; ;MASTERsrc.c: 236:     else if(k == 24 ){LCD_cursor(3,2); LCD_Wstring("	48	");}
 [e :U 206 ]
 [e $ ! == -> _k `i -> 24 `i 208  ]
 {
@@ -929,8 +935,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 32C ]
 }
 [e $U 209  ]
-"235
-[; ;MASTERsrc.c: 235:     else if(k == 25 ){LCD_cursor(3,2); LCD_Wstring("	50	");}
+"237
+[; ;MASTERsrc.c: 237:     else if(k == 25 ){LCD_cursor(3,2); LCD_Wstring("	50	");}
 [e :U 208 ]
 [e $ ! == -> _k `i -> 25 `i 210  ]
 {
@@ -938,8 +944,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 33C ]
 }
 [e $U 211  ]
-"236
-[; ;MASTERsrc.c: 236:     else if(k == 26 ){LCD_cursor(3,2); LCD_Wstring("	52	");}
+"238
+[; ;MASTERsrc.c: 238:     else if(k == 26 ){LCD_cursor(3,2); LCD_Wstring("	52	");}
 [e :U 210 ]
 [e $ ! == -> _k `i -> 26 `i 212  ]
 {
@@ -947,8 +953,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 34C ]
 }
 [e $U 213  ]
-"237
-[; ;MASTERsrc.c: 237:     else if(k == 27 ){LCD_cursor(3,2); LCD_Wstring("	54	");}
+"239
+[; ;MASTERsrc.c: 239:     else if(k == 27 ){LCD_cursor(3,2); LCD_Wstring("	54	");}
 [e :U 212 ]
 [e $ ! == -> _k `i -> 27 `i 214  ]
 {
@@ -956,8 +962,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 35C ]
 }
 [e $U 215  ]
-"238
-[; ;MASTERsrc.c: 238:     else if(k == 28 ){LCD_cursor(3,2); LCD_Wstring("	56	");}
+"240
+[; ;MASTERsrc.c: 240:     else if(k == 28 ){LCD_cursor(3,2); LCD_Wstring("	56	");}
 [e :U 214 ]
 [e $ ! == -> _k `i -> 28 `i 216  ]
 {
@@ -965,8 +971,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 36C ]
 }
 [e $U 217  ]
-"239
-[; ;MASTERsrc.c: 239:     else if(k == 29 ){LCD_cursor(3,2); LCD_Wstring("	58	");}
+"241
+[; ;MASTERsrc.c: 241:     else if(k == 29 ){LCD_cursor(3,2); LCD_Wstring("	58	");}
 [e :U 216 ]
 [e $ ! == -> _k `i -> 29 `i 218  ]
 {
@@ -974,8 +980,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 37C ]
 }
 [e $U 219  ]
-"240
-[; ;MASTERsrc.c: 240:     else if(k == 30 ){LCD_cursor(3,2); LCD_Wstring("	60	");}
+"242
+[; ;MASTERsrc.c: 242:     else if(k == 30 ){LCD_cursor(3,2); LCD_Wstring("	60	");}
 [e :U 218 ]
 [e $ ! == -> _k `i -> 30 `i 220  ]
 {
@@ -983,8 +989,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 38C ]
 }
 [e $U 221  ]
-"241
-[; ;MASTERsrc.c: 241:     else if(k == 31 ){LCD_cursor(3,2); LCD_Wstring("	62	");}
+"243
+[; ;MASTERsrc.c: 243:     else if(k == 31 ){LCD_cursor(3,2); LCD_Wstring("	62	");}
 [e :U 220 ]
 [e $ ! == -> _k `i -> 31 `i 222  ]
 {
@@ -992,8 +998,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 39C ]
 }
 [e $U 223  ]
-"242
-[; ;MASTERsrc.c: 242:     else if(k == 32 ){LCD_cursor(3,2); LCD_Wstring("	64	");}
+"244
+[; ;MASTERsrc.c: 244:     else if(k == 32 ){LCD_cursor(3,2); LCD_Wstring("	64	");}
 [e :U 222 ]
 [e $ ! == -> _k `i -> 32 `i 224  ]
 {
@@ -1001,8 +1007,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 40C ]
 }
 [e $U 225  ]
-"243
-[; ;MASTERsrc.c: 243:     else if(k == 33 ){LCD_cursor(3,2); LCD_Wstring("	66	");}
+"245
+[; ;MASTERsrc.c: 245:     else if(k == 33 ){LCD_cursor(3,2); LCD_Wstring("	66	");}
 [e :U 224 ]
 [e $ ! == -> _k `i -> 33 `i 226  ]
 {
@@ -1010,8 +1016,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 41C ]
 }
 [e $U 227  ]
-"244
-[; ;MASTERsrc.c: 244:     else if(k == 34 ){LCD_cursor(3,2); LCD_Wstring("	68	");}
+"246
+[; ;MASTERsrc.c: 246:     else if(k == 34 ){LCD_cursor(3,2); LCD_Wstring("	68	");}
 [e :U 226 ]
 [e $ ! == -> _k `i -> 34 `i 228  ]
 {
@@ -1019,8 +1025,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 42C ]
 }
 [e $U 229  ]
-"245
-[; ;MASTERsrc.c: 245:     else if(k == 35 ){LCD_cursor(3,2); LCD_Wstring("	70	");}
+"247
+[; ;MASTERsrc.c: 247:     else if(k == 35 ){LCD_cursor(3,2); LCD_Wstring("	70	");}
 [e :U 228 ]
 [e $ ! == -> _k `i -> 35 `i 230  ]
 {
@@ -1028,8 +1034,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 43C ]
 }
 [e $U 231  ]
-"246
-[; ;MASTERsrc.c: 246:     else if(k == 36 ){LCD_cursor(3,2); LCD_Wstring("	72	");}
+"248
+[; ;MASTERsrc.c: 248:     else if(k == 36 ){LCD_cursor(3,2); LCD_Wstring("	72	");}
 [e :U 230 ]
 [e $ ! == -> _k `i -> 36 `i 232  ]
 {
@@ -1037,8 +1043,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 44C ]
 }
 [e $U 233  ]
-"247
-[; ;MASTERsrc.c: 247:     else if(k == 37 ){LCD_cursor(3,2); LCD_Wstring("	74	");}
+"249
+[; ;MASTERsrc.c: 249:     else if(k == 37 ){LCD_cursor(3,2); LCD_Wstring("	74	");}
 [e :U 232 ]
 [e $ ! == -> _k `i -> 37 `i 234  ]
 {
@@ -1046,8 +1052,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 45C ]
 }
 [e $U 235  ]
-"248
-[; ;MASTERsrc.c: 248:     else if(k == 38 ){LCD_cursor(3,2); LCD_Wstring("	76	");}
+"250
+[; ;MASTERsrc.c: 250:     else if(k == 38 ){LCD_cursor(3,2); LCD_Wstring("	76	");}
 [e :U 234 ]
 [e $ ! == -> _k `i -> 38 `i 236  ]
 {
@@ -1055,8 +1061,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 46C ]
 }
 [e $U 237  ]
-"249
-[; ;MASTERsrc.c: 249:     else if(k == 39 ){LCD_cursor(3,2); LCD_Wstring("	78	");}
+"251
+[; ;MASTERsrc.c: 251:     else if(k == 39 ){LCD_cursor(3,2); LCD_Wstring("	78	");}
 [e :U 236 ]
 [e $ ! == -> _k `i -> 39 `i 238  ]
 {
@@ -1064,8 +1070,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 47C ]
 }
 [e $U 239  ]
-"250
-[; ;MASTERsrc.c: 250:     else if(k == 40 ){LCD_cursor(3,2); LCD_Wstring("	80	");}
+"252
+[; ;MASTERsrc.c: 252:     else if(k == 40 ){LCD_cursor(3,2); LCD_Wstring("	80	");}
 [e :U 238 ]
 [e $ ! == -> _k `i -> 40 `i 240  ]
 {
@@ -1073,8 +1079,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 48C ]
 }
 [e $U 241  ]
-"251
-[; ;MASTERsrc.c: 251:     else if(k == 41 ){LCD_cursor(3,2); LCD_Wstring("	82	");}
+"253
+[; ;MASTERsrc.c: 253:     else if(k == 41 ){LCD_cursor(3,2); LCD_Wstring("	82	");}
 [e :U 240 ]
 [e $ ! == -> _k `i -> 41 `i 242  ]
 {
@@ -1082,8 +1088,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 49C ]
 }
 [e $U 243  ]
-"252
-[; ;MASTERsrc.c: 252:     else if(k == 42 ){LCD_cursor(3,2); LCD_Wstring("	84	");}
+"254
+[; ;MASTERsrc.c: 254:     else if(k == 42 ){LCD_cursor(3,2); LCD_Wstring("	84	");}
 [e :U 242 ]
 [e $ ! == -> _k `i -> 42 `i 244  ]
 {
@@ -1091,8 +1097,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 50C ]
 }
 [e $U 245  ]
-"253
-[; ;MASTERsrc.c: 253:     else if(k == 43 ){LCD_cursor(3,2); LCD_Wstring("	86	");}
+"255
+[; ;MASTERsrc.c: 255:     else if(k == 43 ){LCD_cursor(3,2); LCD_Wstring("	86	");}
 [e :U 244 ]
 [e $ ! == -> _k `i -> 43 `i 246  ]
 {
@@ -1100,8 +1106,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 51C ]
 }
 [e $U 247  ]
-"254
-[; ;MASTERsrc.c: 254:     else if(k == 44 ){LCD_cursor(3,2); LCD_Wstring("	88	");}
+"256
+[; ;MASTERsrc.c: 256:     else if(k == 44 ){LCD_cursor(3,2); LCD_Wstring("	88	");}
 [e :U 246 ]
 [e $ ! == -> _k `i -> 44 `i 248  ]
 {
@@ -1109,8 +1115,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 52C ]
 }
 [e $U 249  ]
-"255
-[; ;MASTERsrc.c: 255:     else if(k == 45 ){LCD_cursor(3,2); LCD_Wstring("	90	");}
+"257
+[; ;MASTERsrc.c: 257:     else if(k == 45 ){LCD_cursor(3,2); LCD_Wstring("	90	");}
 [e :U 248 ]
 [e $ ! == -> _k `i -> 45 `i 250  ]
 {
@@ -1118,8 +1124,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 53C ]
 }
 [e $U 251  ]
-"256
-[; ;MASTERsrc.c: 256:     else if(k == 46 ){LCD_cursor(3,2); LCD_Wstring("	92	");}
+"258
+[; ;MASTERsrc.c: 258:     else if(k == 46 ){LCD_cursor(3,2); LCD_Wstring("	92	");}
 [e :U 250 ]
 [e $ ! == -> _k `i -> 46 `i 252  ]
 {
@@ -1127,8 +1133,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 54C ]
 }
 [e $U 253  ]
-"257
-[; ;MASTERsrc.c: 257:     else if(k == 47 ){LCD_cursor(3,2); LCD_Wstring("	94	");}
+"259
+[; ;MASTERsrc.c: 259:     else if(k == 47 ){LCD_cursor(3,2); LCD_Wstring("	94	");}
 [e :U 252 ]
 [e $ ! == -> _k `i -> 47 `i 254  ]
 {
@@ -1136,8 +1142,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 55C ]
 }
 [e $U 255  ]
-"258
-[; ;MASTERsrc.c: 258:     else if(k == 48 ){LCD_cursor(3,2); LCD_Wstring("	96	");}
+"260
+[; ;MASTERsrc.c: 260:     else if(k == 48 ){LCD_cursor(3,2); LCD_Wstring("	96	");}
 [e :U 254 ]
 [e $ ! == -> _k `i -> 48 `i 256  ]
 {
@@ -1145,8 +1151,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 56C ]
 }
 [e $U 257  ]
-"259
-[; ;MASTERsrc.c: 259:     else if(k == 49 ){LCD_cursor(3,2); LCD_Wstring("	98	");}
+"261
+[; ;MASTERsrc.c: 261:     else if(k == 49 ){LCD_cursor(3,2); LCD_Wstring("	98	");}
 [e :U 256 ]
 [e $ ! == -> _k `i -> 49 `i 258  ]
 {
@@ -1154,8 +1160,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _LCD_Wstring (1 :s 57C ]
 }
 [e $U 259  ]
-"260
-[; ;MASTERsrc.c: 260:     else if(k == 50 ){LCD_cursor(3,2); LCD_Wstring("	99	");}
+"262
+[; ;MASTERsrc.c: 262:     else if(k == 50 ){LCD_cursor(3,2); LCD_Wstring("	99	");}
 [e :U 258 ]
 [e $ ! == -> _k `i -> 50 `i 260  ]
 {
@@ -1212,10 +1218,69 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 167 ]
 [e :U 165 ]
 [e :U 163 ]
-"263
-[; ;MASTERsrc.c: 263: }
+"265
+[; ;MASTERsrc.c: 265: }
 [e :UE 152 ]
 }
+"267
+[; ;MASTERsrc.c: 267: void transformtemp(char j){
+[v _transformtemp `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _transformtemp ]
+[v _j `uc ~T0 @X0 1 r1 ]
+[f ]
+"268
+[; ;MASTERsrc.c: 268:     if (j == 1){
+[e $ ! == -> _j `i -> 1 `i 262  ]
+{
+"269
+[; ;MASTERsrc.c: 269:         LCD_cursor(7,2);
+[e ( _LCD_cursor (2 , -> -> 7 `i `uc -> -> 2 `i `uc ]
+"270
+[; ;MASTERsrc.c: 270:         LCD_Wstring("LOW");
+[e ( _LCD_Wstring (1 :s 59C ]
+"272
+[; ;MASTERsrc.c: 272:     }
+}
+[e $U 263  ]
+"274
+[; ;MASTERsrc.c: 274:     else if (j == 2){
+[e :U 262 ]
+[e $ ! == -> _j `i -> 2 `i 264  ]
+{
+"275
+[; ;MASTERsrc.c: 275:         LCD_cursor(7,2);
+[e ( _LCD_cursor (2 , -> -> 7 `i `uc -> -> 2 `i `uc ]
+"276
+[; ;MASTERsrc.c: 276:         LCD_Wstring("OK ");
+[e ( _LCD_Wstring (1 :s 60C ]
+"278
+[; ;MASTERsrc.c: 278:     }
+}
+[e $U 265  ]
+"280
+[; ;MASTERsrc.c: 280:     else if (j == 3){
+[e :U 264 ]
+[e $ ! == -> _j `i -> 3 `i 266  ]
+{
+"281
+[; ;MASTERsrc.c: 281:         LCD_cursor(7,2);
+[e ( _LCD_cursor (2 , -> -> 7 `i `uc -> -> 2 `i `uc ]
+"282
+[; ;MASTERsrc.c: 282:         LCD_Wstring("HOT");
+[e ( _LCD_Wstring (1 :s 61C ]
+"284
+[; ;MASTERsrc.c: 284:     }
+}
+[e :U 266 ]
+[e :U 265 ]
+[e :U 263 ]
+"287
+[; ;MASTERsrc.c: 287: }
+[e :UE 261 ]
+}
+[a 59C 76 79 87 0 ]
+[a 61C 72 79 84 0 ]
 [a 3C 83 51 58 0 ]
 [a 2C 83 50 58 0 ]
 [a 1C 83 49 58 0 ]
@@ -1224,6 +1289,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 6C 50 46 0 ]
 [a 5C 49 46 0 ]
 [a 4C 48 46 0 ]
+[a 60C 79 75 32 0 ]
 [a 58C 9 57 57 9 0 ]
 [a 57C 9 57 56 9 0 ]
 [a 52C 9 56 56 9 0 ]

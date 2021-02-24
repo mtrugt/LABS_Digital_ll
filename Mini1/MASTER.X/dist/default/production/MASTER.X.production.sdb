@@ -24,7 +24,7 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"164 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"166 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [e E1292 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -69,10 +69,12 @@ SPI_ACTIVE_2_IDLE 64
 [v _ISR ISR `II(v  1 e 1 0 ]
 "75
 [v _main main `(v  1 e 1 0 ]
-"144
+"146
 [v _setup setup `(v  1 e 1 0 ]
-"171
+"173
 [v _transformADC transformADC `(v  1 e 1 0 ]
+"267
+[v _transformtemp transformtemp `(v  1 e 1 0 ]
 "12 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
 "29
@@ -83,7 +85,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 "228 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S204 . 1 `uc 1 RC0 1 0 :1:0 
+[s S209 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -93,8 +95,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S213 . 1 `S204 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES213  1 e 1 @7 ]
+[u S218 . 1 `S209 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES218  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
@@ -113,7 +115,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S357 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S367 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -123,8 +125,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S366 . 1 `S357 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES366  1 e 1 @135 ]
+[u S376 . 1 `S367 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES376  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
@@ -197,16 +199,24 @@ SPI_ACTIVE_2_IDLE 64
 "75
 [v _main main `(v  1 e 1 0 ]
 {
-"137
+"139
 } 0
-"171
+"267
+[v _transformtemp transformtemp `(v  1 e 1 0 ]
+{
+[v transformtemp@j j `uc  1 a 1 wreg ]
+[v transformtemp@j j `uc  1 a 1 wreg ]
+[v transformtemp@j j `uc  1 a 1 2 ]
+"287
+} 0
+"173
 [v _transformADC transformADC `(v  1 e 1 0 ]
 {
 [v transformADC@k k `uc  1 a 1 wreg ]
 [v transformADC@k k `uc  1 a 1 wreg ]
-"173
+"175
 [v transformADC@k k `uc  1 a 1 2 ]
-"263
+"265
 } 0
 "62 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\LCD.c
 [v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
@@ -257,10 +267,10 @@ SPI_ACTIVE_2_IDLE 64
 {
 "32
 } 0
-"144 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"146 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"169
+"171
 } 0
 "12 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]

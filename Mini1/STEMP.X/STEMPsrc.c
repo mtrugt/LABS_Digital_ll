@@ -11,8 +11,12 @@
 //*****************************************************************************
 //Librerias
 //*****************************************************************************
+
+
+
 #include <xc.h>
 #include <stdint.h>
+#include "SPI.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -41,8 +45,8 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
-uint8_t sevenval;
-uint8_t multiplex;
+uint8_t data;
+uint8_t datatemp;
 uint8_t sevenval;
 uint8_t stemp;
 
@@ -52,7 +56,6 @@ uint8_t stemp;
 //Creacion de funciones
 //*****************************************************************************
 void setup(void);
-void delay(unsigned char n);
 
 
 //*****************************************************************************
@@ -64,15 +67,10 @@ void __interrupt() ISR(void){
         ADC = 1;
     }
     
-    if (INTCONbits.T0IF == 1){
-        INTCONbits.T0IF = 0;
-        if (multiplex == 0){
-            multiplex = 1;
-        }
-        
-        else if (multiplex == 1){
-            multiplex = 0;
-        }
+    if(SSPIF == 1){
+        data = spiRead();
+        spiWrite(datatemp);
+        SSPIF = 0;
     }
     
 }
@@ -101,18 +99,29 @@ void main(void) {
             PORTDbits.RD0 = 1;
             PORTDbits.RD1 = 0;
             PORTDbits.RD2 = 0;
+            
+            datatemp = 1;
+            
         }
         
         else if (stemp>=63 && stemp<=69){
             PORTDbits.RD1 = 1;
             PORTDbits.RD0 = 0;
             PORTDbits.RD2 = 0;
+            
+            datatemp = 2;
         }
         
         else if (stemp>=69){
             PORTDbits.RD1 = 0;
             PORTDbits.RD0 = 0;
             PORTDbits.RD2 = 1;
+            
+            datatemp = 3;
+        }
+        
+        else {
+            datatemp = 0;
         }
         
  
@@ -144,8 +153,8 @@ void setup(void) {
     check0 = 0;
     check1 = 0;
     ADC = 0;
-    multiplex = 0;
     PORTC = 0;
+    data = 0;
     
     
     //Configurar ADC
@@ -162,6 +171,13 @@ void setup(void) {
     PIE1bits.ADIE = 1; //Habilitar interrupcion del ADC
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable
     INTCONbits.GIE = 1; //Global interrups enable
+    
+    //configurar MSSP
+    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
+    TRISAbits.TRISA5 = 1;       // Slave Select
+   
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
     //Configurar timer0
     //OPTION_REGbits.PSA = 0; //Precaler to tmr0

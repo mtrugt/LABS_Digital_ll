@@ -7,7 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "STEMPsrc.c" 2
-# 14 "STEMPsrc.c"
+# 17 "STEMPsrc.c"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,7 +2488,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 14 "STEMPsrc.c" 2
+# 17 "STEMPsrc.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2623,7 +2623,46 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 15 "STEMPsrc.c" 2
+# 18 "STEMPsrc.c" 2
+
+# 1 "./SPI.h" 1
+# 19 "./SPI.h"
+char spiRead();
+
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 19 "STEMPsrc.c" 2
 
 
 
@@ -2653,8 +2692,8 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
-uint8_t sevenval;
-uint8_t multiplex;
+uint8_t data;
+uint8_t datatemp;
 uint8_t sevenval;
 uint8_t stemp;
 
@@ -2664,7 +2703,6 @@ uint8_t stemp;
 
 
 void setup(void);
-void delay(unsigned char n);
 
 
 
@@ -2676,15 +2714,10 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         ADC = 1;
     }
 
-    if (INTCONbits.T0IF == 1){
-        INTCONbits.T0IF = 0;
-        if (multiplex == 0){
-            multiplex = 1;
-        }
-
-        else if (multiplex == 1){
-            multiplex = 0;
-        }
+    if(SSPIF == 1){
+        data = spiRead();
+        spiWrite(datatemp);
+        SSPIF = 0;
     }
 
 }
@@ -2713,18 +2746,29 @@ void main(void) {
             PORTDbits.RD0 = 1;
             PORTDbits.RD1 = 0;
             PORTDbits.RD2 = 0;
+
+            datatemp = 1;
+
         }
 
         else if (stemp>=63 && stemp<=69){
             PORTDbits.RD1 = 1;
             PORTDbits.RD0 = 0;
             PORTDbits.RD2 = 0;
+
+            datatemp = 2;
         }
 
         else if (stemp>=69){
             PORTDbits.RD1 = 0;
             PORTDbits.RD0 = 0;
             PORTDbits.RD2 = 1;
+
+            datatemp = 3;
+        }
+
+        else {
+            datatemp = 0;
         }
 
 
@@ -2756,8 +2800,8 @@ void setup(void) {
     check0 = 0;
     check1 = 0;
     ADC = 0;
-    multiplex = 0;
     PORTC = 0;
+    data = 0;
 
 
 
@@ -2774,5 +2818,12 @@ void setup(void) {
     PIE1bits.ADIE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
-# 174 "STEMPsrc.c"
+
+
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    TRISAbits.TRISA5 = 1;
+
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+# 190 "STEMPsrc.c"
 }

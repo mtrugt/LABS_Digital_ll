@@ -58,7 +58,7 @@ uint8_t data3;
 //*****************************************************************************
 void setup(void);
 void transformADC(char k);
-
+void transformtemp(char j);
 
 //*****************************************************************************
 //Interrupciones
@@ -97,6 +97,9 @@ void main(void) {
             slave1 = 1;  //slave1 off
     
             check0 = 2;
+            //Ecribir informacion stemp
+            transformtemp(data1);
+            
         }
         
         if (check0 == 2){   //ADC
@@ -110,7 +113,6 @@ void main(void) {
     
             check0 = 3;
             //escribir informacion ADC
-            //data2 = data2<<1;
             transformADC(data2);
             __delay_ms(1);
         }
@@ -260,4 +262,26 @@ void transformADC(char k){
     else if(k ==	50	){LCD_cursor(3,2); LCD_Wstring("	99	");}
     
 
+}
+
+void transformtemp(char j){
+    if (j == 1){
+        LCD_cursor(7,2);
+        LCD_Wstring("LOW");
+        
+    }
+    
+    else if (j == 2){
+        LCD_cursor(7,2);
+        LCD_Wstring("OK ");
+        
+    }
+    
+    else if (j == 3){
+        LCD_cursor(7,2);
+        LCD_Wstring("HOT");
+        
+    }
+    
+    
 }
