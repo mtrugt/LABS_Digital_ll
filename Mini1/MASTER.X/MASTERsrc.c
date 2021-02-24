@@ -1,7 +1,7 @@
 //*****************************************************************************
 /*
  * File:   LAB1src.c
- * Author: maqui
+ * Author: Marco Trujillo
  *
  * Created on 24 de enero de 2021, 12:37 PM
  */
