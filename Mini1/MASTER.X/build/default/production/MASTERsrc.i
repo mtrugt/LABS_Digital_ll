@@ -2861,6 +2861,69 @@ void LCD_Wchar(char c);
 void LCD_Wstring(char *v);
 # 17 "MASTERsrc.c" 2
 
+# 1 "./uart.h" 1
+
+
+char UART_Init(const long int baudrate)
+{
+ unsigned int x;
+ x = (8000000 - baudrate*64)/(baudrate*64);
+ if(x>255)
+ {
+  x = (8000000 - baudrate*16)/(baudrate*16);
+  BRGH = 1;
+ }
+ if(x<256)
+ {
+   SPBRG = x;
+   SYNC = 0;
+   SPEN = 1;
+          TRISC7 = 1;
+          TRISC6 = 1;
+          CREN = 1;
+          TXEN = 1;
+   return 1;
+ }
+ return 0;
+}
+
+char UART_TX_Empty()
+{
+  return TRMT;
+}
+
+char UART_Data_Ready()
+{
+   return RCIF;
+}
+char UART_Read()
+{
+
+  while(!RCIF);
+  return RCREG;
+}
+
+void UART_Read_Text(char *Output, unsigned int length)
+{
+ unsigned int i;
+ for(int i=0;i<length;i++)
+  Output[i] = UART_Read();
+}
+
+void UART_Write(char data)
+{
+  while(!TRMT);
+  TXREG = data;
+}
+
+void UART_Write_Text(char *text)
+{
+  int i;
+  for(i=0;text[i]!='\0';i++)
+   UART_Write(text[i]);
+}
+# 18 "MASTERsrc.c" 2
+
 
 
 
@@ -2879,7 +2942,7 @@ void LCD_Wstring(char *v);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 46 "MASTERsrc.c"
+# 47 "MASTERsrc.c"
 uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
@@ -2916,10 +2979,10 @@ void main(void) {
     LCD_clear();
     LCD_cursor(1,1);
     LCD_Wstring("S1:");
-    _delay((unsigned long)((1)*(4000000/4000.0)));
+    _delay((unsigned long)((1)*(8000000/4000.0)));
     LCD_cursor(6,1);
     LCD_Wstring("S2:");
-    _delay((unsigned long)((1)*(4000000/4000.0)));
+    _delay((unsigned long)((1)*(8000000/4000.0)));
     LCD_cursor(12,1);
     LCD_Wstring("S3:");
 
@@ -2927,46 +2990,51 @@ void main(void) {
 
         if (check0 == 1){
             PORTEbits.RE0 = 0;
-            _delay((unsigned long)((1)*(4000000/4000.0)));
+            _delay((unsigned long)((1)*(8000000/4000.0)));
             spiWrite(1);
-            _delay((unsigned long)((2)*(4000000/4000.0)));
+            _delay((unsigned long)((2)*(8000000/4000.0)));
             data1 = spiRead();
-            _delay((unsigned long)((2)*(4000000/4000.0)));
+            _delay((unsigned long)((2)*(8000000/4000.0)));
             PORTEbits.RE0 = 1;
 
             check0 = 2;
 
             transformtemp(data1);
+            UART_Write(data1);
+            _delay((unsigned long)((1)*(8000000/4000.0)));
+
 
         }
 
         if (check0 == 2){
             PORTEbits.RE1 = 0;
-            _delay((unsigned long)((1)*(4000000/4000.0)));
+            _delay((unsigned long)((1)*(8000000/4000.0)));
             spiWrite(1);
-            _delay((unsigned long)((2)*(4000000/4000.0)));
+            _delay((unsigned long)((2)*(8000000/4000.0)));
             data2 = spiRead();
-            _delay((unsigned long)((2)*(4000000/4000.0)));
+            _delay((unsigned long)((2)*(8000000/4000.0)));
             PORTEbits.RE1 = 1;
 
             check0 = 3;
 
             transformADC(data2);
-            _delay((unsigned long)((1)*(4000000/4000.0)));
+            UART_Write(data2);
+            _delay((unsigned long)((1)*(8000000/4000.0)));
         }
 
         if (check0 == 3){
             PORTEbits.RE2 = 0;
-            _delay((unsigned long)((1)*(4000000/4000.0)));
+            _delay((unsigned long)((1)*(8000000/4000.0)));
             spiWrite(1);
-            _delay((unsigned long)((2)*(4000000/4000.0)));
+            _delay((unsigned long)((2)*(8000000/4000.0)));
             data3 = spiRead();
-            _delay((unsigned long)((2)*(4000000/4000.0)));
+            _delay((unsigned long)((2)*(8000000/4000.0)));
             PORTEbits.RE2 = 1;
 
             check0 = 1;
             transformcounter(data3);
-            _delay((unsigned long)((1)*(4000000/4000.0)));
+            UART_Write(data3);
+            _delay((unsigned long)((1)*(8000000/4000.0)));
         }
 
 
@@ -2995,6 +3063,9 @@ void setup(void) {
     PORTCbits.RC2 = 1;
     PORTCbits.RC1 = 1;
 
+    nRBPU = 0;
+    UART_Init(9600);
+
     TRISE = 0;
     PORTE = 0;
     check0 = 1;
@@ -3015,20 +3086,20 @@ void transformADC(char k){
     if (k<51){
         LCD_cursor(1,2);
         LCD_Wstring("0.");
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
     }
 
     else if (51<=k && k<=102){
         LCD_cursor(1,2);
         LCD_Wstring("1.");
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         k = k - 51;
     }
 
     else if (102<k && k<=153){
         LCD_cursor(1,2);
         LCD_Wstring("2.");
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         k = k - 102;
 
     }
@@ -3036,7 +3107,7 @@ void transformADC(char k){
     else if (153<k && k<=204){
         LCD_cursor(1,2);
         LCD_Wstring("3.");
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         k = k - 153;
 
     }
@@ -3044,7 +3115,7 @@ void transformADC(char k){
     else if (204<k && k<=255){
         LCD_cursor(1,2);
         LCD_Wstring("4.");
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         k = k - 204;
 
     }

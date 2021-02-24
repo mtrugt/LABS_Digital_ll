@@ -15,6 +15,7 @@
 #include <stdint.h>
 #include "SPI.h"
 #include "LCD.h"
+#include "uart.h"
 
 //*****************************************************************************
 //Configuration bits
@@ -34,7 +35,7 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
-#define _XTAL_FREQ 4000000
+#define _XTAL_FREQ 8000000
 #define slave1 PORTEbits.RE0
 #define slave2 PORTEbits.RE1
 #define slave3 PORTEbits.RE2
@@ -100,6 +101,9 @@ void main(void) {
             check0 = 2;
             //Ecribir informacion stemp
             transformtemp(data1);
+            UART_Write(data1);
+            __delay_ms(1);
+            
             
         }
         
@@ -115,6 +119,7 @@ void main(void) {
             check0 = 3;
             //escribir informacion ADC
             transformADC(data2);
+            UART_Write(data2);
             __delay_ms(1);
         }
         
@@ -129,6 +134,7 @@ void main(void) {
     
             check0 = 1;
             transformcounter(data3);
+            UART_Write(data3);
             __delay_ms(1);
         }
         
@@ -157,6 +163,9 @@ void setup(void) {
     PORTD = 0;
     PORTCbits.RC2 = 1;
     PORTCbits.RC1 = 1;
+
+    nRBPU = 0;
+    UART_Init(9600);
     
     TRISE = 0;
     PORTE = 0;

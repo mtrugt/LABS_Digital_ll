@@ -24,7 +24,7 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"169 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"178 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [e E1292 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,6 +45,14 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
+"3 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X/uart.h
+[v _UART_Init UART_Init `(uc  1 e 1 0 ]
+"35
+[v _UART_Read UART_Read `(uc  1 e 1 0 ]
+"49
+[v _UART_Write UART_Write `(v  1 e 1 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
@@ -65,17 +73,17 @@ SPI_ACTIVE_2_IDLE 64
 [v _LCD_Wchar LCD_Wchar `(v  1 e 1 0 ]
 "85
 [v _LCD_Wstring LCD_Wstring `(v  1 e 1 0 ]
-"67 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"68 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"76
+"77
 [v _main main `(v  1 e 1 0 ]
-"149
+"155
 [v _setup setup `(v  1 e 1 0 ]
-"176
+"185
 [v _transformADC transformADC `(v  1 e 1 0 ]
-"270
+"279
 [v _transformtemp transformtemp `(v  1 e 1 0 ]
-"292
+"301
 [v _transformcounter transformcounter `(v  1 e 1 0 ]
 "12 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -87,7 +95,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 "228 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S214 . 1 `uc 1 RC0 1 0 :1:0 
+[s S226 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -97,27 +105,31 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S223 . 1 `S214 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES223  1 e 1 @7 ]
+[u S235 . 1 `S226 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES235  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S176 . 1 `uc 1 RE0 1 0 :1:0 
+[s S188 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "427
-[u S181 . 1 `S176 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES181  1 e 1 @9 ]
+[u S193 . 1 `S188 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES193  1 e 1 @9 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1133
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1140
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S477 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S509 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -127,8 +139,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S486 . 1 `S477 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES486  1 e 1 @135 ]
+[u S518 . 1 `S509 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES518  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
@@ -178,10 +190,22 @@ SPI_ACTIVE_2_IDLE 64
 ]
 [u S82 . 1 `S42 1 . 1 0 `S51 1 . 1 0 `S56 1 . 1 0 `S62 1 . 1 0 `S67 1 . 1 0 `S72 1 . 1 0 `S77 1 . 1 0 ]
 [v _SSPSTATbits SSPSTATbits `VES82  1 e 1 @148 ]
+"2642
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"3695
+[v _BRGH BRGH `VEb  1 e 0 @1218 ]
+"3836
+[v _CREN CREN `VEb  1 e 0 @196 ]
+"4175
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"4259
+[v _SPEN SPEN `VEb  1 e 0 @199 ]
+"4313
+[v _SYNC SYNC `VEb  1 e 0 @1220 ]
 "4451
 [v _TRISC1 TRISC1 `VEb  1 e 0 @1081 ]
 "4454
@@ -190,43 +214,53 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
 "4463
 [v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
-"46 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"4466
+[v _TRISC6 TRISC6 `VEb  1 e 0 @1086 ]
+"4469
+[v _TRISC7 TRISC7 `VEb  1 e 0 @1087 ]
+"4508
+[v _TRMT TRMT `VEb  1 e 0 @1217 ]
+"4538
+[v _TXEN TXEN `VEb  1 e 0 @1221 ]
+"4664
+[v _nRBPU nRBPU `VEb  1 e 0 @1039 ]
+"47 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [v _check0 check0 `uc  1 e 1 0 ]
-"50
-[v _data1 data1 `uc  1 e 1 0 ]
 "51
-[v _data2 data2 `uc  1 e 1 0 ]
+[v _data1 data1 `uc  1 e 1 0 ]
 "52
+[v _data2 data2 `uc  1 e 1 0 ]
+"53
 [v _data3 data3 `uc  1 e 1 0 ]
-"76
+"77
 [v _main main `(v  1 e 1 0 ]
 {
-"142
+"148
 } 0
-"270
+"279
 [v _transformtemp transformtemp `(v  1 e 1 0 ]
 {
 [v transformtemp@j j `uc  1 a 1 wreg ]
 [v transformtemp@j j `uc  1 a 1 wreg ]
 [v transformtemp@j j `uc  1 a 1 2 ]
-"290
+"299
 } 0
-"292
+"301
 [v _transformcounter transformcounter `(v  1 e 1 0 ]
 {
 [v transformcounter@p p `uc  1 a 1 wreg ]
 [v transformcounter@p p `uc  1 a 1 wreg ]
 [v transformcounter@p p `uc  1 a 1 2 ]
-"415
+"424
 } 0
-"176
+"185
 [v _transformADC transformADC `(v  1 e 1 0 ]
 {
 [v transformADC@k k `uc  1 a 1 wreg ]
 [v transformADC@k k `uc  1 a 1 wreg ]
-"178
-[v transformADC@k k `uc  1 a 1 2 ]
-"268
+"187
+[v transformADC@k k `uc  1 a 1 9 ]
+"277
 } 0
 "62 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\LCD.c
 [v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
@@ -277,10 +311,10 @@ SPI_ACTIVE_2_IDLE 64
 {
 "32
 } 0
-"149 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"155 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"174
+"183
 } 0
 "12 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -294,12 +328,42 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sType sType `E1264  1 a 1 5 ]
 "27
 } 0
+"3 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X/uart.h
+[v _UART_Init UART_Init `(uc  1 e 1 0 ]
+{
+"5
+[v UART_Init@x x `ui  1 a 2 23 ]
+"3
+[v UART_Init@baudrate baudrate `DCl  1 p 4 7 ]
+"24
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+{
+"10
+[v ___aldiv@quotient quotient `l  1 a 4 3 ]
+"11
+[v ___aldiv@sign sign `uc  1 a 1 2 ]
+[v ___aldiv@counter counter `uc  1 a 1 1 ]
+"5
+[v ___aldiv@divisor divisor `l  1 p 4 2 ]
+[v ___aldiv@dividend dividend `l  1 p 4 6 ]
+"41
+} 0
 "22 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\LCD.c
 [v _LCD_ini LCD_ini `(v  1 e 1 0 ]
 {
 "55
 } 0
-"57
+"49 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X/uart.h
+[v _UART_Write UART_Write `(v  1 e 1 0 ]
+{
+[v UART_Write@data data `uc  1 a 1 wreg ]
+[v UART_Write@data data `uc  1 a 1 wreg ]
+[v UART_Write@data data `uc  1 a 1 2 ]
+"53
+} 0
+"57 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\LCD.c
 [v _LCD_clear LCD_clear `(v  1 e 1 0 ]
 {
 "60
@@ -313,8 +377,8 @@ SPI_ACTIVE_2_IDLE 64
 [v LCD_cmd@cmd cmd `uc  1 a 1 4 ]
 "20
 } 0
-"67 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
+"68 C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"69
+"70
 } 0
