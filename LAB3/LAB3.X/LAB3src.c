@@ -15,7 +15,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <pic16f887.h>
+//#include <pic16f887.h>
 #include "LAB3lib.h"
 
 //*****************************************************************************
@@ -37,7 +37,9 @@
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
 #define _XTAL_FREQ 4000000
-
+#define RS PORTCbits.RC0 //command or write
+#define LCDPORT PORTD   //Cambiar "PORTD" si se quiere utilizar otro puerto
+#define E PORTCbits.RC1 //Display
 
 
 //*****************************************************************************
@@ -45,14 +47,21 @@
 //*****************************************************************************
 char check1;
 char check2;
-char LCDstring[16];
-
+char LCDstring[4];
+char texto[4];
 
 //*****************************************************************************
 //Creacion de funciones
 //*****************************************************************************
 void setup(void);
-
+void LCD_Wchar(char c){
+   RS = 1; // Modo recepcion de datos
+   LCDPORT = c; //Imprimir caracter en puerto D
+   
+   E = 1; // indicar que se esta transmitiendo un dato
+   __delay_us(40);
+   E = 0;    
+}
 
 //*****************************************************************************
 //Ciclo principal
@@ -68,7 +77,20 @@ void main(void) {
     LCD_cursor(1,2);
     LCD_Wstring("HOLA baby"); //escribir una cadena de texto
     __delay_ms(1500);
-    //LCD_clear(); 
+    LCD_clear(); 
+    
+    texto = "10";
+ 
+    
+    LCD_cursor(1,2);
+    LCD_Wstring(LCDstring);
+    __delay_ms(500);
+//    LCD_clear();
+//    LCD_cursor(1,2);
+//    LCD_wchar(10);
+//    __delay_ms(1000);
+    
+    
     while(1){
         
     }

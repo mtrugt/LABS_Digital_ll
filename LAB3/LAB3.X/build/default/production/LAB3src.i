@@ -2823,7 +2823,7 @@ void LCD_ini(void);
 void LCD_cmd(uint8_t cmd);
 void LCD_clear(void);
 void LCD_cursor(uint8_t x, uint8_t y);
-void LCD_Wchar(char c);
+void LCD_wchar(char c);
 void LCD_Wstring(char *v);
 # 19 "LAB3src.c" 2
 
@@ -2845,24 +2845,24 @@ void LCD_Wstring(char *v);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-
-
-
-
-
-
-
-
+# 48 "LAB3src.c"
 char check1;
 char check2;
-char LCDstring[16];
-
+char LCDstring[4];
+char texto[4];
 
 
 
 
 void setup(void);
+void LCD_Wchar(char c){
+   PORTCbits.RC0 = 1;
+   PORTD = c;
 
+   PORTCbits.RC1 = 1;
+   _delay((unsigned long)((40)*(4000000/4000000.0)));
+   PORTCbits.RC1 = 0;
+}
 
 
 
@@ -2878,6 +2878,19 @@ void main(void) {
     LCD_cursor(1,2);
     LCD_Wstring("HOLA baby");
     _delay((unsigned long)((1500)*(4000000/4000.0)));
+    LCD_clear();
+
+    texto = "10";
+
+
+    LCD_cursor(1,2);
+    LCD_Wstring(LCDstring);
+    _delay((unsigned long)((500)*(4000000/4000.0)));
+
+
+
+
+
 
     while(1){
 

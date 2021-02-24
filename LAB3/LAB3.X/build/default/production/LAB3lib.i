@@ -2688,7 +2688,7 @@ void LCD_cursor(uint8_t x, uint8_t y){
  }
 }
 
-void LCD_Wchar(char c){
+void LCD_wchar(char c){
    PORTCbits.RC0 = 1;
    PORTD = c;
 
@@ -2700,5 +2700,5 @@ void LCD_Wchar(char c){
 void LCD_Wstring(char *v){
     int i;
  for(i=0;v[i]!='\0';i++)
-    LCD_Wchar(v[i]);
+    LCD_wchar(v[i]);
 }

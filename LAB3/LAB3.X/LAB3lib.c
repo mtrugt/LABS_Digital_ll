@@ -73,7 +73,7 @@ void LCD_cursor(uint8_t x, uint8_t y){
 	}
 }
 
-void LCD_Wchar(char c){
+void LCD_wchar(char c){
    RS = 1; // Modo recepcion de datos
    LCDPORT = c; //Imprimir caracter en puerto D
    
@@ -85,6 +85,6 @@ void LCD_Wchar(char c){
 void LCD_Wstring(char *v){
     int i; //imprimir uno a uno de los caracteres en una cadena de texto
 	for(i=0;v[i]!='\0';i++)
-	   LCD_Wchar(v[i]);
+	   LCD_wchar(v[i]);
 }
 

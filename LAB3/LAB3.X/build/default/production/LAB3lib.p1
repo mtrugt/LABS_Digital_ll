@@ -421,10 +421,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 141 ]
 }
 "76
-[; ;LAB3lib.c: 76: void LCD_Wchar(char c){
-[v _LCD_Wchar `(v ~T0 @X0 1 ef1`uc ]
+[; ;LAB3lib.c: 76: void LCD_wchar(char c){
+[v _LCD_wchar `(v ~T0 @X0 1 ef1`uc ]
 {
-[e :U _LCD_Wchar ]
+[e :U _LCD_wchar ]
 [v _c `uc ~T0 @X0 1 r1 ]
 [f ]
 "77
@@ -463,8 +463,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 150  ]
 [e :U 147 ]
 "88
-[; ;LAB3lib.c: 88:     LCD_Wchar(v[i]);
-[e ( _LCD_Wchar (1 *U + _v * -> _i `x -> -> # *U _v `i `x ]
+[; ;LAB3lib.c: 88:     LCD_wchar(v[i]);
+[e ( _LCD_wchar (1 *U + _v * -> _i `x -> -> # *U _v `i `x ]
 [e ++ _i -> 1 `i ]
 [e :U 150 ]
 [e $ != -> *U + _v * -> _i `x -> -> # *U _v `i `x `ui -> 0 `ui 147  ]

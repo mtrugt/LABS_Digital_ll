@@ -2690,7 +2690,7 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
-uint8_t sevenval;
+uint8_t data;
 uint8_t multiplex;
 uint8_t sevenval;
 
@@ -2712,7 +2712,14 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         PIR1bits.ADIF = 0;
         ADC = 1;
     }
-# 79 "ADCsrc.c"
+
+    if(SSPIF == 1){
+        data = spiRead();
+        spiWrite(ADRESH);
+        SSPIF = 0;
+    }
+
+
 }
 
 
@@ -2726,7 +2733,6 @@ void main(void) {
     ADCON0bits.GO_DONE = 1;
 
     while (1) {
-
 
         if (ADC == 1){
             PORTD = ADRESH;
@@ -2754,6 +2760,8 @@ void setup(void) {
     TRISA = 1;
     ANSEL = 0;
 
+    PORTA = 0;
+
 
 
     check0 = 0;
@@ -2777,6 +2785,13 @@ void setup(void) {
     PIE1bits.ADIE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
+
+
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    TRISAbits.TRISA5 = 1;
+
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 
 

@@ -42,7 +42,7 @@ uint8_t check0;
 uint8_t check1;
 uint8_t ADC;
 uint8_t ADCresult;
-uint8_t sevenval;
+uint8_t data;
 uint8_t multiplex;
 uint8_t sevenval;
 
@@ -66,8 +66,8 @@ void __interrupt() ISR(void){
     }
     
     if(SSPIF == 1){
-        PORTD = spiRead();
-        spiWrite(contador);
+        data = spiRead();
+        spiWrite(ADRESH);
         SSPIF = 0;
     }
     
@@ -111,6 +111,8 @@ void setup(void) {
     
     TRISA = 1; //portaA as input (counter btns)
     ANSEL = 0; //portA digital
+    
+    PORTA = 0;
 
     
     
