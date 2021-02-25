@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\maqui\AppData\Local\Temp\slek.o
+$C:\Users\maqui\AppData\Local\Temp\sd9k.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -98,20 +98,20 @@ STRING 1800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\MASTER.X.production.o
-F cinit CODE >1589:C:\Users\maqui\AppData\Local\Temp\slek.s
-F cinit CODE >1592:C:\Users\maqui\AppData\Local\Temp\slek.s
-F cinit CODE >1624:C:\Users\maqui\AppData\Local\Temp\slek.s
-10 cinit CODE >1625:C:\Users\maqui\AppData\Local\Temp\slek.s
-11 cinit CODE >1628:C:\Users\maqui\AppData\Local\Temp\slek.s
-12 cinit CODE >1629:C:\Users\maqui\AppData\Local\Temp\slek.s
-13 cinit CODE >1630:C:\Users\maqui\AppData\Local\Temp\slek.s
-14 cinit CODE >1631:C:\Users\maqui\AppData\Local\Temp\slek.s
-15 cinit CODE >1632:C:\Users\maqui\AppData\Local\Temp\slek.s
-16 cinit CODE >1633:C:\Users\maqui\AppData\Local\Temp\slek.s
-17 cinit CODE >1634:C:\Users\maqui\AppData\Local\Temp\slek.s
-18 cinit CODE >1640:C:\Users\maqui\AppData\Local\Temp\slek.s
-18 cinit CODE >1642:C:\Users\maqui\AppData\Local\Temp\slek.s
-19 cinit CODE >1643:C:\Users\maqui\AppData\Local\Temp\slek.s
+F cinit CODE >1589:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+F cinit CODE >1592:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+F cinit CODE >1624:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+10 cinit CODE >1625:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+11 cinit CODE >1628:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+12 cinit CODE >1629:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+13 cinit CODE >1630:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+14 cinit CODE >1631:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+15 cinit CODE >1632:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+16 cinit CODE >1633:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+17 cinit CODE >1634:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+18 cinit CODE >1640:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+18 cinit CODE >1642:C:\Users\maqui\AppData\Local\Temp\sd9k.s
+19 cinit CODE >1643:C:\Users\maqui\AppData\Local\Temp\sd9k.s
 4 intentry CODE >68:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 1C text2_split_3 CODE >346:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
 36 text2_split_3 CODE >347:C:\Users\maqui\Desktop\LABS\LABS_Digital_ll\Mini1\MASTER.X\MASTERsrc.c
@@ -541,10 +541,10 @@ _SPEN C7 0 ABS 0 - dist/default/production\MASTER.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\MASTER.X.production.o
 _TRMT 4C1 0 ABS 0 - dist/default/production\MASTER.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\MASTER.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\slek.o
+___sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\sd9k.o
 _main 1086 0 CODE 0 maintext dist/default/production\MASTER.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\MASTER.X.production.o
-start 18 0 CODE 0 init C:\Users\maqui\AppData\Local\Temp\slek.o
+start 18 0 CODE 0 init C:\Users\maqui\AppData\Local\Temp\sd9k.o
 __size_of___aldiv 0 0 ABS 0 - dist/default/production\MASTER.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\MASTER.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
@@ -553,12 +553,12 @@ __size_of_LCD_ini 0 0 ABS 0 - dist/default/production\MASTER.X.production.o
 __end_of_transformcounter F42 0 CODE 0 text2_split_3 dist/default/production\MASTER.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 __size_of_transformcounter 0 0 ABS 0 - dist/default/production\MASTER.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\slek.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\slek.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\slek.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\slek.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\slek.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\slek.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sd9k.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sd9k.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sd9k.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sd9k.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sd9k.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\maqui\AppData\Local\Temp\sd9k.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 pnum$text2 B 0 ABS 0 - dist/default/production\MASTER.X.production.o
 ___aldiv@divisor 72 0 COMMON 1 cstackCOMMON dist/default/production\MASTER.X.production.o
@@ -576,8 +576,8 @@ __size_of_spiRead 0 0 ABS 0 - dist/default/production\MASTER.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 __end_of_transformtemp FE2 0 CODE 0 text1 dist/default/production\MASTER.X.production.o
 __end_of___aldiv 281C 0 CODE 0 text13 dist/default/production\MASTER.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\slek.o
-___stacklo 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\slek.o
+___stackhi 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\sd9k.o
+___stacklo 0 0 ABS 0 - C:\Users\maqui\AppData\Local\Temp\sd9k.o
 LCD_Wchar@c 73 0 COMMON 1 cstackCOMMON dist/default/production\MASTER.X.production.o
 __end_of_LCD_cmd 24F4 0 CODE 0 text17 dist/default/production\MASTER.X.production.o
 __end_of_LCD_ini 26E2 0 CODE 0 text14 dist/default/production\MASTER.X.production.o
@@ -600,7 +600,7 @@ _TRISC6 43E 0 ABS 0 - dist/default/production\MASTER.X.production.o
 _TRISC7 43F 0 ABS 0 - dist/default/production\MASTER.X.production.o
 LCD_Wstring@i 20 0 BANK0 1 cstackBANK0 dist/default/production\MASTER.X.production.o
 LCD_Wstring@v 74 0 COMMON 1 cstackCOMMON dist/default/production\MASTER.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\slek.o
+___int_sp 0 0 STACK 2 stack C:\Users\maqui\AppData\Local\Temp\sd9k.o
 __end_of_LCD_Wchar 1000 0 CODE 0 text6 dist/default/production\MASTER.X.production.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -661,7 +661,7 @@ _check0 7B 0 COMMON 1 bssCOMMON dist/default/production\MASTER.X.production.o
 __end_of_ISR 2494 0 CODE 0 text18 dist/default/production\MASTER.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 22A6 0 STRING 0 strings dist/default/production\MASTER.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\maqui\AppData\Local\Temp\slek.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\maqui\AppData\Local\Temp\sd9k.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __size_of_UART_Write 0 0 ABS 0 - dist/default/production\MASTER.X.production.o
 __ptext10 100E 0 CODE 0 text10 dist/default/production\MASTER.X.production.o
