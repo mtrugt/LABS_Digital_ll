@@ -22,7 +22,7 @@
 #pragma config BOR4V = BOR21V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 4000000
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
@@ -35,6 +35,7 @@
 //#include <pic16f887.h>
 #include "I2C.h"
 #include <xc.h>
+#include "UART.h"
 
 
 //*****************************************************************************
@@ -49,18 +50,7 @@ void setup(void);
 void main(void) {
     setup();
     while(1){
-        I2C_Master_Start();
-        I2C_Master_Write(0b11101110);
-        I2C_Master_Write(0xFA);
-        I2C_Master_Stop();
-        __delay_ms(200);
-       
-        I2C_Master_Start();
-        I2C_Master_Write(0b11101111);
-        PORTD = I2C_Master_Read(0);
-        I2C_Master_Stop();
-        __delay_ms(200);
-        PORTB++;   
+        UART_Write(100);
     }
     return;
 }
@@ -68,11 +58,19 @@ void main(void) {
 // Función de Inicialización
 //*****************************************************************************
 void setup(void){
+    
     ANSEL = 0;
     ANSELH = 0;
     TRISB = 0;
     TRISD = 0;
     PORTB = 0;
     PORTD = 0;
+    
+    nRBPU = 0;
+    
+    if(UART_Init(9600) == 1){
+        PORTD = 1;
+    }
+    
     I2C_Master_Init(100000);        // Inicializar Comuncación I2C
 }

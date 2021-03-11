@@ -5,10 +5,10 @@
  * Comments:
  * Revision history: 
  */
-#pragma once
+
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef __BMP_H
+//#ifndef __BMP_H
 #define	__BMP_H
 
 #if !defined BMP280_I2C1  &&  !defined BMP280_I2C2

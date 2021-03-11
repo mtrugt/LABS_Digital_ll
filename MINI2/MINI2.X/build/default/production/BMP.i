@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "BMP.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,23 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 10 "main.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR21V
-#pragma config WRT = OFF
-# 33 "main.c"
+# 1 "BMP.c" 2
+# 18 "BMP.c"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -156,12 +141,8 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 33 "main.c" 2
+# 18 "BMP.c" 2
 
-
-
-# 1 "./I2C.h" 1
-# 18 "./I2C.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2642,155 +2623,305 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 19 "./I2C.h" 2
+# 19 "BMP.c" 2
+
+# 1 "./BMP.h" 1
+# 66 "./BMP.h"
+typedef enum
+{
+  MODE_SLEEP = 0x00,
+  MODE_FORCED = 0x01,
+  MODE_NORMAL = 0x03
+} BMP280_mode;
+
+
+typedef enum
+{
+  SAMPLING_SKIPPED = 0x00,
+  SAMPLING_X1 = 0x01,
+  SAMPLING_X2 = 0x02,
+  SAMPLING_X4 = 0x03,
+  SAMPLING_X8 = 0x04,
+  SAMPLING_X16 = 0x05
+} BMP280_sampling;
+
+
+typedef enum
+{
+  FILTER_OFF = 0x00,
+  FILTER_2 = 0x01,
+  FILTER_4 = 0x02,
+  FILTER_8 = 0x03,
+  FILTER_16 = 0x04
+} BMP280_filter;
+
+
+typedef enum
+{
+  STANDBY_0_5 = 0x00,
+  STANDBY_62_5 = 0x01,
+  STANDBY_125 = 0x02,
+  STANDBY_250 = 0x03,
+  STANDBY_500 = 0x04,
+  STANDBY_1000 = 0x05,
+  STANDBY_2000 = 0x06,
+  STANDBY_4000 = 0x07
+} standby_time;
+
+struct
+{
+  uint16_t dig_T1;
+  int16_t dig_T2;
+  int16_t dig_T3;
+
+  uint16_t dig_P1;
+  int16_t dig_P2;
+  int16_t dig_P3;
+  int16_t dig_P4;
+  int16_t dig_P5;
+  int16_t dig_P6;
+  int16_t dig_P7;
+  int16_t dig_P8;
+  int16_t dig_P9;
+} BMP280_calib;
+
+
+
+
+
+
+
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 21 "./I2C.h" 2
+# 130 "./BMP.h" 2
 
 
 
+void BMP280_Write8(uint8_t reg_addr, uint8_t _data);
+uint8_t BMP280_Read8(uint8_t reg_addr);
+uint16_t BMP280_Read16(uint8_t reg_addr);
 
+void BMP280_Configure(BMP280_mode mode, BMP280_sampling T_sampling,
+                      BMP280_sampling P_sampling, BMP280_filter filter, standby_time standby);
 
+uint8_t BMP280_begin(BMP280_mode mode,
+                  BMP280_sampling T_sampling,
+                  BMP280_sampling P_sampling,
+                  BMP280_filter filter,
+                  standby_time standby);
 
-
-
-void I2C_Master_Init(const unsigned long c);
-
-
-
-
-
-
-
-void I2C_Master_Wait(void);
-
-
-
-void I2C_Master_Start(void);
-
-
-
-void I2C_Master_RepeatedStart(void);
-
-
-
-void I2C_Master_Stop(void);
-
-
-
-
-
-void I2C_Master_Write(unsigned d);
-
-
-
-
-unsigned short I2C_Master_Read(unsigned short a);
-
-
-
-void I2C_Slave_Init(uint8_t address);
-# 36 "main.c" 2
-
-
-# 1 "./UART.h" 1
-
-
-char UART_Init(const long int baudrate)
+uint8_t BMP280_ForcedMeasurement();
+void BMP280_Update();
+uint8_t BMP280_readTemperature(int32_t *temp);
+uint8_t BMP280_readPressure(uint32_t *pres);
+# 20 "BMP.c" 2
+# 73 "BMP.c"
+int32_t adc_T, adc_P, t_fine;
+# 135 "BMP.c"
+void BMP280_Write8(uint8_t reg_addr, uint8_t _data)
 {
- unsigned int x;
- x = (4000000 - baudrate*64)/(baudrate*64);
- if(x>255)
- {
-  x = (4000000 - baudrate*16)/(baudrate*16);
-  BRGH = 1;
- }
- if(x<256)
- {
-   SPBRG = x;
-   SYNC = 0;
-   SPEN = 1;
-          TRISC7 = 1;
-          TRISC6 = 1;
-          CREN = 1;
-          TXEN = 1;
-   return 1;
- }
- return 0;
+  I2C1_Start();
+  I2C1_Wr(0xEE);
+  I2C1_Wr(reg_addr);
+  I2C1_Wr(_data);
+  I2C1_Stop();
 }
 
-char UART_TX_Empty()
+
+uint8_t BMP280_Read8(uint8_t reg_addr)
 {
-  return TRMT;
+  uint8_t ret;
+
+  I2C1_Start();
+  I2C1_Wr(0xEE);
+  I2C1_Wr(reg_addr);
+  I2C1_Start();
+  I2C1_Wr(0xEE | 1);
+  ret = I2C1_Rd(0);
+  I2C1_Stop();
+
+  return ret;
 }
 
-char UART_Data_Ready()
+
+uint16_t BMP280_Read16(uint8_t reg_addr)
 {
-   return RCIF;
+  union
+  {
+    uint8_t b[2];
+    uint16_t w;
+  } ret;
+
+  I2C1_Start();
+  I2C1_Wr(0xEE);
+  I2C1_Wr(reg_addr);
+  I2C1_Start();
+  I2C1_Wr(0xEE | 1);
+  ret.b[0] = I2C1_Rd(1);
+  ret.b[1] = I2C1_Rd(0);
+  I2C1_Stop();
+
+  return(ret.w);
 }
-char UART_Read()
+
+
+void BMP280_Configure(BMP280_mode mode, BMP280_sampling T_sampling,
+                      BMP280_sampling P_sampling, BMP280_filter filter, standby_time standby)
 {
+  uint8_t _ctrl_meas, _config;
 
-  while(!RCIF);
-  return RCREG;
+  _config = ((standby << 5) | (filter << 2)) & 0xFC;
+  _ctrl_meas = (T_sampling << 5) | (P_sampling << 2) | mode;
+
+  BMP280_Write8(0xF5, _config);
+  BMP280_Write8(0xF4, _ctrl_meas);
 }
 
-void UART_Read_Text(char *Output, unsigned int length)
+
+uint8_t BMP280_begin(BMP280_mode mode,
+                  BMP280_sampling T_sampling,
+                  BMP280_sampling P_sampling,
+                  BMP280_filter filter,
+                  standby_time standby)
 {
- unsigned int i;
- for(int i=0;i<length;i++)
-  Output[i] = UART_Read();
+  if(BMP280_Read8(0xD0) != 0x58)
+    return 0;
+
+
+  BMP280_Write8(0xE0, 0xB6);
+  _delay((unsigned long)((100)*(8000000/4000.0)));
+
+
+  while ( (BMP280_Read8(0xF3) & 0x01) == 0x01 )
+    _delay((unsigned long)((100)*(8000000/4000.0)));
+
+  BMP280_calib.dig_T1 = BMP280_Read16(0x88);
+  BMP280_calib.dig_T2 = BMP280_Read16(0x8A);
+  BMP280_calib.dig_T3 = BMP280_Read16(0x8C);
+
+  BMP280_calib.dig_P1 = BMP280_Read16(0x8E);
+  BMP280_calib.dig_P2 = BMP280_Read16(0x90);
+  BMP280_calib.dig_P3 = BMP280_Read16(0x92);
+  BMP280_calib.dig_P4 = BMP280_Read16(0x94);
+  BMP280_calib.dig_P5 = BMP280_Read16(0x96);
+  BMP280_calib.dig_P6 = BMP280_Read16(0x98);
+  BMP280_calib.dig_P7 = BMP280_Read16(0x9A);
+  BMP280_calib.dig_P8 = BMP280_Read16(0x9C);
+  BMP280_calib.dig_P9 = BMP280_Read16(0x9E);
+
+  BMP280_Configure(mode, T_sampling, P_sampling, filter, standby);
+
+  return 1;
 }
 
-void UART_Write(char data)
+
+
+uint8_t BMP280_ForcedMeasurement()
 {
-  while(!TRMT);
-  TXREG = data;
+  uint8_t ctrl_meas_reg = BMP280_Read8(0xF4);
+
+  if ( (ctrl_meas_reg & 0x03) != 0x00 )
+    return 0;
+
+
+  BMP280_Write8(0xF4, ctrl_meas_reg | 1);
+
+  while (BMP280_Read8(0xF3) & 0x08)
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+  return 1;
 }
 
-void UART_Write_Text(char *text)
+
+void BMP280_Update()
 {
-  int i;
-  for(i=0;text[i]!='\0';i++)
-   UART_Write(text[i]);
+  union
+  {
+    uint8_t b[4];
+    uint32_t dw;
+  } ret;
+  ret.b[3] = 0x00;
+
+  I2C1_Start();
+  I2C1_Wr(0xEE);
+  I2C1_Wr(0xF7);
+  I2C1_Start();
+  I2C1_Wr(0xEE | 1);
+  ret.b[2] = I2C1_Rd(1);
+  ret.b[1] = I2C1_Rd(1);
+  ret.b[0] = I2C1_Rd(1);
+
+  adc_P = (ret.dw >> 4) & 0xFFFFF;
+
+  ret.b[2] = I2C1_Rd(1);
+  ret.b[1] = I2C1_Rd(1);
+  ret.b[0] = I2C1_Rd(0);
+  I2C1_Stop();
+
+  adc_T = (ret.dw >> 4) & 0xFFFFF;
 }
-# 38 "main.c" 2
 
 
 
 
+uint8_t BMP280_readTemperature(int32_t *temp)
+{
+  int32_t var1, var2;
+
+  BMP280_Update();
 
 
+  var1 = ((((adc_T / 8) - ((int32_t)BMP280_calib.dig_T1 * 2))) *
+         ((int32_t)BMP280_calib.dig_T2)) / 2048;
 
-void setup(void);
+  var2 = (((((adc_T / 16) - ((int32_t)BMP280_calib.dig_T1)) *
+         ((adc_T / 16) - ((int32_t)BMP280_calib.dig_T1))) / 4096) *
+         ((int32_t)BMP280_calib.dig_T3)) / 16384;
 
+  t_fine = var1 + var2;
 
+  *temp = (t_fine * 5 + 128) / 256;
 
-
-void main(void) {
-    setup();
-    while(1){
-        UART_Write(100);
-    }
-    return;
+  return 1;
 }
 
 
 
-void setup(void){
 
-    ANSEL = 0;
-    ANSELH = 0;
-    TRISB = 0;
-    TRISD = 0;
-    PORTB = 0;
-    PORTD = 0;
+uint8_t BMP280_readPressure(uint32_t *pres)
+{
+  int32_t var1, var2;
+  uint32_t p;
 
-    nRBPU = 0;
 
-    if(UART_Init(9600) == 1){
-        PORTD = 1;
-    }
+  var1 = (((int32_t)t_fine) / 2) - (int32_t)64000;
+  var2 = (((var1/4) * (var1/4)) / 2048 ) * ((int32_t)BMP280_calib.dig_P6);
 
-    I2C_Master_Init(100000);
+  var2 = var2 + ((var1 * ((int32_t)BMP280_calib.dig_P5)) * 2);
+  var2 = (var2/4) + (((int32_t)BMP280_calib.dig_P4) * 65536);
+
+  var1 = ((((int32_t)BMP280_calib.dig_P3 * (((var1/4) * (var1/4)) / 8192 )) / 8) +
+         ((((int32_t)BMP280_calib.dig_P2) * var1)/2)) / 262144;
+
+  var1 =((((32768 + var1)) * ((int32_t)BMP280_calib.dig_P1)) / 32768);
+
+  if (var1 == 0)
+    return 0;
+
+  p = (((uint32_t)(((int32_t)1048576) - adc_P) - (var2 / 4096))) * 3125;
+
+  if (p < 0x80000000)
+    p = (p * 2) / ((uint32_t)var1);
+
+  else
+    p = (p / (uint32_t)var1) * 2;
+
+  var1 = (((int32_t)BMP280_calib.dig_P9) * ((int32_t)(((p/8) * (p/8)) / 8192))) / 4096;
+  var2 = (((int32_t)(p/4)) * ((int32_t)BMP280_calib.dig_P8)) / 8192;
+
+  p = (uint32_t)((int32_t)p + ((var1 + var2 + (int32_t)BMP280_calib.dig_P7) / 16));
+
+  *pres = p;
+
+  return 1;
 }

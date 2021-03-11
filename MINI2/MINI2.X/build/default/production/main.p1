@@ -1,31 +1,45 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"3695 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3695: extern volatile __bit BRGH __attribute__((address(0x4C2)));
+[v _BRGH `Vb ~T0 @X0 0 e@1218 ]
+"2642
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2642: extern volatile unsigned char SPBRG __attribute__((address(0x099)));
+[v _SPBRG `Vuc ~T0 @X0 0 e@153 ]
+"4313
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4313: extern volatile __bit SYNC __attribute__((address(0x4C4)));
+[v _SYNC `Vb ~T0 @X0 0 e@1220 ]
+"4259
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4259: extern volatile __bit SPEN __attribute__((address(0xC7)));
+[v _SPEN `Vb ~T0 @X0 0 e@199 ]
+"4469
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4469: extern volatile __bit TRISC7 __attribute__((address(0x43F)));
+[v _TRISC7 `Vb ~T0 @X0 0 e@1087 ]
+"4466
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4466: extern volatile __bit TRISC6 __attribute__((address(0x43E)));
+[v _TRISC6 `Vb ~T0 @X0 0 e@1086 ]
+"3836
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3836: extern volatile __bit CREN __attribute__((address(0xC4)));
+[v _CREN `Vb ~T0 @X0 0 e@196 ]
+"4538
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4538: extern volatile __bit TXEN __attribute__((address(0x4C5)));
+[v _TXEN `Vb ~T0 @X0 0 e@1221 ]
+"4508
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4508: extern volatile __bit TRMT __attribute__((address(0x4C1)));
+[v _TRMT `Vb ~T0 @X0 0 e@1217 ]
+"4175
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4175: extern volatile __bit RCIF __attribute__((address(0x65)));
+[v _RCIF `Vb ~T0 @X0 0 e@101 ]
+"1140
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"1133
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
 [p mainexit ]
-"44 main.c
-[; ;main.c: 44: void setup(void);
+"45 main.c
+[; ;main.c: 45: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
-"41 ./I2C.h
-[; ;./I2C.h: 41: void I2C_Master_Start(void);
-[v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
-"55
-[; ;./I2C.h: 55: void I2C_Master_Write(unsigned d);
-[v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
-"49
-[; ;./I2C.h: 49: void I2C_Master_Stop(void);
-[v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
-[v F1284 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1284 ~T0 @X0 0 e ]
-[p i __delay ]
-"352 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
-[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"60 ./I2C.h
-[; ;./I2C.h: 60: unsigned short I2C_Master_Read(unsigned short a);
-[v _I2C_Master_Read `(us ~T0 @X0 0 ef1`us ]
-"228 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"3387
+"3387 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
 "3449
@@ -37,6 +51,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"228
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"352
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"4664
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4664: extern volatile __bit nRBPU __attribute__((address(0x40F)));
+[v _nRBPU `Vb ~T0 @X0 0 e@1039 ]
 "29 ./I2C.h
 [; ;./I2C.h: 29: void I2C_Master_Init(const unsigned long c);
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
@@ -298,94 +321,308 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+"3 ./UART.h
+[; ;./UART.h: 3: char UART_Init(const long int baudrate)
+[v _UART_Init `(uc ~T0 @X0 1 ef1`Cl ]
+"4
+[; ;./UART.h: 4: {
+{
+[e :U _UART_Init ]
+"3
+[; ;./UART.h: 3: char UART_Init(const long int baudrate)
+[v _baudrate `Cl ~T0 @X0 1 r1 ]
+"4
+[; ;./UART.h: 4: {
+[f ]
+"5
+[; ;./UART.h: 5:  unsigned int x;
+[v _x `ui ~T0 @X0 1 a ]
+"6
+[; ;./UART.h: 6:  x = (4000000 - baudrate*64)/(baudrate*64);
+[e = _x -> / - -> 4000000 `l * _baudrate -> -> 64 `i `l * _baudrate -> -> 64 `i `l `ui ]
+"7
+[; ;./UART.h: 7:  if(x>255)
+[e $ ! > _x -> -> 255 `i `ui 139  ]
+"8
+[; ;./UART.h: 8:  {
+{
+"9
+[; ;./UART.h: 9:   x = (4000000 - baudrate*16)/(baudrate*16);
+[e = _x -> / - -> 4000000 `l * _baudrate -> -> 16 `i `l * _baudrate -> -> 16 `i `l `ui ]
+"10
+[; ;./UART.h: 10:   BRGH = 1;
+[e = _BRGH -> -> 1 `i `b ]
+"11
+[; ;./UART.h: 11:  }
+}
+[e :U 139 ]
+"12
+[; ;./UART.h: 12:  if(x<256)
+[e $ ! < _x -> -> 256 `i `ui 140  ]
+"13
+[; ;./UART.h: 13:  {
+{
+"14
+[; ;./UART.h: 14:    SPBRG = x;
+[e = _SPBRG -> _x `uc ]
+"15
+[; ;./UART.h: 15:    SYNC = 0;
+[e = _SYNC -> -> 0 `i `b ]
+"16
+[; ;./UART.h: 16:    SPEN = 1;
+[e = _SPEN -> -> 1 `i `b ]
+"17
+[; ;./UART.h: 17:           TRISC7 = 1;
+[e = _TRISC7 -> -> 1 `i `b ]
+"18
+[; ;./UART.h: 18:           TRISC6 = 1;
+[e = _TRISC6 -> -> 1 `i `b ]
+"19
+[; ;./UART.h: 19:           CREN = 1;
+[e = _CREN -> -> 1 `i `b ]
+"20
+[; ;./UART.h: 20:           TXEN = 1;
+[e = _TXEN -> -> 1 `i `b ]
+"21
+[; ;./UART.h: 21:    return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 138  ]
+"22
+[; ;./UART.h: 22:  }
+}
+[e :U 140 ]
+"23
+[; ;./UART.h: 23:  return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 138  ]
+"24
+[; ;./UART.h: 24: }
+[e :UE 138 ]
+}
+"26
+[; ;./UART.h: 26: char UART_TX_Empty()
+[v _UART_TX_Empty `(uc ~T0 @X0 1 ef ]
+"27
+[; ;./UART.h: 27: {
+{
+[e :U _UART_TX_Empty ]
+[f ]
+"28
+[; ;./UART.h: 28:   return TRMT;
+[e ) -> _TRMT `uc ]
+[e $UE 141  ]
+"29
+[; ;./UART.h: 29: }
+[e :UE 141 ]
+}
+"31
+[; ;./UART.h: 31: char UART_Data_Ready()
+[v _UART_Data_Ready `(uc ~T0 @X0 1 ef ]
+"32
+[; ;./UART.h: 32: {
+{
+[e :U _UART_Data_Ready ]
+[f ]
+"33
+[; ;./UART.h: 33:    return RCIF;
+[e ) -> _RCIF `uc ]
+[e $UE 142  ]
+"34
+[; ;./UART.h: 34: }
+[e :UE 142 ]
+}
+"35
+[; ;./UART.h: 35: char UART_Read()
+[v _UART_Read `(uc ~T0 @X0 1 ef ]
+"36
+[; ;./UART.h: 36: {
+{
+[e :U _UART_Read ]
+[f ]
+"38
+[; ;./UART.h: 38:   while(!RCIF);
+[e $U 144  ]
+[e :U 145 ]
+[e :U 144 ]
+[e $ ! _RCIF 145  ]
+[e :U 146 ]
+"39
+[; ;./UART.h: 39:   return RCREG;
+[e ) -> _RCREG `uc ]
+[e $UE 143  ]
+"40
+[; ;./UART.h: 40: }
+[e :UE 143 ]
+}
+"42
+[; ;./UART.h: 42: void UART_Read_Text(char *Output, unsigned int length)
+[v _UART_Read_Text `(v ~T0 @X0 1 ef2`*uc`ui ]
+"43
+[; ;./UART.h: 43: {
+{
+[e :U _UART_Read_Text ]
+"42
+[; ;./UART.h: 42: void UART_Read_Text(char *Output, unsigned int length)
+[v _Output `*uc ~T0 @X0 1 r1 ]
+[v _length `ui ~T0 @X0 1 r2 ]
+"43
+[; ;./UART.h: 43: {
+[f ]
+"44
+[; ;./UART.h: 44:  unsigned int i;
+[v _i `ui ~T0 @X0 1 a ]
+"45
+[; ;./UART.h: 45:  for(int i=0;i<length;i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 151  ]
+[e :U 148 ]
+"46
+[; ;./UART.h: 46:   Output[i] = UART_Read();
+[e = *U + _Output * -> _i `x -> -> # *U _Output `i `x ( _UART_Read ..  ]
+[e ++ _i -> 1 `i ]
+[e :U 151 ]
+[e $ < -> _i `ui _length 148  ]
+[e :U 149 ]
+}
+"47
+[; ;./UART.h: 47: }
+[e :UE 147 ]
+}
+"49
+[; ;./UART.h: 49: void UART_Write(char data)
+[v _UART_Write `(v ~T0 @X0 1 ef1`uc ]
+"50
+[; ;./UART.h: 50: {
+{
+[e :U _UART_Write ]
+"49
+[; ;./UART.h: 49: void UART_Write(char data)
+[v _data `uc ~T0 @X0 1 r1 ]
+"50
+[; ;./UART.h: 50: {
+[f ]
+"51
+[; ;./UART.h: 51:   while(!TRMT);
+[e $U 153  ]
+[e :U 154 ]
+[e :U 153 ]
+[e $ ! _TRMT 154  ]
+[e :U 155 ]
+"52
+[; ;./UART.h: 52:   TXREG = data;
+[e = _TXREG -> _data `uc ]
+"53
+[; ;./UART.h: 53: }
+[e :UE 152 ]
+}
+"55
+[; ;./UART.h: 55: void UART_Write_Text(char *text)
+[v _UART_Write_Text `(v ~T0 @X0 1 ef1`*uc ]
+"56
+[; ;./UART.h: 56: {
+{
+[e :U _UART_Write_Text ]
+"55
+[; ;./UART.h: 55: void UART_Write_Text(char *text)
+[v _text `*uc ~T0 @X0 1 r1 ]
+"56
+[; ;./UART.h: 56: {
+[f ]
+"57
+[; ;./UART.h: 57:   int i;
+[v _i `i ~T0 @X0 1 a ]
+"58
+[; ;./UART.h: 58:   for(i=0;text[i]!='\0';i++)
+{
+[e = _i -> 0 `i ]
+[e $U 160  ]
+[e :U 157 ]
+"59
+[; ;./UART.h: 59:    UART_Write(text[i]);
+[e ( _UART_Write (1 *U + _text * -> _i `x -> -> # *U _text `i `x ]
+[e ++ _i -> 1 `i ]
+[e :U 160 ]
+[e $ != -> *U + _text * -> _i `x -> -> # *U _text `i `x `ui -> 0 `ui 157  ]
+[e :U 158 ]
+}
+"60
+[; ;./UART.h: 60: }
+[e :UE 156 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"49 main.c
-[; ;main.c: 49: void main(void) {
+"50 main.c
+[; ;main.c: 50: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"50
-[; ;main.c: 50:     setup();
-[e ( _setup ..  ]
 "51
-[; ;main.c: 51:     while(1){
-[e :U 140 ]
-{
+[; ;main.c: 51:     setup();
+[e ( _setup ..  ]
 "52
-[; ;main.c: 52:         I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
+[; ;main.c: 52:     while(1){
+[e :U 163 ]
+{
 "53
-[; ;main.c: 53:         I2C_Master_Write(0b11101110);
-[e ( _I2C_Master_Write (1 -> -> 238 `i `ui ]
+[; ;main.c: 53:         UART_Write(100);
+[e ( _UART_Write (1 -> -> 100 `i `uc ]
 "54
-[; ;main.c: 54:         I2C_Master_Write(0xFA);
-[e ( _I2C_Master_Write (1 -> -> 250 `i `ui ]
+[; ;main.c: 54:     }
+}
+[e :U 162 ]
+[e $U 163  ]
+[e :U 164 ]
 "55
-[; ;main.c: 55:         I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
+[; ;main.c: 55:     return;
+[e $UE 161  ]
 "56
-[; ;main.c: 56:         _delay((unsigned long)((200)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"58
-[; ;main.c: 58:         I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"59
-[; ;main.c: 59:         I2C_Master_Write(0b11101111);
-[e ( _I2C_Master_Write (1 -> -> 239 `i `ui ]
+[; ;main.c: 56: }
+[e :UE 161 ]
+}
 "60
-[; ;main.c: 60:         PORTD = I2C_Master_Read(0);
-[e = _PORTD -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-"61
-[; ;main.c: 61:         I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"62
-[; ;main.c: 62:         _delay((unsigned long)((200)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"63
-[; ;main.c: 63:         PORTB++;
-[e ++ _PORTB -> -> 1 `i `Vuc ]
-"64
-[; ;main.c: 64:     }
-}
-[e :U 139 ]
-[e $U 140  ]
-[e :U 141 ]
-"65
-[; ;main.c: 65:     return;
-[e $UE 138  ]
-"66
-[; ;main.c: 66: }
-[e :UE 138 ]
-}
-"70
-[; ;main.c: 70: void setup(void){
+[; ;main.c: 60: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"71
-[; ;main.c: 71:     ANSEL = 0;
+"62
+[; ;main.c: 62:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"72
-[; ;main.c: 72:     ANSELH = 0;
+"63
+[; ;main.c: 63:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"73
-[; ;main.c: 73:     TRISB = 0;
+"64
+[; ;main.c: 64:     TRISB = 0;
 [e = _TRISB -> -> 0 `i `uc ]
-"74
-[; ;main.c: 74:     TRISD = 0;
+"65
+[; ;main.c: 65:     TRISD = 0;
 [e = _TRISD -> -> 0 `i `uc ]
-"75
-[; ;main.c: 75:     PORTB = 0;
+"66
+[; ;main.c: 66:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"76
-[; ;main.c: 76:     PORTD = 0;
+"67
+[; ;main.c: 67:     PORTD = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"77
-[; ;main.c: 77:     I2C_Master_Init(100000);
+"69
+[; ;main.c: 69:     nRBPU = 0;
+[e = _nRBPU -> -> 0 `i `b ]
+"71
+[; ;main.c: 71:     if(UART_Init(9600) == 1){
+[e $ ! == -> ( _UART_Init (1 -> -> 9600 `i `l `i -> 1 `i 166  ]
+{
+"72
+[; ;main.c: 72:         PORTD = 1;
+[e = _PORTD -> -> 1 `i `uc ]
+"73
+[; ;main.c: 73:     }
+}
+[e :U 166 ]
+"75
+[; ;main.c: 75:     I2C_Master_Init(100000);
 [e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
-"78
-[; ;main.c: 78: }
-[e :UE 142 ]
+"76
+[; ;main.c: 76: }
+[e :UE 165 ]
 }
