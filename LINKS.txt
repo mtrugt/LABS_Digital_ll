@@ -1,3 +1,6 @@
-Video: https://drive.google.com/file/d/1nSupu8vQGgh7zLFiHzxssUn1DvAFqSyf/view?usp=sharing
+Video: https://drive.google.com/file/d/1pDiWsXUrCTz9RZMUZg4wpneRzWM7R3dR/view?usp=sharing
 
 Github: https://github.com/mtrugt/LABS_Digital_ll
+
+Adafruit: https://io.adafruit.com/Mtru/dashboards/mini2
+
