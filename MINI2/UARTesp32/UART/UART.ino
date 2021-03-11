@@ -16,7 +16,7 @@
 // and any additional configuration needed for WiFi, cellular,
 // or ethernet clients.
 
-#include "config.h"
+//#include "config.h"
 #define RXD2 16
 #define TXD2 17
 /************************ Example Starts Here *******************************/
