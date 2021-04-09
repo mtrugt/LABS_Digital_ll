@@ -11,7 +11,7 @@
 
 
 //Creacion de varibles
-int img = 0;
+int img;
 File root;
 File myFile;
 
@@ -49,6 +49,49 @@ void setup()
 
 //Loop principal
 void loop(){
+ //Revisar si hay un dato disponible  
+if (Serial.available()>0){
+  img = Serial.read();}
+  
+if (img == 'a'){
+    myFile = SD.open("calaca.txt"); 
+    if (myFile){
+      while (myFile.available()){
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else{
+      Serial.println("error al abrir el .txt");
+    }
+  }
+
+else if (img == 'b'){
+    myFile = SD.open("estrella.txt"); 
+    if (myFile){
+      while (myFile.available()){
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else{
+      Serial.println("error al abrir el .txt");
+    }
+  }
+
+  
+else if (img == 'c'){
+    myFile = SD.open("Corazon.txt"); 
+    if (myFile){
+      while (myFile.available()){
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else{
+      Serial.println("error al abrir el .txt");
+    }
+  }
 }
 
 void printDirectory(File dir, int numTabs) {
