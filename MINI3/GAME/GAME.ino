@@ -56,7 +56,6 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
 
 
 extern uint8_t fondo[];
-extern uint8_t chava[];
 extern uint8_t middle[];
 extern uint8_t borde[];
 //***************************************************************************************************************************************
@@ -128,6 +127,15 @@ void loop() {
 //     i = i + 1;
 //   }
 //}
+//LCD_Clear(0x6B4D);
+LCD_Bitmap(0, 0, 320, 240, fondo);
+FillRect(170, 0, 320-170, 240, 0x6B4D);
+FillRect(140, 35, 20, 20, 0x1C59);
+//LCD_Bitmap(182, 170, 18, 25, player);
+LCD_Bitmap(230, 170, 18, 25, player);
+//LCD_Bitmap(280, 170, 18, 25, player);
+
+
 while(1){
   i = 0;
   while (i != 11){
