@@ -58,6 +58,7 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
 extern uint8_t fondo[];
 extern uint8_t chava[];
 extern uint8_t middle[];
+extern uint8_t borde[];
 //***************************************************************************************************************************************
 // Inicialización
 //***************************************************************************************************************************************
@@ -133,12 +134,21 @@ while(1){
     j = 0;
     posy = 0;
     while (j != 5){
-      LCD_Sprite(120, posy, 9, 48, middle, 11, i, 0, 0);
+      LCD_Sprite(210, posy, 9, 48, middle, 11, i, 0, 0);
+      LCD_Sprite(260, posy, 9, 48, middle, 11, i, 0, 0);
+      if (i < 8){
+        LCD_Sprite(160, posy, 14, 48, borde, 8, i, 0, 0);
+        LCD_Sprite(320-14, posy, 14, 48, borde, 8, i, 1, 0);
+      }
+      else{    
+        LCD_Sprite(160, posy, 14, 48, borde, 8, i-8, 0, 0);
+        LCD_Sprite(320-14, posy, 14, 48, borde, 8, i-8, 1, 0);
+      }
+      
       posy = posy + 48;
       j = j + 1;
     }
     i = i + 1;
-    delay(30);
   }
 }
   
