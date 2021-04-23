@@ -114,8 +114,6 @@ void loop() {
   delay(3000);
 
   LCD_Clear(0x605F);
-  LCD_Bitmap(60, 70, 18, 25, player);
-  //delay(3000);
 
   posy = 0;
   posx = 0;
@@ -127,7 +125,7 @@ void loop() {
 //     i = i + 1;
 //   }
 //}
-//LCD_Clear(0x6B4D);
+
 LCD_Bitmap(0, 0, 320, 240, fondo);
 FillRect(170, 0, 320-170, 240, 0x6B4D);
 FillRect(140, 35, 20, 20, 0x1C59);
