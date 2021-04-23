@@ -30,6 +30,13 @@
 #define LCD_WR PD_3
 #define LCD_RD PE_1
 int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};  
+
+int anim;
+int posy;
+int posx;
+int i;
+int j;
+
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -50,6 +57,7 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
 
 extern uint8_t fondo[];
 extern uint8_t chava[];
+extern uint8_t middle[];
 //***************************************************************************************************************************************
 // Inicialización
 //***************************************************************************************************************************************
@@ -61,6 +69,7 @@ void setup() {
   LCD_Init();
 
   pinMode(PUSH1, INPUT_PULLUP);
+  pinMode(PUSH2, INPUT_PULLUP);
   
   //LCD_Bitmap(0, 0, 320, 240, fondo);
 
@@ -86,24 +95,52 @@ void setup() {
 // Loop Infinito
 //***************************************************************************************************************************************
 void loop() {
+  //DESPLIEGUE PANTALLA DE CARGA
   LCD_Bitmap(0, 0, 320, 240, fondo);
-
-  while(digitalRead(PUSH1)== 1){
+  while(digitalRead(PUSH2)== 1 && digitalRead(PUSH1)== 1){
   LCD_Bitmap(60, 182, 200, 13, text1);
   delay(100);
   LCD_Bitmap(60, 182, 200, 13, text2);
   delay(100);
   }
 
-  LCD_Clear(0x664C);
-  delay(2000);
-  
+  //DESPLIEGUE INSTRUCCIONES
+  LCD_Clear(0x605F);
+  LCD_Print("How to play?" , 60, 30, 2,   0xFFFF, 0x605F);
+  LCD_Bitmap(60, 70, 186, 43, btns);
+  LCD_Print("Move to the left with SW1" , 20, 130, 1,   0xFFFF, 0x605F);
+  LCD_Print("Move to the right with SW2" , 20, 150, 1,   0xFFFF, 0x605F);
+  LCD_Print("Have Fun :)" , 60, 190, 2,   0xFFFF, 0x605F);
+  delay(3000);
 
-  
+  LCD_Clear(0x605F);
+  LCD_Bitmap(60, 70, 18, 25, player);
+  //delay(3000);
 
-  
-  
-
+  posy = 0;
+  posx = 0;
+//while(1){
+//  i = 0;
+//  while(i != 7){
+//     LCD_Sprite(150, 20, 9, 48, middle, 7, i, 0, 0);
+//     delay(1000);
+//     i = i + 1;
+//   }
+//}
+while(1){
+  i = 0;
+  while (i != 11){
+    j = 0;
+    posy = 0;
+    while (j != 5){
+      LCD_Sprite(120, posy, 9, 48, middle, 11, i, 0, 0);
+      posy = posy + 48;
+      j = j + 1;
+    }
+    i = i + 1;
+    delay(30);
+  }
+}
   
  /* for(int x = 0; x <320-32; x++){
     delay(15);
