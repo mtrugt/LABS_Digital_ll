@@ -36,6 +36,8 @@ int posy;
 int posx;
 int i;
 int j;
+char check1;
+char check2;
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -126,15 +128,62 @@ void loop() {
 //   }
 //}
 
+//Generar escenario de juego
 LCD_Bitmap(0, 0, 320, 240, fondo);
 FillRect(170, 0, 320-170, 240, 0x6B4D);
 FillRect(140, 35, 20, 20, 0x1C59);
+
+//Posiciones del jugador
 //LCD_Bitmap(182, 170, 18, 25, player);
-LCD_Bitmap(230, 170, 18, 25, player);
+//LCD_Bitmap(230, 170, 18, 25, player);
 //LCD_Bitmap(280, 170, 18, 25, player);
 
+int posplayer = 3;
+int coin = 1;
+check1 = 0;
+check2 = 0;
+while(coin){
 
-while(1){
+  if (check1 != 0 && digitalRead(PUSH1) == 1){
+           check1 = 0;
+          }
+                
+  if (check2 != 0 && digitalRead(PUSH2) == 1){
+            check2 = 0;
+          }
+                
+  if (check1 == 0 && digitalRead(PUSH1) == 0 && posplayer != 1){
+        posplayer = posplayer - 1;
+        check1 = 1;               
+       }
+                
+  if (check2 == 0 && digitalRead(PUSH2) == 0 && posplayer != 3){
+        posplayer = posplayer + 1;
+        check2 = 1;               
+       }
+
+
+  //Revisar posicion del jugador
+  switch(posplayer){
+    case 1:
+      LCD_Bitmap(182, 170, 18, 25, player);
+      FillRect(230, 170, 18, 25, 0x6B4D);
+      FillRect(280, 170, 18, 25, 0x6B4D);
+    break;
+
+    case 2:
+      LCD_Bitmap(230, 170, 18, 25, player);
+      FillRect(182, 170, 18, 25, 0x6B4D);
+      FillRect(280, 170, 18, 25, 0x6B4D);
+    break;
+
+    case 3:
+      LCD_Bitmap(280, 170, 18, 25, player);
+      FillRect(182, 170, 18, 25, 0x6B4D);
+      FillRect(230, 170, 18, 25, 0x6B4D);
+    break;
+  }
+  
   i = 0;
   while (i != 11){
     j = 0;
