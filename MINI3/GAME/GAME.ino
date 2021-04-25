@@ -41,6 +41,12 @@ char t;
 char check1;
 char check2;
 char changepos;
+char enemy1;
+char enemy2;
+char enemy3;
+char enemy4;
+char posenemy;
+int enemyx;
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -142,27 +148,28 @@ FillRect(140, 35, 20, 20, 0x1C59);
 //LCD_Bitmap(230, 170, 18, 25, player);
 //LCD_Bitmap(280, 170, 18, 25, player);
 
-int posplayer = 3;
-int coin = 1;
+int posplayer = 2;
+int coin = 0;
 check1 = 0;
 check2 = 0;
-while(coin){
+while(coin != 1){
 
+  //revisar si se han presionado los botones (anti-rebote incluido)
   if (check1 != 0 && digitalRead(PUSH1) == 1){
            check1 = 0;
           }
                 
-  if (check2 != 0 && digitalRead(PUSH2) == 1){
+   else if (check2 != 0 && digitalRead(PUSH2) == 1){
             check2 = 0;
           }
                 
-  if (check1 == 0 && digitalRead(PUSH1) == 0 && posplayer != 1){
+   else if (check1 == 0 && digitalRead(PUSH1) == 0 && posplayer != 1){
         posplayer = posplayer - 1;
         check1 = 1;
         changepos = 1; //bandera de cambio de posicion               
        }
                 
-  if (check2 == 0 && digitalRead(PUSH2) == 0 && posplayer != 3){
+   else if (check2 == 0 && digitalRead(PUSH2) == 0 && posplayer != 3){
         posplayer = posplayer + 1;
         check2 = 1;
         changepos = 1; //bandera de cambio de posicion              
@@ -216,25 +223,17 @@ while(coin){
     i = i + 1;
   }
 
-  while (i != 11){
-    j = 0;
-    posy = 0;
-    while (j != 5){
-      LCD_Sprite(210, posy, 9, 48, middle, 11, i, 0, 0);
-      LCD_Sprite(260, posy, 9, 48, middle, 11, i, 0, 0);
-      if (i < 8){
-        LCD_Sprite(160, posy, 14, 48, borde, 8, i, 0, 0);
-        LCD_Sprite(320-14, posy, 14, 48, borde, 8, i, 1, 0);
-      }
-      else{    
-        LCD_Sprite(160, posy, 14, 48, borde, 8, i-8, 0, 0);
-        LCD_Sprite(320-14, posy, 14, 48, borde, 8, i-8, 1, 0);
-      }
-      
-      posy = posy + 48;
-      j = j + 1;
-    }
-    i = i + 1;
+  posenemy = rand() % 3;
+  switch(posenemy){
+    case 0: enemyx = 182; break;
+    case 1: enemyx = 230; break;
+    case 2: enemyx = 280; break;
+  }
+  k = 7;
+  while(k != 11){
+    LCD_Sprite(enemyx, 0, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
   }
 
   
