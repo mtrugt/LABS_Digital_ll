@@ -36,8 +36,11 @@ int posy;
 int posx;
 int i;
 int j;
+char k;
+char t;
 char check1;
 char check2;
+char changepos;
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -60,6 +63,7 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
 extern uint8_t fondo[];
 extern uint8_t middle[];
 extern uint8_t borde[];
+extern uint8_t enemy[]; //estatico = 0 spawn = 6-9 despawn = 1-5
 //***************************************************************************************************************************************
 // Inicialización
 //***************************************************************************************************************************************
@@ -154,17 +158,20 @@ while(coin){
                 
   if (check1 == 0 && digitalRead(PUSH1) == 0 && posplayer != 1){
         posplayer = posplayer - 1;
-        check1 = 1;               
+        check1 = 1;
+        changepos = 1; //bandera de cambio de posicion               
        }
                 
   if (check2 == 0 && digitalRead(PUSH2) == 0 && posplayer != 3){
         posplayer = posplayer + 1;
-        check2 = 1;               
+        check2 = 1;
+        changepos = 1; //bandera de cambio de posicion              
        }
 
 
-  //Revisar posicion del jugador
-  switch(posplayer){
+  //Animacion, posicion del jugador
+  if (changepos = 1){
+   switch(posplayer){
     case 1:
       LCD_Bitmap(182, 170, 18, 25, player);
       FillRect(230, 170, 18, 25, 0x6B4D);
@@ -182,8 +189,11 @@ while(coin){
       FillRect(182, 170, 18, 25, 0x6B4D);
       FillRect(230, 170, 18, 25, 0x6B4D);
     break;
+   }
+   changepos = 0;
   }
-  
+
+  //animacion de la carretera
   i = 0;
   while (i != 11){
     j = 0;
@@ -205,6 +215,29 @@ while(coin){
     }
     i = i + 1;
   }
+
+  while (i != 11){
+    j = 0;
+    posy = 0;
+    while (j != 5){
+      LCD_Sprite(210, posy, 9, 48, middle, 11, i, 0, 0);
+      LCD_Sprite(260, posy, 9, 48, middle, 11, i, 0, 0);
+      if (i < 8){
+        LCD_Sprite(160, posy, 14, 48, borde, 8, i, 0, 0);
+        LCD_Sprite(320-14, posy, 14, 48, borde, 8, i, 1, 0);
+      }
+      else{    
+        LCD_Sprite(160, posy, 14, 48, borde, 8, i-8, 0, 0);
+        LCD_Sprite(320-14, posy, 14, 48, borde, 8, i-8, 1, 0);
+      }
+      
+      posy = posy + 48;
+      j = j + 1;
+    }
+    i = i + 1;
+  }
+
+  
 }
   
  /* for(int x = 0; x <320-32; x++){
