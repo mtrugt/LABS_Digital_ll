@@ -41,10 +41,19 @@ char t;
 char check1;
 char check2;
 char changepos;
+int enemy1x;
+int enemy2x;
+int enemy3x;
+int enemy4x;
+char enemy1y;
+char enemy2y;
+char enemy3y;
+char enemy4y;
 char enemy1;
 char enemy2;
 char enemy3;
 char enemy4;
+char enemyctr;
 char posenemy;
 int enemyx;
 
@@ -82,25 +91,13 @@ void setup() {
 
   pinMode(PUSH1, INPUT_PULLUP);
   pinMode(PUSH2, INPUT_PULLUP);
-  
-  //LCD_Bitmap(0, 0, 320, 240, fondo);
 
-  //FillRect(0, 0, 319, 206, 0x421b);
-  //String text1 = "Super Mario World!";
-  //LCD_Print(text1, 20, 100, 2, 0xffff, 0x421b);
-//LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    
-  //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
-  //LCD_Bitmap(0, 0, 320, 240, fondo);
-  
-  //for(int x = 0; x <319; x++){
-    //LCD_Bitmap(x, 52, 16, 16, tile2);
-    //LCD_Bitmap(x, 68, 16, 16, tile);
-    
-    //LCD_Bitmap(x, 207, 16, 16, tile);
-    //LCD_Bitmap(x, 223, 16, 16, tile);
-    //x += 15;
- //}
+  enemyctr = 1;
+
+  enemy1 = 0;
+  enemy2 = 0;
+  enemy3 = 0;
+  enemy4 = 0;
   
 }
 //***************************************************************************************************************************************
@@ -127,16 +124,6 @@ void loop() {
 
   LCD_Clear(0x605F);
 
-  posy = 0;
-  posx = 0;
-//while(1){
-//  i = 0;
-//  while(i != 7){
-//     LCD_Sprite(150, 20, 9, 48, middle, 7, i, 0, 0);
-//     delay(1000);
-//     i = i + 1;
-//   }
-//}
 
 //Generar escenario de juego
 LCD_Bitmap(0, 0, 320, 240, fondo);
@@ -152,6 +139,7 @@ int posplayer = 2;
 int coin = 0;
 check1 = 0;
 check2 = 0;
+LCD_Bitmap(230, 170, 18, 25, player);
 while(coin != 1){
 
   //revisar si se han presionado los botones (anti-rebote incluido)
@@ -177,7 +165,7 @@ while(coin != 1){
 
 
   //Animacion, posicion del jugador
-  if (changepos = 1){
+  if (changepos == 1){
    switch(posplayer){
     case 1:
       LCD_Bitmap(182, 170, 18, 25, player);
@@ -223,19 +211,96 @@ while(coin != 1){
     i = i + 1;
   }
 
-  posenemy = rand() % 3;
-  switch(posenemy){
-    case 0: enemyx = 182; break;
-    case 1: enemyx = 230; break;
-    case 2: enemyx = 280; break;
-  }
-  k = 7;
-  while(k != 11){
-    LCD_Sprite(enemyx, 0, 20, 27, enemy, 11, k, 0, 0);
-    k = k + 1;
-    delay(30);
+
+  //Animacion de enemigos
+  if (enemy1 == 0 && enemyctr == 20){
+    enemy1x = enemyrand();
+    enemy1y = 0;
+    enemy1 = 1;
   }
 
+  else if(enemy2 == 0 && enemyctr == 40){
+    enemy2x = enemyrand();
+    enemy2y = 0;
+    enemy2 = 1;
+  }
+
+  else if(enemy3 == 0 && enemyctr == 60){
+    enemy3x = enemyrand();
+    enemy3y = 0;
+    enemy3 = 1;
+  }
+
+  else if(enemy4 == 0 && enemyctr == 80){
+    enemy4x = enemyrand();
+    enemy4y = 0;
+    enemy4 = 1;
+  }
+
+  if (enemy1 == 1 && enemy1y == 0){
+    k = 7;
+    while(k != 11){
+    LCD_Sprite(enemy1x, enemy1y, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy1y = 2;
+  }
+
+  else if (enemy2 == 1 && enemy2y == 0){
+    k = 7;
+    while(k != 11){
+    LCD_Sprite(enemy2x, enemy2y, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy2y = 2;
+  }
+
+  else if (enemy3 == 1 && enemy3y == 0){
+    k = 7;
+    while(k != 11){
+    LCD_Sprite(enemy3x, enemy3y, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy3y = 2;
+  }
+
+  else if (enemy4 == 1 && enemy4y == 0){
+    k = 7;
+    while(k != 11){
+    LCD_Sprite(enemy4x, enemy4y, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy4y = 2;
+  }
+  
+  if (enemy1y !=0){
+    LCD_Sprite(enemy1x, enemy1y, 20, 27, enemy, 11, 1, 0, 0);
+    enemy1y = enemy1y + 7;
+  }
+
+  if (enemy2y !=0){
+    LCD_Sprite(enemy2x, enemy2y, 20, 27, enemy, 11, 1, 0, 0);
+    enemy2y = enemy2y + 7;
+  }
+
+  if (enemy3y !=0){
+    LCD_Sprite(enemy3x, enemy3y, 20, 27, enemy, 11, 1, 0, 0);
+    enemy3y = enemy3y + 7;
+  }
+
+  if (enemy4y !=0){
+    LCD_Sprite(enemy4x, enemy4y, 20, 27, enemy, 11, 1, 0, 0);
+    enemy4y = enemy4y + 7;
+  }
+  
+  enemyctr = enemyctr + 1;
+  if (enemyctr == 81){
+    enemyctr = 0; 
+  }
   
 }
   
@@ -287,6 +352,23 @@ while(coin != 1){
   } 
 */
 };
+
+
+
+//***************************************************************************************************************************************
+// Función para seleccionar el carril del enemigo
+//***************************************************************************************************************************************
+int enemyrand(void){
+  posenemy = rand() % 3;
+  switch(posenemy){
+   case 0: enemyx = 182; break;
+   case 1: enemyx = 230; break;
+   case 2: enemyx = 280; break;
+  }
+
+  return enemyx;
+}
+
 //***************************************************************************************************************************************
 // Función para inicializar LCD
 //***************************************************************************************************************************************
