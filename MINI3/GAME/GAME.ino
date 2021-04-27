@@ -45,14 +45,17 @@ int enemy1x;
 int enemy2x;
 int enemy3x;
 int enemy4x;
+int enemy5x;
 char enemy1y;
 char enemy2y;
 char enemy3y;
 char enemy4y;
+char enemy5y;
 char enemy1;
 char enemy2;
 char enemy3;
 char enemy4;
+char enemy5;
 char enemyctr;
 char posenemy;
 int enemyx;
@@ -213,29 +216,36 @@ while(coin != 1){
 
 
   //Animacion de enemigos
-  if (enemy1 == 0 && enemyctr == 20){
+  if (enemy1 == 0 && enemyctr == 10){
     enemy1x = enemyrand();
     enemy1y = 0;
     enemy1 = 1;
   }
 
-  else if(enemy2 == 0 && enemyctr == 40){
+  else if(enemy2 == 0 && enemyctr == 15){
     enemy2x = enemyrand();
     enemy2y = 0;
     enemy2 = 1;
   }
 
-  else if(enemy3 == 0 && enemyctr == 60){
+  else if(enemy3 == 0 && enemyctr == 25){
     enemy3x = enemyrand();
     enemy3y = 0;
     enemy3 = 1;
   }
 
-  else if(enemy4 == 0 && enemyctr == 80){
+  else if(enemy4 == 0 && enemyctr == 30){
     enemy4x = enemyrand();
     enemy4y = 0;
     enemy4 = 1;
   }
+
+//  else if(enemy5 == 0 && enemyctr == 30){
+//    enemy5x = enemyrand();
+//    enemy5y = 0;
+//    enemy5 = 1;
+//  }
+
 
   if (enemy1 == 1 && enemy1y == 0){
     k = 7;
@@ -276,29 +286,94 @@ while(coin != 1){
     }
     enemy4y = 2;
   }
+
+//  else if (enemy5 == 1 && enemy5y == 0){
+//    k = 7;
+//    while(k != 11){
+//    LCD_Sprite(enemy5x, enemy5y, 20, 27, enemy, 11, k, 0, 0);
+//    k = k + 1;
+//    delay(30);
+//    }
+//    enemy5y = 2;
+//  }
   
-  if (enemy1y !=0){
+  if (enemy1y !=0 && enemy1y < 210 ){
     LCD_Sprite(enemy1x, enemy1y, 20, 27, enemy, 11, 1, 0, 0);
     enemy1y = enemy1y + 7;
   }
 
-  if (enemy2y !=0){
+  else if(enemy1y >= 210 && enemy1 == 1){
+    k = 0;
+    while(k != 6){
+    LCD_Sprite(enemy1x, 212, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy1 = 0; 
+  }
+
+  if (enemy2y !=0 && enemy2y < 210){
     LCD_Sprite(enemy2x, enemy2y, 20, 27, enemy, 11, 1, 0, 0);
     enemy2y = enemy2y + 7;
   }
 
-  if (enemy3y !=0){
+  else if(enemy2y >= 210 && enemy2 == 1){
+    k = 0;
+    while(k != 6){
+    LCD_Sprite(enemy2x, 212, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy2 = 0; 
+  }
+
+  if (enemy3y !=0 && enemy3y < 210){
     LCD_Sprite(enemy3x, enemy3y, 20, 27, enemy, 11, 1, 0, 0);
     enemy3y = enemy3y + 7;
   }
 
-  if (enemy4y !=0){
+  else if(enemy3y >= 210 && enemy3 == 1){
+    k = 0;
+    while(k != 6){
+    LCD_Sprite(enemy3x, 212, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy3 = 0; 
+  }
+
+  if (enemy4y !=0 && enemy4y < 210){
     LCD_Sprite(enemy4x, enemy4y, 20, 27, enemy, 11, 1, 0, 0);
     enemy4y = enemy4y + 7;
   }
+
+  else if(enemy4y >= 210 && enemy4 == 1){
+    k = 0;
+    while(k != 6){
+    LCD_Sprite(enemy4x, 212, 20, 27, enemy, 11, k, 0, 0);
+    k = k + 1;
+    delay(30);
+    }
+    enemy4 = 0; 
+  }
+
+//  if (enemy5y !=0 && enemy5y < 210){
+//    LCD_Sprite(enemy5x, enemy5y, 20, 27, enemy, 11, 1, 0, 0);
+//    enemy4y = enemy5y + 7;
+//  }
+//
+//  else if(enemy5y >= 210 && enemy5 == 1){
+//    k = 0;
+//    while(k != 6){
+//    LCD_Sprite(enemy5x, 212, 20, 27, enemy, 11, k, 0, 0);
+//    k = k + 1;
+//    delay(30);
+//    }
+//    enemy5 = 0; 
+//  }
   
   enemyctr = enemyctr + 1;
-  if (enemyctr == 81){
+  if (enemyctr == 31){
     enemyctr = 0; 
   }
   
