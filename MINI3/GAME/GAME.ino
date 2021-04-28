@@ -157,7 +157,7 @@ String puntostxt;
 #define REST      0
 
 // change this to make the song slower or faster
-int tempo = 2500;
+int tempo;
 
 // change this to whichever pin you want to use
 const int buzzer = PF_2;
@@ -172,10 +172,10 @@ int melody[] = {
   NOTE_A4, 4, NOTE_C4, 8, NOTE_C4, 4, NOTE_C4, 8, NOTE_C4, 4,
   NOTE_C4, 1, //1st ending
 
-//  NOTE_F4, 4, NOTE_G4, 4, NOTE_A4, 8, NOTE_G4, 4, NOTE_A4, 8, //repeats from 1
-//  NOTE_AS4, 4, NOTE_A4, 4, NOTE_G4, 8, NOTE_F4, 4, NOTE_G4, 8,
-//  NOTE_A4, 4, NOTE_C4, 8, NOTE_C4, 4, NOTE_C4, 8, NOTE_C4, 4,
-//  NOTE_C4, -2,  REST, -8, NOTE_A4, 16, //2nd ending
+  NOTE_F4, 4, NOTE_G4, 4, NOTE_A4, 8, NOTE_G4, 4, NOTE_A4, 8, //repeats from 1
+  NOTE_AS4, 4, NOTE_A4, 4, NOTE_G4, 8, NOTE_F4, 4, NOTE_G4, 8,
+  NOTE_A4, 4, NOTE_C4, 8, NOTE_C4, 4, NOTE_C4, 8, NOTE_C4, 4,
+  NOTE_C4, -2,  REST, -8, NOTE_A4, 16, //2nd ending
 //
 //  NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, //6
 //  NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16,
@@ -258,12 +258,13 @@ int melody[] = {
 
 // sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
 // there are two values per note (pitch and duration), so for each note there are four bytes
-int notes = sizeof(melody) / sizeof(melody[0]) / 2;
+int notes;
 
 // this calculates the duration of a whole note in ms
-int wholenote = (60000 * 4) / tempo;
-int divider = 0, noteDuration = 0;
-
+int wholenote;
+int divider;
+int noteDuration;
+int thisNote;
 
 
 //***************************************************************************************************************************************
@@ -342,9 +343,15 @@ void setup() {
 // Loop Infinito
 //***************************************************************************************************************************************
 void loop() {
-  //DESPLIEGUE PANTALLA DE CARGA
+  //DESPLIEGUE PANTALLA DE CARGA + SONIDO
   LCD_Bitmap(0, 0, 320, 240, fondo);
-  int thisNote = 0;
+  thisNote = 0;
+  tempo = 2500;
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+
+//this calculates the duration of a whole note in ms
+   wholenote = (60000 * 4) / tempo;
+   divider = 0, noteDuration = 0;
   
   while(digitalRead(PUSH2)== 1 && digitalRead(PUSH1)== 1){
   divider = melody[thisNote + 1];
@@ -383,8 +390,36 @@ void loop() {
   LCD_Print("Move to the left with SW1" , 20, 130, 1,   0xFFFF, 0x605F);
   LCD_Print("Move to the right with SW2" , 20, 150, 1,   0xFFFF, 0x605F);
   LCD_Print("Have Fun :)" , 60, 190, 2,   0xFFFF, 0x605F);
-  delay(3000);
+ //sonido de inicio
+  thisNote = 0;
+  tempo = 150;
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
 
+//this calculates the duration of a whole note in ms
+   wholenote = (60000 * 4) / tempo;
+   divider = 0, noteDuration = 0;
+   while (thisNote != 64){
+   divider = melody[thisNote + 1];
+    if (divider > 0) {
+      // regular note, just proceed
+      noteDuration = (wholenote) / divider;
+    } else if (divider < 0) {
+      // dotted notes are represented with negative durations!!
+      noteDuration = (wholenote) / abs(divider);
+      noteDuration *= 1.5; // increases the duration in half for dotted notes
+    }
+
+    // we only play the note for 90% of the duration, leaving 10% as a pause
+    tone(buzzer, melody[thisNote], noteDuration * 0.9);
+
+    // Wait for the specief duration before playing the next note.
+    delay(noteDuration);
+
+    // stop the waveform generation before the next note.
+    noTone(buzzer);
+
+    thisNote = thisNote + 2;
+   }
   LCD_Clear(0x605F);
 
 
