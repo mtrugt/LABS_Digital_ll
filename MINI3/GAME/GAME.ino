@@ -101,6 +101,8 @@ void setup() {
   enemy2 = 0;
   enemy3 = 0;
   enemy4 = 0;
+
+  posx = 230;
   
 }
 //***************************************************************************************************************************************
@@ -171,19 +173,22 @@ while(coin != 1){
   if (changepos == 1){
    switch(posplayer){
     case 1:
-      LCD_Bitmap(182, 170, 18, 25, player);
+      posx = 182;
+      LCD_Bitmap(posx, 170, 18, 25, player);
       FillRect(230, 170, 18, 25, 0x6B4D);
       FillRect(280, 170, 18, 25, 0x6B4D);
     break;
 
     case 2:
-      LCD_Bitmap(230, 170, 18, 25, player);
+      posx = 230;
+      LCD_Bitmap(posx, 170, 18, 25, player);
       FillRect(182, 170, 18, 25, 0x6B4D);
       FillRect(280, 170, 18, 25, 0x6B4D);
     break;
 
     case 3:
-      LCD_Bitmap(280, 170, 18, 25, player);
+      posx = 280;
+      LCD_Bitmap(posx, 170, 18, 25, player);
       FillRect(182, 170, 18, 25, 0x6B4D);
       FillRect(230, 170, 18, 25, 0x6B4D);
     break;
@@ -215,7 +220,7 @@ while(coin != 1){
   }
 
 
-  //Animacion de enemigos
+//Asignar carril aleatorio a cada enemigo
   if (enemy1 == 0 && enemyctr == 10){
     enemy1x = enemyrand();
     enemy1y = 0;
@@ -240,13 +245,9 @@ while(coin != 1){
     enemy4 = 1;
   }
 
-//  else if(enemy5 == 0 && enemyctr == 30){
-//    enemy5x = enemyrand();
-//    enemy5y = 0;
-//    enemy5 = 1;
-//  }
 
 
+//Spawn de los enemigos
   if (enemy1 == 1 && enemy1y == 0){
     k = 7;
     while(k != 11){
@@ -287,16 +288,9 @@ while(coin != 1){
     enemy4y = 2;
   }
 
-//  else if (enemy5 == 1 && enemy5y == 0){
-//    k = 7;
-//    while(k != 11){
-//    LCD_Sprite(enemy5x, enemy5y, 20, 27, enemy, 11, k, 0, 0);
-//    k = k + 1;
-//    delay(30);
-//    }
-//    enemy5y = 2;
-//  }
-  
+
+
+//Movimiento y despawn de los enemigos  
   if (enemy1y !=0 && enemy1y < 210 ){
     LCD_Sprite(enemy1x, enemy1y, 20, 27, enemy, 11, 1, 0, 0);
     enemy1y = enemy1y + 7;
@@ -357,25 +351,35 @@ while(coin != 1){
     enemy4 = 0; 
   }
 
-//  if (enemy5y !=0 && enemy5y < 210){
-//    LCD_Sprite(enemy5x, enemy5y, 20, 27, enemy, 11, 1, 0, 0);
-//    enemy4y = enemy5y + 7;
-//  }
-//
-//  else if(enemy5y >= 210 && enemy5 == 1){
-//    k = 0;
-//    while(k != 6){
-//    LCD_Sprite(enemy5x, 212, 20, 27, enemy, 11, k, 0, 0);
-//    k = k + 1;
-//    delay(30);
-//    }
-//    enemy5 = 0; 
-//  }
-  
+
+
+//contador para generar enemigos (delay)  
   enemyctr = enemyctr + 1;
   if (enemyctr == 31){
     enemyctr = 0; 
   }
+
+
+
+  
+//Logica para el game over
+  if (enemy1y >= 150 && enemy1y <= 197 && enemy1x == posx){
+    coin = 1;
+  }
+
+  else if (enemy2y >= 150 && enemy2y <= 197 && enemy2x == posx){
+    coin = 1;
+  }
+
+  else if (enemy3y >= 150 && enemy3y <= 197 && enemy3x == posx){
+    coin = 1;
+  }
+
+  else if (enemy4y >= 150 && enemy4y <= 197 && enemy4x == posx){
+    coin = 1;
+  }
+
+  
   
 }
   
