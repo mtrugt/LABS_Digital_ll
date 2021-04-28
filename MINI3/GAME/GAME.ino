@@ -392,13 +392,13 @@ void loop() {
   LCD_Print("Have Fun :)" , 60, 190, 2,   0xFFFF, 0x605F);
  //sonido de inicio
   thisNote = 0;
-  tempo = 150;
+  tempo = 100;
   notes = sizeof(melody) / sizeof(melody[0]) / 2;
 
 //this calculates the duration of a whole note in ms
    wholenote = (60000 * 4) / tempo;
    divider = 0, noteDuration = 0;
-   while (thisNote != 64){
+   while (thisNote != 30){
    divider = melody[thisNote + 1];
     if (divider > 0) {
       // regular note, just proceed
@@ -471,6 +471,10 @@ while(coin != 1){
       LCD_Bitmap(posx, 170, 18, 25, player);
       FillRect(230, 170, 18, 25, 0x6B4D);
       FillRect(280, 170, 18, 25, 0x6B4D);
+
+      tone(buzzer, melody[12], 40);
+      delay(40);
+      noTone(buzzer);
     break;
 
     case 2:
@@ -478,6 +482,10 @@ while(coin != 1){
       LCD_Bitmap(posx, 170, 18, 25, player);
       FillRect(182, 170, 18, 25, 0x6B4D);
       FillRect(280, 170, 18, 25, 0x6B4D);
+
+      tone(buzzer, melody[12], 40);
+      delay(40);
+      noTone(buzzer);
     break;
 
     case 3:
@@ -485,6 +493,10 @@ while(coin != 1){
       LCD_Bitmap(posx, 170, 18, 25, player);
       FillRect(182, 170, 18, 25, 0x6B4D);
       FillRect(230, 170, 18, 25, 0x6B4D);
+
+      tone(buzzer, melody[12], 40);
+      delay(40);
+      noTone(buzzer);
     break;
    }
    changepos = 0;
@@ -665,19 +677,19 @@ while(coin != 1){
 
   
 //Logica para el game over
-  if (enemy1y >= 150 && enemy1y <= 197 && enemy1x == posx){
+  if (enemy1y >= 150 && enemy1y <= 195 && enemy1x == posx){
     coin = 1;
   }
 
-  else if (enemy2y >= 150 && enemy2y <= 197 && enemy2x == posx){
+  else if (enemy2y >= 150 && enemy2y <= 195 && enemy2x == posx){
     coin = 1;
   }
 
-  else if (enemy3y >= 150 && enemy3y <= 197 && enemy3x == posx){
+  else if (enemy3y >= 150 && enemy3y <= 195 && enemy3x == posx){
     coin = 1;
   }
 
-  else if (enemy4y >= 150 && enemy4y <= 197 && enemy4x == posx){
+  else if (enemy4y >= 150 && enemy4y <= 195 && enemy4x == posx){
     coin = 1;
   }
  
@@ -688,7 +700,7 @@ while(coin != 1){
   LCD_Print("GAME OVER" , 80, 30, 2,   0xFFFF, 0x605F);
   LCD_Print("Your score: " , 70, 110, 1,   0xFFFF, 0x605F);
   LCD_Print(puntostxt , 180, 110, 2,   0xFFFF, 0x605F);
-  LCD_Print("Thanks for playing!" , 20, 190, 2,   0xFFFF, 0x605F);
+  LCD_Print("Thanks for playing" , 20, 190, 2,   0xFFFF, 0x605F);
   delay(5000);
   
 };
