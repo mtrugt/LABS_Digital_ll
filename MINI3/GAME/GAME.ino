@@ -438,6 +438,11 @@ int posplayer = 2;
 int coin = 0;
 check1 = 0;
 check2 = 0;
+enemy1 = 0; enemy2 = 0; enemy3 = 0; enemy4 = 0;
+enemy1x = 0; enemy2x = 0; enemy3x = 0; enemy4x = 0;
+enemy1y = 0; enemy2y = 0; enemy3y = 0; enemy4y = 0;
+enemyctr = 0;
+punteo = 0;
 LCD_Bitmap(230, 170, 18, 25, player);
 while(coin != 1){
 
@@ -756,6 +761,7 @@ while(coin != 1){
 
     thisNote = thisNote + 2;
    }
+  
 };
 
 
