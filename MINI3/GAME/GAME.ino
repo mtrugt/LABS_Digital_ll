@@ -59,6 +59,8 @@ char enemy5;
 char enemyctr;
 char posenemy;
 int enemyx;
+int punteo;
+String puntostxt; 
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -103,6 +105,7 @@ void setup() {
   enemy4 = 0;
 
   posx = 230;
+  punteo = 0;
   
 }
 //***************************************************************************************************************************************
@@ -134,6 +137,7 @@ void loop() {
 LCD_Bitmap(0, 0, 320, 240, fondo);
 FillRect(170, 0, 320-170, 240, 0x6B4D);
 FillRect(140, 35, 20, 20, 0x1C59);
+LCD_Print("Puntos:" , 2, 190, 2, 0xFFFF, 0xCB26);
 
 //Posiciones del jugador
 //LCD_Bitmap(182, 170, 18, 25, player);
@@ -356,8 +360,13 @@ while(coin != 1){
 //contador para generar enemigos (delay)  
   enemyctr = enemyctr + 1;
   if (enemyctr == 31){
-    enemyctr = 0; 
+    enemyctr = 0;
+    punteo = punteo + 1; 
   }
+
+//Mostrar punteo
+  puntostxt = String(punteo);
+  LCD_Print(puntostxt , 120, 190, 2,   0xFFFF, 0xCB26);
 
 
 
