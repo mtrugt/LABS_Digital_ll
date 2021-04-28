@@ -172,15 +172,15 @@ int melody[] = {
   NOTE_A4, 4, NOTE_C4, 8, NOTE_C4, 4, NOTE_C4, 8, NOTE_C4, 4,
   NOTE_C4, 1, //1st ending
 
-  NOTE_F4, 4, NOTE_G4, 4, NOTE_A4, 8, NOTE_G4, 4, NOTE_A4, 8, //repeats from 1
-  NOTE_AS4, 4, NOTE_A4, 4, NOTE_G4, 8, NOTE_F4, 4, NOTE_G4, 8,
-  NOTE_A4, 4, NOTE_C4, 8, NOTE_C4, 4, NOTE_C4, 8, NOTE_C4, 4,
-  NOTE_C4, -2,  REST, -8, NOTE_A4, 16, //2nd ending
+//  NOTE_F4, 4, NOTE_G4, 4, NOTE_A4, 8, NOTE_G4, 4, NOTE_A4, 8, //repeats from 1
+//  NOTE_AS4, 4, NOTE_A4, 4, NOTE_G4, 8, NOTE_F4, 4, NOTE_G4, 8,
+//  NOTE_A4, 4, NOTE_C4, 8, NOTE_C4, 4, NOTE_C4, 8, NOTE_C4, 4,
+//  NOTE_C4, -2,  REST, -8, NOTE_A4, 16, //2nd ending
 //
-//  NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, //6
-//  NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16,
-//  NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16,
-//  NOTE_G4, -8, NOTE_G4, 16, NOTE_G4, -8, NOTE_G4, 16, NOTE_G4, -8, NOTE_G4, 16, NOTE_G4, -8, NOTE_G4, 16,
+  NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, //6
+  NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16,
+  NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16,
+  NOTE_G4, -8, NOTE_G4, 16, NOTE_G4, -8, NOTE_G4, 16, NOTE_G4, -8, NOTE_G4, 16, NOTE_G4, -8, NOTE_G4, 16,
 //
 //  NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, NOTE_A4, -8, NOTE_A4, 16, //10
 //  NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16, NOTE_AS4, -8, NOTE_AS4, 16,
@@ -679,18 +679,46 @@ while(coin != 1){
 //Logica para el game over
   if (enemy1y >= 150 && enemy1y <= 195 && enemy1x == posx){
     coin = 1;
+
+    tone(buzzer, 55, 300);
+    delay(300);
+    noTone(buzzer);
+    tone(buzzer, 31, 300);
+    delay(300);
+    noTone(buzzer);
   }
 
   else if (enemy2y >= 150 && enemy2y <= 195 && enemy2x == posx){
     coin = 1;
+
+    tone(buzzer, 55, 300);
+    delay(300);
+    noTone(buzzer);
+    tone(buzzer, 31, 300);
+    delay(300);
+    noTone(buzzer);
   }
 
   else if (enemy3y >= 150 && enemy3y <= 195 && enemy3x == posx){
     coin = 1;
+
+    tone(buzzer, 55, 300);
+    delay(300);
+    noTone(buzzer);
+    tone(buzzer, 31, 300);
+    delay(300);
+    noTone(buzzer);
   }
 
   else if (enemy4y >= 150 && enemy4y <= 195 && enemy4x == posx){
     coin = 1;
+
+    tone(buzzer, 55, 300);
+    delay(300);
+    noTone(buzzer);
+    tone(buzzer, 31, 300);
+    delay(300);
+    noTone(buzzer);
   }
  
   }
@@ -701,8 +729,33 @@ while(coin != 1){
   LCD_Print("Your score: " , 70, 110, 1,   0xFFFF, 0x605F);
   LCD_Print(puntostxt , 180, 110, 2,   0xFFFF, 0x605F);
   LCD_Print("Thanks for playing" , 20, 190, 2,   0xFFFF, 0x605F);
-  delay(5000);
-  
+  //sonido
+  tempo = 100;
+  wholenote = (60000 * 4) / tempo;
+  divider = 0, noteDuration = 0;
+  thisNote = 32;
+  while (thisNote != 90){
+   divider = melody[thisNote + 1];
+    if (divider > 0) {
+      // regular note, just proceed
+      noteDuration = (wholenote) / divider;
+    } else if (divider < 0) {
+      // dotted notes are represented with negative durations!!
+      noteDuration = (wholenote) / abs(divider);
+      noteDuration *= 1.5; // increases the duration in half for dotted notes
+    }
+
+    // we only play the note for 90% of the duration, leaving 10% as a pause
+    tone(buzzer, melody[thisNote], noteDuration * 0.9);
+
+    // Wait for the specief duration before playing the next note.
+    delay(noteDuration);
+
+    // stop the waveform generation before the next note.
+    noTone(buzzer);
+
+    thisNote = thisNote + 2;
+   }
 };
 
 
