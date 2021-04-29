@@ -24,6 +24,9 @@
 #include "font.h"
 #include "lcd_registers.h"
 
+#include <SPI.h>
+#include <SD.h>
+
 #define LCD_RST PD_0
 #define LCD_CS PD_1
 #define LCD_RS PD_2
@@ -61,6 +64,9 @@ char posenemy;
 int enemyx;
 int punteo;
 String puntostxt; 
+
+File root;
+File myFile;
 
 //***************************************************************************************************************************************
 // SOUND - by Robson Couto, 2019
@@ -303,6 +309,19 @@ void setup() {
   pinMode(PUSH2, INPUT_PULLUP);
 
   enemyctr = 1;
+
+  SPI.setModule(0);
+  Serial.print("Initializing SD card...");
+  pinMode(PA_3, OUTPUT);
+  if (!SD.begin(PA_3)) {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+  Serial.println("La Memoria posee los siguientes archivos:");
+  root = SD.open("/");
+  printDirectory(root, 0);
+  
 
   enemy1 = 0;
   enemy2 = 0;
@@ -761,10 +780,50 @@ while(coin != 1){
 
     thisNote = thisNote + 2;
    }
+
+//Guardar puntaje en la sd
+  myFile = SD.open("PTS.txt", FILE_WRITE);
+  if (myFile) {
+    Serial.print("Writing to PTS.TXT...");
+    myFile.println("Puntuacion: " + puntostxt);
+    // close the file:
+    myFile.close();
+    Serial.println("done.");
+  } else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening test.txt");
+  }
+
   
 };
 
 
+
+//***************************************************************************************************************************************
+// Imprimir directorio
+//***************************************************************************************************************************************
+void printDirectory(File dir, int numTabs) {
+   while(true) {
+     File entry =  dir.openNextFile();
+     if (! entry) {
+       // no more files
+       break;
+     }
+     for (uint8_t i=0; i<numTabs; i++) {
+       Serial.print('\t');
+     }
+     Serial.print(entry.name());
+     if (entry.isDirectory()) {
+       Serial.println("/");
+       printDirectory(entry, numTabs+1);
+     } else {
+       // files have sizes, directories do not
+       Serial.print("\t\t");
+       Serial.println(entry.size(), DEC);
+     }
+     entry.close();
+   }
+}
 
 //***************************************************************************************************************************************
 // Función para seleccionar el carril del enemigo
