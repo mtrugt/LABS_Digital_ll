@@ -330,32 +330,6 @@ void setup() {
 
   posx = 230;
   punteo = 0;
-
-  //prueba sonido
-  // iterate over the notes of the melody.
-  // Remember, the array is twice the number of notes (notes + durations)
-//  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
-//
-//    // calculates the duration of each note
-//    divider = melody[thisNote + 1];
-//    if (divider > 0) {
-//      // regular note, just proceed
-//      noteDuration = (wholenote) / divider;
-//    } else if (divider < 0) {
-//      // dotted notes are represented with negative durations!!
-//      noteDuration = (wholenote) / abs(divider);
-//      noteDuration *= 1.5; // increases the duration in half for dotted notes
-//    }
-//
-//    // we only play the note for 90% of the duration, leaving 10% as a pause
-//    tone(buzzer, melody[thisNote], noteDuration * 0.9);
-//
-//    // Wait for the specief duration before playing the next note.
-//    delay(noteDuration);
-//
-//    // stop the waveform generation before the next note.
-//    noTone(buzzer);
-//  }
   
 }
 //***************************************************************************************************************************************
@@ -448,11 +422,7 @@ FillRect(170, 0, 320-170, 240, 0x6B4D);
 FillRect(140, 35, 20, 20, 0x1C59);
 LCD_Print("Puntos:" , 2, 190, 2, 0xFFFF, 0xCB26);
 
-//Posiciones del jugador
-//LCD_Bitmap(182, 170, 18, 25, player);
-//LCD_Bitmap(230, 170, 18, 25, player);
-//LCD_Bitmap(280, 170, 18, 25, player);
-
+//Valores iniciales
 int posplayer = 2;
 int coin = 0;
 check1 = 0;
