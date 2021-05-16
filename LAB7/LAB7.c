@@ -18,7 +18,8 @@
 //************************************************************************
 //Creacion de variables
 //************************************************************************
-
+uint32_t Periodo;
+uint32_t estado;
 
 //************************************************************************
 //Creacion de funciones
@@ -35,6 +36,12 @@ int main(void)
     SysCtlPeripheralEnable ( SYSCTL_PERIPH_GPIOF );
     //Establecer los pines como salidas
     GPIOPinTypeGPIOOutput (GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
+
+    //Configurar el timer0
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0); //habilitamos el reloj
+    TimerDisable(TIMER0_BASE, TIMER_A|TIMER_B); //deshabilitar timer0
+    TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC); //configurar timer0 como periodico
+
 
 
 
