@@ -28,8 +28,16 @@
 
 int main(void)
 {
-    //Configurar el reloj (se utilizara la misma que en la lectura 10)
+    //Las siguientes lineas de codigo estan presentes en la lectura 10
+    //Configurar el reloj
     SysCtlClockSet ( SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL  | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN);
+    //Habilitar el reloj para GPIOF
+    SysCtlPeripheralEnable ( SYSCTL_PERIPH_GPIOF );
+    //Establecer los pines como salidas
+    GPIOPinTypeGPIOOutput (GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
+
+
+
 
 
 
