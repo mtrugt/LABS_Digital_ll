@@ -15,8 +15,23 @@
 #include "driverlib/gpio.h"
 #include "driverlib/timer.h"
 
+//************************************************************************
+//Creacion de variables
+//************************************************************************
+
+
+//************************************************************************
+//Creacion de funciones
+//************************************************************************
+
+
 
 int main(void)
 {
-	return 0;
+    //Configurar el reloj (se utilizara la misma que en la lectura 10)
+    SysCtlClockSet ( SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL  | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN);
+
+
+
+
 }
