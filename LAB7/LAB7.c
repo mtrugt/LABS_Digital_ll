@@ -83,9 +83,6 @@ int main(void)
     IntEnable(INT_TIMER0A); //Habilitar interrupcion en timer0A
     TimerEnable(TIMER0_BASE, TIMER_A);
 
-    GPIOPinWrite(GPIO_PORTF_BASE, RED, 0x1);
-    GPIOPinWrite(GPIO_PORTF_BASE, BLUE, 0x1);
-    GPIOPinWrite(GPIO_PORTF_BASE, GREEN, 0x1);
 
     while(1){}
 
