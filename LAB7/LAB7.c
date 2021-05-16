@@ -14,20 +14,23 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/gpio.h"
 #include "driverlib/timer.h"
+#include "driverlib/systick.h"
+#include "driverlib/uart.h"
+#include "driverlib/rom.h"
+#include <string.h>
+#include "grlib/grlib.h"
+#include "driverlib/pin_map.h"
 
 //************************************************************************
 //Creacion de variables
 //************************************************************************
 uint32_t onesec;
 uint32_t freq;
-uint32_t estado;
-
+uint32_t Estado;
+char dato;
 //************************************************************************
 //Creacion de funciones
 //************************************************************************
-uint8_t flag_r = 0;
-uint8_t flag_v = 0;
-uint8_t flag_a = 0;
 
 #define RED GPIO_PIN_1
 #define GREEN GPIO_PIN_3
@@ -42,12 +45,38 @@ void Timer0IntHandler(void){  //interrupcion timer0 a 0.5Hz
     TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
     //Realizamos el toggle
-    GPIOPinWrite(GPIO_PORTF_BASE, RED, 0x1);
-    GPIOPinWrite(GPIO_PORTF_BASE, BLUE, 0x1);
-    GPIOPinWrite(GPIO_PORTF_BASE, GREEN, 0x1);
+    if (dato == "r"){
+        GPIOPinWrite(GPIO_PORTF_BASE, RED ,0x01);
+        GPIOPinWrite(GPIO_PORTF_BASE, BLUE ,0x00);
+        GPIOPinWrite(GPIO_PORTF_BASE, GREEN ,0x00);
+    }
+
+    else if (dato == "a"){
+        GPIOPinWrite(GPIO_PORTF_BASE, BLUE ,0x01);
+        GPIOPinWrite(GPIO_PORTF_BASE, RED ,0x00);
+        GPIOPinWrite(GPIO_PORTF_BASE, GREEN ,0x00);
+    }
+
+    else if (dato == "v"){
+            GPIOPinWrite(GPIO_PORTF_BASE, GREEN ,0x01);
+            GPIOPinWrite(GPIO_PORTF_BASE, BLUE ,0x00);
+            GPIOPinWrite(GPIO_PORTF_BASE, RED ,0x00);
+        }
+    //reiniciar dato
+    dato = "x";
 
 }
 
+void UARTIntHandler(void){
+    // Limpiar la bandera
+    UARTIntClear(UART0_BASE, Estado);
+
+    // Leer UART
+    while(UARTCharsAvail(UART0_BASE)){
+        dato = UARTCharGet(UART0_BASE);
+    }
+
+}
 
 
 int main(void)
@@ -83,11 +112,25 @@ int main(void)
     IntEnable(INT_TIMER0A); //Habilitar interrupcion en timer0A
     TimerEnable(TIMER0_BASE, TIMER_A);
 
+    //Configuracion UART0
+    SysCtlPeripheralEnable (SYSCTL_PERIPH_UART0); //Habilitar reloj para uart0
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA); //Habilitar reloj para puerto A
+    //configurar los pines para rx y tx
+    GPIOPinConfigure(GPIO_PA0_U0RX);
+    GPIOPinConfigure(GPIO_PA1_U0TX);
+    GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1); //Se especifican los pines para rx y tx
+
+    //Configurar la interrupcion
+    UARTDisable(UART0_BASE); //Deshabilitamos el UART
+    UARTConfigSetExpClk(UART0_BASE, SysCtlClockGet(), 115200,(UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
+    IntEnable (INT_UART0); //Habilitar interrupcion
+    UARTIntEnable (UART0_BASE, UART_INT_RX | UART_INT_RT);
+    UARTEnable (UART0_BASE);
+
 
     while(1){}
 
-
-
 }
+
 
 }
