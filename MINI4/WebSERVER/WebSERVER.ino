@@ -20,9 +20,9 @@ const char* password = "Maquito12345";  //Enter your Password here
 WebServer server(80);  // Object of WebServer(HTTP port, 80 is defult)
 
 uint8_t park1 = 0;
-uint8_t park2 = 0;
+uint8_t park2 = 1;
 uint8_t park3 = 0;
-uint8_t park4 = 0;
+uint8_t park4 = 1;
 uint8_t LED1pin = 2;
 bool LED1status = LOW;
 
@@ -98,7 +98,7 @@ ptr += "}\n";
 ptr += "\n";
 ptr += "#p{\n";
 ptr += "\tborder: 3px solid #330000;\n";
-ptr += "  \tbackground-color: #99ffffff;;\n";
+ptr += "  \tbackground-color: #99ffffff;\n";
 ptr += "  \ttext-align: left;\n";
 ptr += "  \tpadding: 8px;\n";
 ptr += "}\n";
@@ -133,26 +133,139 @@ ptr += "    <th>Parqueo</th>\n";
 ptr += "    <th>Estado</th>\n";
 ptr += "  </tr>\n";
 ptr += "  <tr>\n";
-ptr += "    <td id = \"p\"><b>1A</b></td>\n";
-ptr += "    <td>a</td>\n";
+
+//controlar los parqueos
+if (p1 == 0){
+  ptr += "    <td id = \"p\"><b>1A</b></td>\n";
+  ptr += "    <td id =\"p1\">Parqueo Libre</td>\n";
+}
+else{
+  ptr += "    <td id = \"p\"><b>1A</b></td>\n";
+  ptr += "    <td id =\"p1\">Parqueo Ocupado</td>\n";
+}
+
 ptr += "  </tr>\n";
 ptr += "  <tr>\n";
-ptr += "    <td id = \"p\"><b>1B</b></td>\n";
-ptr += "    <td>b</td>\n";
+
+if (p2 == 0){
+  ptr += "    <td id = \"p\"><b>1B</b></td>\n";
+  ptr += "    <td id =\"p2\">Parqueo Libre</td>\n";
+}
+else{
+  ptr += "    <td id = \"p\"><b>1B</b></td>\n";
+  ptr += "    <td id =\"p2\">Parqueo Ocupado</td>\n";
+}
+
 ptr += "  </tr>\n";
 ptr += "  <tr>\n";
-ptr += "    <td id = \"p\"><b>1C</b></td>\n";
-ptr += "    <td>c</td>\n";
+
+if (p3 == 0){
+  ptr += "    <td id = \"p\"><b>1C</b></td>\n";
+  ptr += "    <td id =\"p3\">Parqueo Libre</td>\n";
+}
+else{
+  ptr += "    <td id = \"p\"><b>1C</b></td>\n";
+  ptr += "    <td id =\"p3\">Parqueo Ocupado</td>\n";
+}
+
 ptr += "  </tr>\n";
 ptr += "  <tr>\n";
-ptr += "    <td id = \"p\"><b>1D</b></td>\n";
-ptr += "    <td>d</td>\n";
+
+if (p4 == 0){
+  ptr += "    <td id = \"p\"><b>1D</b></td>\n";
+  ptr += "    <td id =\"p4\">Parqueo Libre</td>\n";
+}
+else{
+  ptr += "    <td id = \"p\"><b>1D</b></td>\n";
+  ptr += "    <td id =\"p4\">Parqueo Ocupado</td>\n";
+}
+
 ptr += "  </tr>\n";
 ptr += "  <tr>\n";
 ptr += "    <td id = \"p\"><b>Total disponibles</b></td>\n";
-ptr += "    <td>x</td>\n";
+
+if((p1+p2+p3+p4)==0){
+  ptr += "    <td id = \"tot\">4</td>\n";
+}
+else if((p1+p2+p3+p4)==1){
+  ptr += "    <td id = \"tot\">3</td>\n";
+}
+else if((p1+p2+p3+p4)==2){
+  ptr += "    <td id = \"tot\">2</td>\n";
+}
+else if((p1+p2+p3+p4)==3){
+  ptr += "    <td id = \"tot\">1</td>\n";
+}
+else if((p1+p2+p3+p4)==4){
+  ptr += "    <td id = \"tot\">0</td>\n";
+}
+
 ptr += "  </tr>\n";
 ptr += "</table>\n";
+ptr += "\n";
+ptr += "<style>\n";
+if(p1 == 1){
+  ptr += "#p1{\n";
+  ptr += "\tbackground-color: #ff6633;\n";
+  ptr += "  text-align: center; \n";
+  ptr += "}\n";
+}
+else{
+  ptr += "#p1{\n";
+  ptr += "\tbackground-color: #00ff99;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+}
+
+if(p2 == 1){
+  ptr += "\n";
+  ptr += "#p2{\n";
+  ptr += "\tbackground-color: #ff6633;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+}
+else{
+  ptr += "#p2{\n";
+  ptr += "\tbackground-color: #00ff99;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+  ptr += "\n";
+}
+
+if(p3==1){
+  ptr += "#p3{\n";
+  ptr += "\tbackground-color: #ff6633;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+}
+else{
+  ptr += "#p3{\n";
+  ptr += "\tbackground-color: #00ff99;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+  ptr += "\n";
+}
+
+if(p4==1){
+  ptr += "#p4{\n";
+  ptr += "\tbackground-color: #ff6633;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+}
+else{
+  ptr += "#p4{\n";
+  ptr += "\tbackground-color: #00ff99;\n";
+  ptr += "    text-align: center; \n";
+  ptr += "}\n";
+  ptr += "\n";
+}
+
+ptr += "#tot{\n";
+ptr += "\tbackground-color: #ffff99;\n";
+ptr += "    text-align: center; \n";
+ptr += "}\n";
+ptr += "\n";
+ptr += "</style>\n";
 ptr += "\n";
 ptr += "</body>\n";
 ptr += "</html>";
