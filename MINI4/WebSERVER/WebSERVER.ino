@@ -14,17 +14,18 @@
 // Variables globales
 //************************************************************************************************
 // SSID & Password
-const char* ssid = "FAMEXT";  // Enter your SSID here
-const char* password = "Maquito12345";  //Enter your Password here
+const char* ssid = "TURBONETT_668E97";  // Enter your SSID here
+const char* password = "JFCESG*8485";  //Enter your Password here
 
 WebServer server(80);  // Object of WebServer(HTTP port, 80 is defult)
 char park[20];
 char x;
-//uint8_t park = 0;
+
+uint8_t n = 0;
 uint8_t park1 = 0;
-uint8_t park2 = 1;
+uint8_t park2 = 0;
 uint8_t park3 = 0;
-uint8_t park4 = 1;
+uint8_t park4 = 0;
 uint8_t LED1pin = 2;
 #define RXD0 3
 #define TXD0 1
@@ -40,9 +41,24 @@ void setup() {
 
   //configurar pines
   pinMode(LED1pin, OUTPUT);
- 
-  pinMode(36, OUTPUT);
-  pinMode(39, OUTPUT);
+
+  //7seg PINS
+  pinMode(23, OUTPUT); 
+  pinMode(22, OUTPUT);
+  pinMode(21, OUTPUT);
+  pinMode(19, OUTPUT);
+  pinMode(18, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(15, OUTPUT);
+
+  //7seg inicial
+  digitalWrite(23, LOW);//a
+  digitalWrite(22, LOW);//b
+  digitalWrite(21, HIGH);//c
+  digitalWrite(19, LOW);//d
+  digitalWrite(18, HIGH);//e
+  digitalWrite(5, HIGH);//f
+  digitalWrite(15, HIGH);//g
   
   pinMode(34, OUTPUT);
   pinMode(35, OUTPUT);
@@ -87,18 +103,13 @@ void loop() {
     Serial.println(park[0]);
 
   }
-  
+ 
   x=park[0];
   if (x == 'a') {
     park1 = 1;
-    digitalWrite(34, HIGH);
-    digitalWrite(35, LOW);
-    
   }
   else if (x == 'b'){
     park1 = 0;
-    digitalWrite(34, LOW);
-    digitalWrite(35, HIGH);
   }
   
   else if (x == 'c'){
@@ -121,6 +132,62 @@ void loop() {
   else if(x == 'h'){
     park4 = 0;
   }
+
+  n = park1 + park2 + park3 + park4;
+
+  switch(n){
+    case 4:
+      digitalWrite(23, HIGH);//a
+      digitalWrite(22, HIGH);//b
+      digitalWrite(21, HIGH);//c
+      digitalWrite(19, HIGH);//d
+      digitalWrite(18, HIGH);//e
+      digitalWrite(5, HIGH);//f
+      digitalWrite(15, LOW);//g
+      break;
+
+    case 3:
+      digitalWrite(23, LOW);//a
+      digitalWrite(22, LOW);//b
+      digitalWrite(21, LOW);//c
+      digitalWrite(19, LOW);//d
+      digitalWrite(18, HIGH);//e
+      digitalWrite(5, HIGH);//f
+      digitalWrite(15, LOW);//g
+      break;
+
+    case 2:
+      digitalWrite(23, HIGH);//a
+      digitalWrite(22, HIGH);//b
+      digitalWrite(21, LOW);//c
+      digitalWrite(19, HIGH);//d
+      digitalWrite(18, HIGH);//e
+      digitalWrite(5, LOW);//f
+      digitalWrite(15, HIGH);//g
+      break;
+
+    case 1:
+      digitalWrite(23, HIGH);//a
+      digitalWrite(22, LOW);//b
+      digitalWrite(21, LOW);//c
+      digitalWrite(19, HIGH);//d
+      digitalWrite(18, HIGH);//e
+      digitalWrite(5, HIGH);//f
+      digitalWrite(15, HIGH);//g
+      break;
+
+    case 0:
+      digitalWrite(23, LOW);//a
+      digitalWrite(22, LOW);//b
+      digitalWrite(21, HIGH);//c
+      digitalWrite(19, LOW);//d
+      digitalWrite(18, HIGH);//e
+      digitalWrite(5, HIGH);//f
+      digitalWrite(15, HIGH);//g
+      break;
+   }
+  
+  
 
   server.handleClient();
   server.send(200, "text/html", SendHTML(park1, park2, park3, park4));
@@ -332,7 +399,7 @@ String SendHTML(uint8_t p1, uint8_t p2, uint8_t p3, uint8_t p4) {
   ptr += "\tsetTimeout(\"location.reload(true);\",timeoutPeriod);\n";
   ptr += "}\n";
   ptr += "\n";
-  ptr += "window.onload = timedRefresh(3000);\n";
+  ptr += "window.onload = timedRefresh(500);\n";
   ptr += "\n";
   ptr += "//   -->\n";
   ptr += "</script>";
