@@ -85,6 +85,28 @@ void loop() {
   if (x == 'a') {
     park1 = 1;
   }
+  else if (x == 'b'){
+    park1 = 0;
+  }
+  else if (x == 'c'){
+    park2 = 1;
+  }
+  else if(x == 'd'){
+    park2 = 0;
+  }
+  else if(x == 'e'){
+    park3 = 1;
+  }
+  else if(x == 'f'){
+    park3 = 0;
+  }
+  else if(x == 'g'){
+    park4 = 1;
+  }
+  else if(x == 'h'){
+    park4 = 0;
+  }
+  
   //Serial.println(park);
 
 
@@ -97,7 +119,6 @@ void loop() {
 // Handler de Inicio página
 //************************************************************************************************
 void handle_OnConnect() {
-  Serial.println("GPIO2 Status: OFF");
   server.send(200, "text/html", SendHTML(park1, park2, park3, park4));
   delay(1000);
 }
