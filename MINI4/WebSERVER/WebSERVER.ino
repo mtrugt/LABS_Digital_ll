@@ -40,14 +40,20 @@ void setup() {
 
   //configurar pines
   pinMode(LED1pin, OUTPUT);
-  pinMode(23, INPUT);
-  pinMode(22, OUTPUT);
-  pinMode(21, OUTPUT);
-  pinMode(19, OUTPUT);
-  pinMode(18, OUTPUT);
-  pinMode(5, OUTPUT);
-  pinMode(15, OUTPUT);
+ 
+  pinMode(36, OUTPUT);
+  pinMode(39, OUTPUT);
+  
+  pinMode(34, OUTPUT);
+  pinMode(35, OUTPUT);
+  
+  pinMode(32, OUTPUT);
+  pinMode(33, OUTPUT);
 
+  pinMode(25, OUTPUT);
+  pinMode(26, OUTPUT);
+
+  
   // Connect to your wi-fi modem
   WiFi.begin(ssid, password);
 
@@ -81,25 +87,34 @@ void loop() {
     Serial.println(park[0]);
 
   }
+  
   x=park[0];
   if (x == 'a') {
     park1 = 1;
+    digitalWrite(34, HIGH);
+    digitalWrite(35, LOW);
+    
   }
   else if (x == 'b'){
     park1 = 0;
+    digitalWrite(34, LOW);
+    digitalWrite(35, HIGH);
   }
+  
   else if (x == 'c'){
     park2 = 1;
   }
   else if(x == 'd'){
     park2 = 0;
   }
+  
   else if(x == 'e'){
     park3 = 1;
   }
   else if(x == 'f'){
     park3 = 0;
   }
+  
   else if(x == 'g'){
     park4 = 1;
   }
