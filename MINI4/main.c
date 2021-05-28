@@ -14,6 +14,7 @@
 #include "driverlib/uart.h"
 
 
+//Definiciones
 #define park1 GPIO_PIN_6
 #define park2 GPIO_PIN_4
 #define park3 GPIO_PIN_3
@@ -25,7 +26,12 @@
 
 //variables
 uint8_t ctr=0;
+uint32_t Period=0;
+
+//funciones
 void DatosUart(char *Dat);
+
+//LOOP
 int main(void)
 {
     //configuracion inicial
@@ -37,7 +43,9 @@ int main(void)
     SysCtlPeripheralEnable ( SYSCTL_PERIPH_GPIOF ); //habilitar reloj puerto F
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)){}
 
-    GPIOPinTypeGPIOOutput (GPIO_PORTF_BASE, BLUE | RED | GREEN); //salidas para leds
+    GPIOPinTypeGPIOOutput (GPIO_PORTF_BASE, BLUE | RED | GREEN); //salidas para led RGB
+    GPIOPinTypeGPIOOutput (GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4|GPIO_PIN_3|GPIO_PIN_2); //salidas para semaforos
+    GPIOPinTypeGPIOOutput (GPIO_PORTA_BASE, GPIO_PIN_5|GPIO_PIN_6);
 
     GPIOPadConfigSet(GPIO_PORTB_BASE, park1, GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD_WPD); //pines, sensores, pulldown
     GPIOPadConfigSet(GPIO_PORTA_BASE, park2|park3|park4, GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD_WPD);
@@ -54,14 +62,36 @@ int main(void)
     UARTConfigSetExpClk(UART1_BASE, 16000000, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |UART_CONFIG_PAR_NONE));
     UARTEnable(UART1_BASE);
 
+    //Obtener Periodo
+    Period = SysCtlClockGet();
+
 while(1){
-    if(GPIOPinRead(GPIO_PORTB_BASE, park1)){ //prueba de entradas
-        DatosUart("a");
-        GPIOPinWrite(GPIO_PORTF_BASE, RED, 0xff);
-        }
-    }
+    if(GPIOPinRead(GPIO_PORTB_BASE, park1)){ //Si park1 ocupado -> enviar a
+        DatosUart("a"); SysCtlDelay(500);}
+    else{
+        DatosUart("b"); SysCtlDelay(500);} //de lo contrario, enviar b
+
+    if(GPIOPinRead(GPIO_PORTA_BASE, park2)){
+        DatosUart("c"); SysCtlDelay(500);}
+    else{
+        DatosUart("d"); SysCtlDelay(500);}
+
+    if(GPIOPinRead(GPIO_PORTA_BASE, park3)){
+        DatosUart("e"); SysCtlDelay(500);}
+    else{
+        DatosUart("f"); SysCtlDelay(500);}
+
+
+    if(GPIOPinRead(GPIO_PORTA_BASE, park4)){
+        DatosUart("g"); SysCtlDelay(500);}
+    else{
+        DatosUart("h"); SysCtlDelay(500);}
+
+  }
 }
-void DatosUart(char *Dat){
+
+
+void DatosUart(char *Dat){//Mandar datos si no esta ocupado
     while(UARTBusy(UART1_BASE));
     while(*Dat != '\0')
     {
