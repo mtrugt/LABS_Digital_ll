@@ -44,7 +44,7 @@ int main(void)
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)){}
 
     GPIOPinTypeGPIOOutput (GPIO_PORTF_BASE, BLUE | RED | GREEN); //salidas para led RGB
-    GPIOPinTypeGPIOOutput (GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4|GPIO_PIN_3|GPIO_PIN_2); //salidas para semaforos
+    GPIOPinTypeGPIOOutput (GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_3 | GPIO_PIN_2); //salidas para semaforos
     GPIOPinTypeGPIOOutput (GPIO_PORTA_BASE, GPIO_PIN_5|GPIO_PIN_6);
 
     GPIOPadConfigSet(GPIO_PORTB_BASE, park1, GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD_WPD); //pines, sensores, pulldown
@@ -67,26 +67,28 @@ int main(void)
 
 while(1){
     if(GPIOPinRead(GPIO_PORTB_BASE, park1)){ //Si park1 ocupado -> enviar a
-        DatosUart("a"); SysCtlDelay(500);}
+        DatosUart("a"); SysCtlDelay(1000000);}
     else{
-        DatosUart("b"); SysCtlDelay(500);} //de lo contrario, enviar b
+        DatosUart("b"); SysCtlDelay(1000000);}  //de lo contrario, enviar b}
 
     if(GPIOPinRead(GPIO_PORTA_BASE, park2)){
-        DatosUart("c"); SysCtlDelay(500);}
+        DatosUart("c"); SysCtlDelay(1000000);}
     else{
-        DatosUart("d"); SysCtlDelay(500);}
+        DatosUart("d"); SysCtlDelay(1000000);}
 
     if(GPIOPinRead(GPIO_PORTA_BASE, park3)){
-        DatosUart("e"); SysCtlDelay(500);}
+        DatosUart("e"); SysCtlDelay(1000000);}
     else{
-        DatosUart("f"); SysCtlDelay(500);}
+        DatosUart("f"); SysCtlDelay(1000000);}
 
 
     if(GPIOPinRead(GPIO_PORTA_BASE, park4)){
-        DatosUart("g"); SysCtlDelay(500);}
+        DatosUart("g"); SysCtlDelay(1000000);}
     else{
-        DatosUart("h"); SysCtlDelay(500);}
+        DatosUart("h"); SysCtlDelay(1000000);}
 
+
+    SysCtlDelay(10000);
   }
 }
 

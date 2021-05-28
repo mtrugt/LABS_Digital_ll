@@ -77,7 +77,7 @@ void setup() {
 void loop() {
   //Chequear el uart
   if (Serial.available() > 0) {
-    Serial.readBytes(park, 2);
+    Serial.readBytes(park, 1);
     Serial.println(park[0]);
 
   }
@@ -106,10 +106,6 @@ void loop() {
   else if(x == 'h'){
     park4 = 0;
   }
-  
-  //Serial.println(park);
-
-
 
   server.handleClient();
   server.send(200, "text/html", SendHTML(park1, park2, park3, park4));
@@ -120,7 +116,7 @@ void loop() {
 //************************************************************************************************
 void handle_OnConnect() {
   server.send(200, "text/html", SendHTML(park1, park2, park3, park4));
-  delay(1000);
+  delay(100);
 }
 //************************************************************************************************
 // Handler de led1on
